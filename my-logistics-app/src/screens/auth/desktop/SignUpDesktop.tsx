@@ -6,6 +6,7 @@ import { Eye, EyeOff } from 'lucide-react'
 import { Link } from "react-router-dom"
 import GenericInput from "@/components/ui/InputField"
 import { useTheme } from '../../../context/ThemeContext' // Adjust the import path as needed
+import logoImage from '@assets/Group 134@2x.png'
 
 export default function SignupPage() {
   const { theme } = useTheme()
@@ -54,7 +55,7 @@ export default function SignupPage() {
 
   const contentStyle: React.CSSProperties = {
     width: '100%',
-    maxWidth: '1200px',
+
     display: 'grid',
     gridTemplateColumns: '45% 55%',
     gap: '2rem',
@@ -66,6 +67,11 @@ export default function SignupPage() {
     borderRadius: '1.5rem',
     padding: '2rem',
     boxShadow: theme.shadows.outer,
+    maxWidth: '620px',
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+    position: 'relative'
   }
 
   const headingStyle: React.CSSProperties = {
@@ -113,12 +119,35 @@ export default function SignupPage() {
     backgroundColor: 'white',
     transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
   }
+  const relativeContainerStyle: React.CSSProperties = {
+    position: "relative",
+    height: "80%", // Adjust this value as needed
+    // Optionally, add overflow hidden if you want to crop parts of the image
+    overflow: "hidden",
+  }
+
+  const backgroudImageStyle: React.CSSProperties = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    // Set a fixed width or adjust as needed
+    width: "100%",
+    height: "auto",
+    zIndex: 10, // Ensure the logo overlaps other content
+    objectFit: 'cover',
+  }
+
 
   return (
     <div style={pageStyle}>
       <div style={contentStyle}>
         <div>
-          <h1 style={{ ...headingStyle, color: '#FF0000' }}>COTTON:ON</h1>
+          <h1 style={{ ...headingStyle, color: "#FF0000", fontSize: "42px" }}>COTTON:ON</h1>
+          <div style={relativeContainerStyle}>
+
+            <img src={logoImage} style={backgroudImageStyle}></img>
+
+          </div>
         </div>
         <div style={formContainerStyle}>
           <h2 style={headingStyle}>Fill your details to sign-up</h2>

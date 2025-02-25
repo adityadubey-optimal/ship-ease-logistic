@@ -76,10 +76,13 @@ export default function SignupPageMobile() {
   }
 
   const headingStyle: React.CSSProperties = {
-    fontSize: theme.fonts.mobile.secondaryHeading.size,
-    fontWeight: theme.fonts.mobile.secondaryHeading.weight,
-    color: theme.colors.textPrimary,
+
+    fontSize: theme.fonts.web.heading.size,
+    fontWeight: theme.fonts.web.heading.weight,
+    color: theme.colors.textSecondary,
     marginBottom: "2rem",
+    textAlign: "center",
+
   }
 
   const formStyle: React.CSSProperties = {
@@ -95,12 +98,14 @@ export default function SignupPageMobile() {
     borderRadius: "1rem",
     border: `2px solid ${theme.colors.primary}`,
     backgroundColor: "white",
-    fontSize: theme.fonts.mobile.body.size,
+    // fontSize: theme.fonts.mobile.body.size,
     appearance: "none",
     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666666'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "right 1rem center",
     backgroundSize: "1em",
+    fontSize: theme.fonts.mobile.body.size,
+    fontWeight: theme.fonts.mobile.body.weight,
   }
 
   const buttonStyle: React.CSSProperties = {
@@ -110,11 +115,19 @@ export default function SignupPageMobile() {
     color: "white",
     border: "none",
     borderRadius: "2rem",
-    fontSize: theme.fonts.mobile.body.size,
-    fontWeight: theme.fonts.mobile.body.weight,
+    fontSize: theme.fonts.mobile.signupPageLink.size,
+    fontWeight: theme.fonts.mobile.signupPageLink.weight,
     marginTop: "1rem",
     marginBottom: "1rem",
   }
+
+  const singUpLinkStyle: React.CSSProperties = {
+    textAlign: "center",
+    textDecoration: "none",
+    fontSize: theme.fonts.mobile.signupPageLink.size,
+    fontWeight: theme.fonts.mobile.signupPageLink.weight,
+  }
+
 
   const linkTextStyle: React.CSSProperties = {
     textAlign: "center",
@@ -188,16 +201,20 @@ export default function SignupPageMobile() {
             Select Your Role
           </label>
           <select value={formData.role} onChange={(e) => handleInputChange("role")(e.target.value)} style={selectStyle}>
-            <option value="">Select from the menu</option>
+            <option value="">Select from the menu</option>q
             <option value="admin">Administrator</option>
             <option value="user">User</option>
             <option value="manager">Manager</option>
           </select>
         </div>
 
-        <div style={linkTextStyle}>
+
+        <div style={singUpLinkStyle}>
           <span>Already have and account? </span>
-          <Link to="/signin" style={{ color: theme.colors.primary }}>
+          <Link to="/signin" style={{
+            color: theme.colors.primary, fontSize: theme.fonts.mobile.signupPageLink.size,
+            fontWeight: theme.fonts.mobile.signupPageLink.weight,
+          }}>
             Sign-in
           </Link>
         </div>

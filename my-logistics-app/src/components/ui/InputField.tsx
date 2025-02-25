@@ -471,8 +471,8 @@ export default function GenericInput({
         marginBottom: '0.5rem',
         color: theme.colors.textPrimary,
         ...(isMobile ? {
-            fontSize: theme.fonts.mobile.secondaryHeading.size,
-            fontWeight: theme.fonts.mobile.secondaryHeading.weight,
+            fontSize: theme.fonts.mobile.heading.size,
+            fontWeight: theme.fonts.mobile.heading.weight,
         } : {
             fontSize: theme.fonts.web.secondaryHeading.size,
             fontWeight: theme.fonts.web.secondaryHeading.weight,

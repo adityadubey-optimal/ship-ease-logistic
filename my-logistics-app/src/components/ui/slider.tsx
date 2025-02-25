@@ -58,10 +58,10 @@ const Slider: React.FC<SliderProps> = ({ children }) => {
                     </div>
                 ))}
             </Slick>
-            <style jsx global>{`
+            <style>{`
                 .slick-list {
                     margin: 0 -12px;
-                }
+                }       
                 .slick-dots {
                     bottom: -35px;
                 }

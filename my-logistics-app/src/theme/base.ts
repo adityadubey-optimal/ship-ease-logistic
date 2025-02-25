@@ -102,6 +102,10 @@ export const baseFonts = {
 
     // Font Hierarchy - Mobile
     mobile: {
+        signupPageLink: {
+            size: '20px',
+            weight: '700'
+        },
         heading: {
             size: "15px",
             weight: "700", // bold

@@ -3,17 +3,15 @@ import { baseColors, baseFonts, baseShadows, borderRadius, statusCardStyles } fr
 export const persona2Theme = {
     colors: {
         ...baseColors,
-        primary: "#4CAF50",
     },
     fonts: {
         ...baseFonts,
     },
     shadows: {
-        outer: "0 2px 6px rgba(0, 0, 0, 0.25)",
-        inner: "inset 0 2px 6px rgba(0, 0, 0, 0.15)",
+        ...baseShadows,
     },
     borderRadius: {
-        ...borderRadius
+        ...borderRadius,
     },
     baseShadows: {
         ...baseShadows,
@@ -21,4 +19,6 @@ export const persona2Theme = {
     statusCardStyles: {
         ...statusCardStyles
     },
+
+
 };

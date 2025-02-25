@@ -14,6 +14,7 @@ import DataChart from "@/components/mobile/DataChartMobile"
 import { Button } from "@/components/ui/button"
 import IconButton from "@/components/ui/IconButton"
 import { QuantityTable } from "@/components/mobile/quantityTableMobile"
+import ShipDateGauge from "@/components/mobile/shipDaysGauage"
 export default function Home() {
     const { theme } = useTheme()
 
@@ -21,7 +22,7 @@ export default function Home() {
     return (
         <DashboardLayout>
             {/* Today's Status Section Placeholder */}
-            <section className="mb-1 p-4">
+            <section className="mb-1 p-4" style={{ paddingBottom: '0px' }}>
                 <StatusDashboard />
             </section>
 
@@ -130,6 +131,8 @@ export default function Home() {
             <DataChart />
 
             <QuantityTable />
+
+            <ShipDateGauge />
         </DashboardLayout>
     )
 }

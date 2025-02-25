@@ -9,7 +9,7 @@ export default function StatusDashboard() {
     const { theme } = useTheme()
 
     return (
-        <div className="w-full max-w-7xl mx-auto p-4" style={{ background: "transparent" }}>
+        <div className="w-full max-w-7xl mx-auto p-4" style={{ background: "transparent", paddingBottom: '0px' }}>
             {/* User Info */}
 
 

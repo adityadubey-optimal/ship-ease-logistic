@@ -64,9 +64,9 @@ export function QuantityTable() {
                             <td className="p-2">
                                 <input type="checkbox" className="rounded border-gray-300" />
                             </td>
-                            <td className="p-2">{row.size}</td>
-                            <td className="p-2">{row.poQuantity}</td>
-                            <td className="p-2">{row.vendorQuantity}</td>
+                            <td className="p-2" style={{ fontSize: '10px', fontWeight: '400' }}>{row.size}</td>
+                            <td className="p-2" style={{ fontSize: '10px', fontWeight: '400' }}>{row.poQuantity}</td>
+                            <td className="p-2" style={{ fontSize: '10px', fontWeight: '400' }}>{row.vendorQuantity}</td>
                             <td className="p-2">
                                 <span className={row.variation > 3 ? "text-red-500" : "text-green-500"}>{row.variation}%</span>
                             </td>
@@ -90,9 +90,9 @@ export function QuantityTable() {
                         <td className="p-2">
                             <input type="checkbox" className="rounded border-gray-300" disabled />
                         </td>
-                        <td className="p-2">{totalRow.size}</td>
-                        <td className="p-2">{totalRow.poQuantity}</td>
-                        <td className="p-2">{totalRow.vendorQuantity}</td>
+                        <td className="p-2 " style={{ fontSize: '12px', fontWeight: '600' }}>{totalRow.size}</td>
+                        <td className="p-2" style={{ fontSize: '12px', fontWeight: '600' }}>{totalRow.poQuantity}</td>
+                        <td className="p-2" style={{ fontSize: '12px', fontWeight: '600' }}>{totalRow.vendorQuantity}</td>
                         <td className="p-2">
                             <span className="text-green-500">{totalRow.variation}%</span>
                         </td>

@@ -7,6 +7,7 @@ import { Eye, EyeOff } from "lucide-react"
 import { Link } from "react-router-dom"
 import GenericInput from "@/components/ui/InputField"
 import { useTheme } from "../../../context/ThemeContext"
+import logoImage from '@assets/Group 134@2x.png'
 
 export default function SigninPageMobile() {
   const { theme } = useTheme()
@@ -26,6 +27,25 @@ export default function SigninPageMobile() {
     console.log("Form submitted:", formData)
   }
 
+  const relativeContainerStyle: React.CSSProperties = {
+    position: "relative",
+    height: "200px", // Adjust this value as needed
+    // Optionally, add overflow hidden if you want to crop parts of the image
+    overflow: "hidden",
+  }
+
+  // Logo image style: absolutely positioned within the relative container
+  const backgroudImageStyle: React.CSSProperties = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    // Set a fixed width or adjust as needed
+    width: "100vw",
+    height: "auto",
+    zIndex: 10, // Ensure the logo overlaps other content
+  }
+
+
   // Mobile-optimized styles using theme
   const pageStyle: React.CSSProperties = {
     minHeight: "100vh",
@@ -38,7 +58,7 @@ export default function SigninPageMobile() {
 
   const logoStyle: React.CSSProperties = {
     color: "#FF0000",
-    fontSize: theme.fonts.mobile.heading.size,
+    fontSize: "42px",
     fontWeight: theme.fonts.mobile.heading.weight,
     marginBottom: "2rem",
   }
@@ -63,13 +83,20 @@ export default function SigninPageMobile() {
     justifyContent: "space-between",
     marginTop: "0.5rem",
     marginBottom: "2rem",
+
+  }
+  const singUpLinkStyle: React.CSSProperties = {
+    color: theme.colors.primary,
+    textDecoration: "none",
+    fontSize: theme.fonts.mobile.signupPageLink.size,
+    fontWeight: theme.fonts.mobile.signupPageLink.weight,
   }
 
   const linkStyle: React.CSSProperties = {
     color: theme.colors.primary,
     textDecoration: "none",
-    fontSize: theme.fonts.mobile.body.size,
-    fontWeight: theme.fonts.mobile.body.weight,
+    fontSize: theme.fonts.mobile.heading.size,
+    fontWeight: theme.fonts.mobile.heading.weight,
   }
 
   const buttonStyle: React.CSSProperties = {
@@ -79,8 +106,8 @@ export default function SigninPageMobile() {
     color: "white",
     border: "none",
     borderRadius: "2rem",
-    fontSize: theme.fonts.mobile.body.size,
-    fontWeight: theme.fonts.mobile.body.weight,
+    fontSize: theme.fonts.mobile.signupPageLink.size,
+    fontWeight: theme.fonts.mobile.signupPageLink.weight,
     cursor: "pointer",
     marginTop: "1rem",
     marginBottom: "1rem",
@@ -88,7 +115,8 @@ export default function SigninPageMobile() {
 
   const signupTextStyle: React.CSSProperties = {
     textAlign: "center",
-    fontSize: theme.fonts.mobile.body.size,
+    fontSize: theme.fonts.mobile.signupPageLink.size,
+    fontWeight: theme.fonts.mobile.signupPageLink.weight,
     marginBottom: "1rem",
   }
 
@@ -103,7 +131,20 @@ export default function SigninPageMobile() {
     <div style={pageStyle}>
       {/* Logo */}
       <h1 style={logoStyle}>COTTON:ON</h1>
-
+      <div style={relativeContainerStyle}>
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            clipPath: "inset(0 0 0 0)", // This is a full rectangle
+          }}
+        >
+          <img src={logoImage} style={backgroudImageStyle}></img>
+        </div>
+      </div>
       {/* Main Content */}
       <div>
         <h2 style={headingStyle}>
@@ -143,7 +184,7 @@ export default function SigninPageMobile() {
           {/* Sign Up Link */}
           <div style={signupTextStyle}>
             <span>New to the portal? </span>
-            <Link to="/signup" style={linkStyle}>
+            <Link to="/signup" style={singUpLinkStyle}>
               Sign-up
             </Link>
           </div>
