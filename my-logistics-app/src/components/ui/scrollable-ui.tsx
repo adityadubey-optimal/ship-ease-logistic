@@ -170,8 +170,8 @@ export function ScrollableDataTable<T extends object>({
                             className="w-full"
                             type={column.type === "number" ? "number" : "text"}
                         />
-                        <Button size="sm" onClick={handleEditSave} className="ml-2">
-                            <Check className="h-4 w-4" />
+                        <Button variant="icon" size="mobile" onClick={handleEditSave} className="ml-2">
+                            <Check style={{ width: styles.svgSize, height: styles.svgSize }} />
                         </Button>
                     </div>
                 )
@@ -188,7 +188,11 @@ export function ScrollableDataTable<T extends object>({
                         <span style={{ fontSize: styles.rowFontSize, fontWeight: styles.rowFontWeight }}>
                             {value as React.ReactNode}
                         </span>
-                        <Button size="sm" variant="ghost" onClick={() => handleEditClick(rowId, column.accessor as keyof T, value)}>
+                        <Button
+                            variant="icon"
+                            size="mobile"
+                            onClick={() => handleEditClick(rowId, column.accessor as keyof T, value)}
+                        >
                             <Edit2 style={{ width: styles.svgSize, height: styles.svgSize }} />
                         </Button>
                     </div>
@@ -215,16 +219,11 @@ export function ScrollableDataTable<T extends object>({
 
         return (
             <div className="flex gap-2">
-                <Button variant="icon" size="mobile" className="bg-red-100 hover:bg-red-200" onClick={() => onReject?.(row)}>
-                    <X style={{ width: styles.svgSize, height: styles.svgSize }} className="text-red-600" />
+                <Button variant="reject" size="mobile" onClick={() => onReject?.(row)}>
+                    <X style={{ width: styles.svgSize, height: styles.svgSize }} />
                 </Button>
-                <Button
-                    variant="icon"
-                    size="mobile"
-                    className="bg-green-100 hover:bg-green-200"
-                    onClick={() => onApprove?.(row)}
-                >
-                    <Check style={{ width: styles.svgSize, height: styles.svgSize }} className="text-green-600" />
+                <Button variant="approve" size="mobile" onClick={() => onApprove?.(row)}>
+                    <Check style={{ width: styles.svgSize, height: styles.svgSize }} />
                 </Button>
             </div>
         )
@@ -314,7 +313,8 @@ export function ScrollableDataTable<T extends object>({
                                             column.align === "right" && "text-right",
                                         )}
                                         style={{
-                                            fontSize: theme.fonts.web.body.size,
+                                            fontSize: styles.rowFontSize,
+                                            fontWeight: styles.rowFontWeight,
                                             color: theme.colors.textPrimary,
                                             backgroundColor: rowBgColor,
                                             left: `${(selectable ? 40 : 0) + colIndex * (Number.parseInt(column.width || "0") || 0)}px`,
