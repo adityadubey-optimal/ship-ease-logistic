@@ -10,12 +10,12 @@ export default function StatusDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                 {/* Success Card - 3 columns */}
                 <div className="md:col-span-3">
-                    <StatusCard value={80} status="success" title="Good To-go" subtitle="Shipments" width={"300px"} isMobile />
+                    <StatusCard value={80} status="success" title="Good To-go" subtitle="Shipments" width={"300px"} isMobile={isMobile} />
                 </div>
 
                 {/* Warning Card - 3 columns */}
                 <div className="md:col-span-3">
-                    <StatusCard value={20} status="warning" title="Pending" subtitle="Shipments" width={"300px"} isMobile />
+                    <StatusCard value={20} status="warning" title="Pending" subtitle="Shipments" width={"300px"} isMobile={isMobile} />
                 </div>
 
                 {/* Error Card - 6 columns for wider appearance */}
@@ -27,7 +27,7 @@ export default function StatusDashboard() {
                         subtitle="Shipments"
                         additionalInfo="20 PO's at risk Need Action"
                         widthError={"520px"}
-                        isMobile
+                        isMobile={isMobile}
                     />
                 </div>
             </div>

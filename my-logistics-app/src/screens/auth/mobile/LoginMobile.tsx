@@ -4,12 +4,14 @@ import type React from "react"
 
 import { useState } from "react"
 import { Eye, EyeOff } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import GenericInput from "@/components/ui/InputField"
 import { useTheme } from "../../../context/ThemeContext"
 import logoImage from '@assets/Group 134@2x.png'
 
 export default function SigninPageMobile() {
+
+  const navigate = useNavigate()
   const { theme } = useTheme()
   const [formData, setFormData] = useState({
     username: "",
@@ -49,7 +51,7 @@ export default function SigninPageMobile() {
   // Mobile-optimized styles using theme
   const pageStyle: React.CSSProperties = {
     minHeight: "100vh",
-    backgroundColor: theme.colors.background,
+    background: theme.colors.background,
     padding: "1.5rem",
     display: "flex",
     flexDirection: "column",

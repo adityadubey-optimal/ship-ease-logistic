@@ -7,8 +7,10 @@ import { Eye, EyeOff } from "lucide-react"
 import { Link } from "react-router-dom"
 import GenericInput from "@/components/ui/InputField"
 import { useTheme } from "../../../context/ThemeContext"
+import { useNavigate } from "react-router-dom"
 
 export default function SignupPageMobile() {
+  const navigate = useNavigate()
   const { theme } = useTheme()
   const [formData, setFormData] = useState({
     name: "",
@@ -42,12 +44,14 @@ export default function SignupPageMobile() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log("Form submitted:", formData)
+    navigate('/login')
+
   }
 
   // Mobile-optimized styles
   const pageStyle: React.CSSProperties = {
     minHeight: "100vh",
-    backgroundColor: theme.colors.background,
+    background: theme.colors.background,
     padding: "1rem",
     display: "flex",
     flexDirection: "column",
@@ -211,7 +215,7 @@ export default function SignupPageMobile() {
 
         <div style={singUpLinkStyle}>
           <span>Already have and account? </span>
-          <Link to="/signin" style={{
+          <Link to="/login" style={{
             color: theme.colors.primary, fontSize: theme.fonts.mobile.signupPageLink.size,
             fontWeight: theme.fonts.mobile.signupPageLink.weight,
           }}>

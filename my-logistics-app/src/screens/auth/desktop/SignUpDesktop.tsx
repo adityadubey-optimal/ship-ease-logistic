@@ -3,12 +3,13 @@
 
 import { useState } from "react"
 import { Eye, EyeOff } from 'lucide-react'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import GenericInput from "@/components/ui/InputField"
 import { useTheme } from '../../../context/ThemeContext' // Adjust the import path as needed
 import logoImage from '@assets/Group 134@2x.png'
 
 export default function SignupPage() {
+  const navigate = useNavigate()
   const { theme } = useTheme()
   const [formData, setFormData] = useState({
     name: "",
@@ -41,12 +42,15 @@ export default function SignupPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+
     console.log("Form submitted:", formData)
+    navigate('/login')
   }
 
   const pageStyle: React.CSSProperties = {
     minHeight: '100vh',
-    backgroundColor: theme.colors.background,
+
+    background: theme.colors.background,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -139,7 +143,8 @@ export default function SignupPage() {
 
 
   return (
-    <div style={pageStyle}>
+    <div style={{ ...pageStyle }}>
+
       <div style={contentStyle}>
         <div>
           <h1 style={{ ...headingStyle, color: "#FF0000", fontSize: "42px" }}>COTTON:ON</h1>
@@ -149,6 +154,7 @@ export default function SignupPage() {
 
           </div>
         </div>
+
         <div style={formContainerStyle}>
           <h2 style={headingStyle}>Fill your details to sign-up</h2>
           <form onSubmit={handleSubmit}>
@@ -210,7 +216,7 @@ export default function SignupPage() {
           </form>
           <div style={{ textAlign: 'center', marginTop: '1rem' }}>
             <span>Already have an account? </span>
-            <Link to="/signin" style={linkStyle}>Sign-in</Link>
+            <Link to="/login" style={linkStyle}>Sign-in</Link>
           </div>
           <p style={{ textAlign: 'center', fontSize: theme.fonts.web.notification.size, marginTop: '1rem' }}>
             By continuing, you agree to{" "}

@@ -8,7 +8,9 @@ import { Link } from "react-router-dom"
 import GenericInput from "@/components/ui/InputField"
 import { useTheme } from "../../../context/ThemeContext"
 import logoImage from '@assets/Group 134@2x.png'
+import { useNavigate } from "react-router-dom"
 export default function SigninPage() {
+  const navigate = useNavigate()
   const { theme } = useTheme()
   const [formData, setFormData] = useState({
     username: "",
@@ -24,12 +26,13 @@ export default function SigninPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log("Form submitted:", formData)
+    navigate('/buyer')
   }
 
   // Styles using theme
   const pageStyle: React.CSSProperties = {
     minHeight: "100vh",
-    backgroundColor: theme.colors.background,
+    background: theme.colors.background,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

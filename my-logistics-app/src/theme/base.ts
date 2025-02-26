@@ -24,7 +24,7 @@ export const baseColors = {
     warningOriginal: "#FBC02D",
 
     // Background Colors
-    background: "radial-gradient(123.22% 129.67% at 100.89% -5.6%, #F3F0FF 0%, #E8E5FF 100%)",
+    background: "linear-gradient(0deg, #D0D7FF 7.29%, #DDE2FF 42.46%, #FFF 135.46%)",
     successBg: "#F3F0FF", // Light purple background for success card
     warningBg: "#F3F0FF", // Light purple background for warning card
     errorBg: "#FFE8E8", // Light red background for error card
