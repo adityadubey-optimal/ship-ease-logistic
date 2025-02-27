@@ -16,7 +16,7 @@ export default function Home() {
 
 
     return (
-        <DashboardLayout>
+        <DashboardLayout headerName={'Vendors Ship-By-Date Overview'}>
             {/* Today's Status Section Placeholder */}
             <section className="mb-8">
                 <StatusDashboard />

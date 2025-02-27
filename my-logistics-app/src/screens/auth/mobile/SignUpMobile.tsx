@@ -8,9 +8,11 @@ import { Link } from "react-router-dom"
 import GenericInput from "@/components/ui/InputField"
 import { useTheme } from "../../../context/ThemeContext"
 import { useNavigate } from "react-router-dom"
+import { useIsMobile } from "@/hooks/useMobile"
 
 export default function SignupPageMobile() {
   const navigate = useNavigate()
+  const isMobile = useIsMobile()
   const { theme } = useTheme()
   const [formData, setFormData] = useState({
     name: "",
@@ -62,7 +64,7 @@ export default function SignupPageMobile() {
     display: "flex",
     alignItems: "center",
     gap: "1rem",
-    marginBottom: "2rem",
+    marginBottom: "1rem",
   }
 
   const backButtonSpace: React.CSSProperties = {
@@ -75,16 +77,16 @@ export default function SignupPageMobile() {
 
   const logoStyle: React.CSSProperties = {
     color: "#FF0000",
-    fontSize: theme.fonts.mobile.heading.size,
+    fontSize: "25px",
     fontWeight: theme.fonts.mobile.heading.weight,
   }
 
   const headingStyle: React.CSSProperties = {
 
-    fontSize: theme.fonts.web.heading.size,
-    fontWeight: theme.fonts.web.heading.weight,
+    fontSize: theme.fonts.mobile.authPage.heading.size,
+    fontWeight: theme.fonts.mobile.authPage.heading.weight,
     color: theme.colors.textSecondary,
-    marginBottom: "2rem",
+    marginBottom: "1rem",
     textAlign: "center",
 
   }
@@ -99,7 +101,7 @@ export default function SignupPageMobile() {
     width: "100%",
     height: "3rem",
     padding: "0 1rem",
-    borderRadius: "1rem",
+    borderRadius: theme.borderRadius.borderRadius,
     border: `2px solid ${theme.colors.primary}`,
     backgroundColor: "white",
     // fontSize: theme.fonts.mobile.body.size,
@@ -108,8 +110,8 @@ export default function SignupPageMobile() {
     backgroundRepeat: "no-repeat",
     backgroundPosition: "right 1rem center",
     backgroundSize: "1em",
-    fontSize: theme.fonts.mobile.body.size,
-    fontWeight: theme.fonts.mobile.body.weight,
+    fontSize: theme.fonts.mobile.authPage.inputFont.size,
+    fontWeight: theme.fonts.mobile.authPage.inputFont.weight,
   }
 
   const buttonStyle: React.CSSProperties = {
@@ -133,6 +135,22 @@ export default function SignupPageMobile() {
   }
 
 
+  const labelStyle: React.CSSProperties = {
+    display: 'block',
+    marginBottom: '0.5rem',
+    color: theme.colors.textPrimary,
+
+    ...(isMobile ? {
+      fontSize: theme.fonts.mobile.authPage.label.size,
+      fontWeight: theme.fonts.mobile.authPage.label.weight,
+    } : {
+      fontSize: theme.fonts.web.authPage.label.size,
+      fontWeight: theme.fonts.web.authPage.label.weight,
+    }),
+  }
+
+
+
   const linkTextStyle: React.CSSProperties = {
     textAlign: "center",
     fontSize: theme.fonts.mobile.body.size,
@@ -141,7 +159,7 @@ export default function SignupPageMobile() {
 
   const termsTextStyle: React.CSSProperties = {
     textAlign: "center",
-    fontSize: theme.fonts.mobile.notification.size,
+    fontSize: theme.fonts.mobile.authPage.error.size,
     color: theme.colors.textSecondary,
   }
 
@@ -194,13 +212,7 @@ export default function SignupPageMobile() {
 
         <div>
           <label
-            style={{
-              fontSize: theme.fonts.mobile.body.size,
-              fontWeight: theme.fonts.mobile.body.weight,
-              color: theme.colors.textPrimary,
-              marginBottom: "0.5rem",
-              display: "block",
-            }}
+            style={labelStyle}
           >
             Select Your Role
           </label>

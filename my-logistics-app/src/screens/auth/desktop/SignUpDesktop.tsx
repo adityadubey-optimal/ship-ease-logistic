@@ -7,9 +7,12 @@ import { Link, useNavigate } from "react-router-dom"
 import GenericInput from "@/components/ui/InputField"
 import { useTheme } from '../../../context/ThemeContext' // Adjust the import path as needed
 import logoImage from '@assets/Group 134@2x.png'
+import { useIsMobile } from "@/hooks/useMobile"
 
 export default function SignupPage() {
   const navigate = useNavigate()
+  const isMobile = useIsMobile()
+
   const { theme } = useTheme()
   const [formData, setFormData] = useState({
     name: "",
@@ -66,6 +69,7 @@ export default function SignupPage() {
     padding: '2rem',
   }
 
+
   const formContainerStyle: React.CSSProperties = {
     backgroundColor: 'white',
     borderRadius: '1.5rem',
@@ -79,9 +83,9 @@ export default function SignupPage() {
   }
 
   const headingStyle: React.CSSProperties = {
-    fontSize: theme.fonts.web.heading.size,
-    fontWeight: theme.fonts.web.heading.weight,
-    color: theme.colors.textPrimary,
+    fontSize: theme.fonts.web.authPage.heading.size,
+    fontWeight: theme.fonts.web.authPage.heading.weight,
+    color: theme.colors.authPageheadingColor,
     marginBottom: '1.5rem',
   }
 
@@ -92,8 +96,8 @@ export default function SignupPage() {
     color: 'white',
     border: 'none',
     borderRadius: '2rem',
-    fontSize: theme.fonts.web.body.size,
-    fontWeight: theme.fonts.web.body.weight,
+    fontSize: theme.fonts.web.authPage.button.size,
+    fontWeight: theme.fonts.web.authPage.button.weight,
     cursor: 'pointer',
     transition: 'background-color 0.2s ease',
   }
@@ -105,11 +109,17 @@ export default function SignupPage() {
   }
 
   const labelStyle: React.CSSProperties = {
-    fontSize: theme.fonts.web.secondaryHeading.size,
-    fontWeight: theme.fonts.web.secondaryHeading.weight,
-    color: theme.colors.textPrimary,
-    marginBottom: '0.5rem',
     display: 'block',
+    marginBottom: '0.5rem',
+    color: theme.colors.textPrimary,
+
+    ...(isMobile ? {
+      fontSize: theme.fonts.mobile.authPage.label.size,
+      fontWeight: theme.fonts.mobile.authPage.label.weight,
+    } : {
+      fontSize: theme.fonts.web.authPage.label.size,
+      fontWeight: theme.fonts.web.authPage.label.weight,
+    }),
   }
 
   const inputStyle: React.CSSProperties = {
@@ -117,9 +127,10 @@ export default function SignupPage() {
     height: '3.5rem',
     padding: '0 1rem',
     border: `2px solid ${theme.colors.primary}`,
-    borderRadius: '0.75rem',
-    fontSize: theme.fonts.web.body.size,
-    fontWeight: theme.fonts.web.body.weight,
+    borderRadius: theme.borderRadius.borderRadius,
+
+    fontSize: theme.fonts.web.authPage.placeholder.size,
+    fontWeight: theme.fonts.web.authPage.placeholder.weight,
     backgroundColor: 'white',
     transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
   }
@@ -147,7 +158,7 @@ export default function SignupPage() {
 
       <div style={contentStyle}>
         <div>
-          <h1 style={{ ...headingStyle, color: "#FF0000", fontSize: "42px" }}>COTTON:ON</h1>
+          <h1 style={{ ...headingStyle, color: "#FF0000", fontSize: "2.5rem" }}>COTTON:ON</h1>
           <div style={relativeContainerStyle}>
 
             <img src={logoImage} style={backgroudImageStyle}></img>
@@ -215,14 +226,14 @@ export default function SignupPage() {
             </button>
           </form>
           <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-            <span>Already have an account? </span>
+            <span style={{ fontSize: theme.fonts.web.authPage.placeholder.size }}>Already have an account? </span>
             <Link to="/login" style={linkStyle}>Sign-in</Link>
           </div>
-          <p style={{ textAlign: 'center', fontSize: theme.fonts.web.notification.size, marginTop: '1rem' }}>
+          <p style={{ textAlign: 'center', fontSize: theme.fonts.web.authPage.error.size, marginTop: '1rem' }}>
             By continuing, you agree to{" "}
-            <Link to="/terms" style={linkStyle}>Terms of Service</Link>{" "}
+            <Link to="/" style={linkStyle}>Terms of Service</Link>{" "}
             and{" "}
-            <Link to="/privacy" style={linkStyle}>Privacy Policy</Link>
+            <Link to="/" style={linkStyle}>Privacy Policy</Link>
           </p>
         </div>
       </div>

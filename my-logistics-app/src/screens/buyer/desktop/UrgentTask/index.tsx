@@ -16,27 +16,17 @@ export default function Home() {
 
 
     return (
-        <DashboardLayout>
+        <DashboardLayout headerName="Vendors Ship-By-Date Overview">
             {/* Today's Status Section Placeholder */}
             <section className="mb-8">
                 <StatusDashboard />
             </section>
 
-            {/* Metrics Section Placeholder */}
-            <section className="mb-8">
-                <PoBookingCard />
 
-            </section>
-
-            {/* Tasks Section Placeholder */}
-            <section className="mb-8">
-
-                <StatusCardContainer />
-            </section>
 
             {/* Task Card Section Placeholder */}
-            <section className="mb-8" style={{ background: theme.colors.thertiary }}>
-                <div>
+            <section className="mb-8" >
+                <div className="w-full max-w-7xl mx-auto p-4" style={{ background: theme.colors.thertiary }}>
                     <DocumentHeader
                         Icon={<img src={UrgentTask} alt="Ship illustration" className="w-10 h-10 object-contain" />}
                         title="Urgent Tasks"
@@ -106,43 +96,9 @@ export default function Home() {
                 </div>
 
             </section>
-            {/*Documetn overview section */}
 
-            <section className="mb-8" style={{ background: theme.colors.thertiary }}>
-                <DocumentHeader
-                    Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
-                    title="Documentation Overview"
-                    subtitle="Documents uploaded in the portal"
-                    showSeeMore
-                    onSeeMoreClick={() => console.log('See More clicked')}
-                />
-                <div className="w-full p-5" style={{}}>
-                    <DocumentList
-                        documentName="Commercial Invoices"
-                        // submittedDate="19 Feb 2025"
-                        count={94}
-                    // onDownload={() => console.log("Download clicked")}
-                    // onView={() => console.log("View clicked")}
-                    />
-                    <DocumentList
-                        documentName="Commercial Invoices"
-                        // submittedDate="19 Feb 2025"
-                        count={94}
-                    // onDownload={() => console.log("Download clicked")}
-                    // onView={() => console.log("View clicked")}
-                    />
-                    <DocumentList
-                        documentName="Commercial Invoices"
-                        // submittedDate="19 Feb 2025"
-                        count={94}
-                    // onDownload={() => console.log("Download clicked")}
-                    // onView={() => console.log("View clicked")}
-                    />
-                </div>
-                {/* chart section*/}
-            </section>
 
-            <DataChart />
+
         </DashboardLayout>
     )
 }

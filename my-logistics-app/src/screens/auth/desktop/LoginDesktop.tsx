@@ -64,9 +64,9 @@ export default function SigninPage() {
   }
 
   const headingStyle: React.CSSProperties = {
-    fontSize: theme.fonts.web.heading.size,
-    fontWeight: theme.fonts.web.heading.weight,
-    color: theme.colors.textPrimary,
+    fontSize: theme.fonts.web.authPage.heading.size,
+    fontWeight: theme.fonts.web.authPage.heading.weight,
+    color: theme.colors.authPageheadingColor,
     marginBottom: "1.5rem",
   }
 
@@ -77,8 +77,8 @@ export default function SigninPage() {
     color: "white",
     border: "none",
     borderRadius: "2rem",
-    fontSize: theme.fonts.web.body.size,
-    fontWeight: theme.fonts.web.body.weight,
+    fontSize: theme.fonts.web.authPage.button.size,
+    fontWeight: theme.fonts.web.authPage.button.weight,
     cursor: "pointer",
     transition: "background-color 0.2s ease",
   }
@@ -185,13 +185,13 @@ export default function SigninPage() {
             </div>
 
             {/* Terms and Privacy */}
-            <p style={termsTextStyle}>
+            <p style={{ ...termsTextStyle, fontSize: theme.fonts.web.authPage.error.size }}>
               By continuing, you agree to{" "}
-              <Link to="/terms" style={linkStyle}>
+              <Link to="/terms" style={{ ...linkStyle, fontSize: theme.fonts.web.authPage.error.size }}>
                 Terms of Service
               </Link>{" "}
               and{" "}
-              <Link to="/privacy" style={linkStyle}>
+              <Link to="/privacy" style={{ ...linkStyle, fontSize: theme.fonts.web.authPage.error.size }}>
                 Privacy Policy
               </Link>
             </p>

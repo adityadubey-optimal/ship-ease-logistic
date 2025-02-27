@@ -7,16 +7,18 @@ import Header from "@/components/desktop/header"
 import Sidebar from "@/components/desktop/sidebar"
 
 interface DashboardLayoutProps {
+    headerName: string,
     children: React.ReactNode
+
 }
 
-export default function DashboardLayout({ children }: DashboardLayoutProps) {
+export default function DashboardLayout({ headerName, children }: DashboardLayoutProps) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
     return (
         <div className="min-h-screen bg-[#F8F7FF]">
             {/* Header */}
-            <Header />
+            <Header pageName={headerName} />
 
             {/* Main Layout */}
             <div className="flex h-[calc(100vh-73px)]">

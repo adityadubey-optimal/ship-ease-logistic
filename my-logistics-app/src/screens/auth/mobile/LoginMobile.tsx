@@ -66,8 +66,8 @@ export default function SigninPageMobile() {
   }
 
   const headingStyle: React.CSSProperties = {
-    fontSize: theme.fonts.web.heading.size,
-    fontWeight: theme.fonts.web.heading.weight,
+    fontSize: theme.fonts.mobile.authPage.heading.size,
+    fontWeight: theme.fonts.mobile.authPage.heading.weight,
     color: theme.colors.textSecondary,
     marginBottom: "2rem",
     textAlign: "center",
@@ -197,13 +197,13 @@ export default function SigninPageMobile() {
           </button>
 
           {/* Terms and Privacy */}
-          <p style={termsTextStyle}>
+          <p style={{ ...termsTextStyle, fontSize: theme.fonts.web.authPage.error.size }}>
             By continuing, you agree to{" "}
-            <Link to="/terms" style={linkStyle}>
+            <Link to="/terms" style={{ ...linkStyle, fontSize: theme.fonts.web.authPage.error.size }}>
               Terms of Service
             </Link>{" "}
             and{" "}
-            <Link to="/privacy" style={linkStyle}>
+            <Link to="/privacy" style={{ ...linkStyle, fontSize: theme.fonts.web.authPage.error.size }}>
               Privacy Policy
             </Link>
           </p>

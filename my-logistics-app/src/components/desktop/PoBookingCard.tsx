@@ -2,6 +2,7 @@ import { Progress } from "@/components/ui/progress"
 import { Card } from "@/components/ui/card"
 import { useTheme } from "../../context/ThemeContext"
 import { borderRadius } from "@/theme/base"
+import Medal from '@/assets/Medal.svg'
 
 export default function PoBookingCard() {
     const { theme } = useTheme()
@@ -13,12 +14,14 @@ export default function PoBookingCard() {
                 <div className="flex flex-col gap-6">
                     {/* Header Section */}
                     <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
+                        <div className="flex  gap-3" style={{
+                            alignItems: 'baseline'
+                        }}>
                             <span
                                 style={{
                                     color: theme.colors.success,
-                                    fontSize: theme.fonts.web.heading.size,
-                                    fontWeight: theme.fonts.web.heading.weight,
+                                    fontSize: theme.fonts.web.buyerHomePage.poBookingCard.poBookingPercentageFont.size,
+                                    fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.poBookingPercentageFont.weight,
                                 }}
                             >
                                 80%
@@ -26,8 +29,8 @@ export default function PoBookingCard() {
                             <span
                                 style={{
                                     color: theme.colors.textSecondary,
-                                    fontSize: theme.fonts.web.body.size,
-                                    fontWeight: theme.fonts.web.body.weight,
+                                    fontSize: theme.fonts.web.buyerHomePage.poBookingCard.pobokingDescription.size,
+                                    fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.pobokingDescription.weight,
                                 }}
                             >
                                 PO's Booked for Ship-by-Date
@@ -37,12 +40,13 @@ export default function PoBookingCard() {
                             className="flex items-center gap-2 px-4 py-2 rounded-lg"
                             style={{ backgroundColor: theme.colors.thertiary }}
                         >
-                            <span className="text-lg">{"🎯"}</span>
+                            <img src={Medal} />
                             <span
                                 style={{
-                                    color: theme.colors.textPrimary,
-                                    fontSize: theme.fonts.web.notification.size,
-                                    fontWeight: theme.fonts.web.notification.weight,
+                                    width: '50px',
+                                    color: theme.colors.textSecondary,
+                                    fontSize: theme.fonts.web.buyerHomePage.poBookingCard.statusMessage.size,
+                                    fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.statusMessage.weight,
                                 }}
                             >
                                 Good Going
@@ -71,8 +75,8 @@ export default function PoBookingCard() {
                         <span
                             style={{
                                 color: theme.colors.textSecondary,
-                                fontSize: theme.fonts.web.body.size,
-                                fontWeight: theme.fonts.web.body.weight,
+                                fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
+                                fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
                             }}
                         >
                             -21 days
@@ -80,8 +84,8 @@ export default function PoBookingCard() {
                         <span
                             style={{
                                 color: theme.colors.textSecondary,
-                                fontSize: theme.fonts.web.body.size,
-                                fontWeight: theme.fonts.web.body.weight,
+                                fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
+                                fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
                             }}
                         >
                             -14 Days    <span className="text-lg">{"😊"}</span>
@@ -89,8 +93,8 @@ export default function PoBookingCard() {
                         <span
                             style={{
                                 color: theme.colors.textSecondary,
-                                fontSize: theme.fonts.web.body.size,
-                                fontWeight: theme.fonts.web.body.weight,
+                                fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
+                                fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
                             }}
                         >
                             -10 Days
