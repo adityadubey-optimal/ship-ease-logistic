@@ -11,9 +11,11 @@ import Slider from "@/components/ui/slider"
 import { DocumentList } from "@/components/ui/documentList"
 import ProgressChart from "@/components/ui/progressChart"
 import DataChart from "@/components/desktop/dataChart"
+import CancelledPoList from "./CancelledPoList"
+import { useNavigate } from "react-router-dom"
 export default function Home() {
     const { theme } = useTheme()
-
+    const navigate = useNavigate()
 
     return (
         <DashboardLayout headerName={'Vendors Ship-By-Date Overview'}>
@@ -55,7 +57,10 @@ export default function Home() {
                                 actionRequired="Approve ship date"
                                 requestFrom="Vendor"
                                 urgent={true}
-                                onGoToPO={() => { console.log('clicked') }}
+                                onGoToPO={() => {
+                                    console.log('clicked')
+                                    navigate('/buyer/poDetails/12435')
+                                }}
                             />
                             <NotificationCard
                                 poNumber="137284638746"
@@ -65,7 +70,10 @@ export default function Home() {
                                 actionRequired="Approve ship date"
                                 requestFrom="Vendor"
                                 urgent={true}
-                                onGoToPO={() => { console.log('clicked') }}
+                                onGoToPO={() => {
+                                    console.log('clicked')
+                                    navigate('/buyer/poDetails/12435')
+                                }}
                             />
                             <NotificationCard
                                 poNumber="137284638746"
@@ -75,7 +83,10 @@ export default function Home() {
                                 actionRequired="Approve ship date"
                                 requestFrom="Vendor"
                                 urgent={true}
-                                onGoToPO={() => { console.log('clicked') }}
+                                onGoToPO={() => {
+                                    console.log('clicked')
+                                    navigate('/buyer/poDetails/12435')
+                                }}
                             />
                             <NotificationCard
                                 poNumber="137284638746"
@@ -85,7 +96,10 @@ export default function Home() {
                                 actionRequired="Approve ship date"
                                 requestFrom="Vendor"
                                 urgent={true}
-                                onGoToPO={() => { console.log('clicked') }}
+                                onGoToPO={() => {
+                                    console.log('clicked')
+                                    navigate('/buyer/poDetails/12435')
+                                }}
                             />
 
                             <NotificationCard
@@ -96,7 +110,10 @@ export default function Home() {
                                 actionRequired="Approve ship date"
                                 requestFrom="Vendor"
                                 urgent={true}
-                                onGoToPO={() => { console.log('clicked') }}
+                                onGoToPO={() => {
+                                    console.log('clicked')
+                                    navigate('/buyer/poDetails/12435')
+                                }}
                             />
 
 
@@ -143,6 +160,23 @@ export default function Home() {
                 </div>
 
             </section>
+
+
+            <section className="mb-8" >
+                <div className="w-full max-w-7xl mx-auto p-4" style={{ background: theme.colors.thertiary }}>
+                    <DocumentHeader
+                        Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                        title="Canceleed//declined POs"
+                        subtitle="PO's declined by vendor"
+                        showSeeMore={false}
+                        onSeeMoreClick={() => console.log('See More clicked')}
+                    />
+                    <CancelledPoList />
+
+                </div>
+
+            </section>
+
 
             <DataChart />
         </DashboardLayout>

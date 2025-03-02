@@ -3,6 +3,7 @@ import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 import { useTheme } from "../../context/ThemeContext"
+import { borderRadius } from "@/theme/base"
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
@@ -13,6 +14,7 @@ const buttonVariants = cva(
         approve: "",
         reject: "",
         icon: "",
+        selectAction: ""
       },
       size: {
         mobile: "",
@@ -36,7 +38,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const { theme } = useTheme()
 
-    const getVariantStyles = (variant: "primary" | "approve" | "reject" | "icon" | null | undefined) => {
+
+    const getVariantStyles = (variant: "primary" | "approve" | "reject" | "icon" | "selectAction" | null | undefined) => {
       switch (variant) {
         case "primary":
           return {
@@ -58,6 +61,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             backgroundColor: "transparent",
             color: theme.colors.textPrimary,
           }
+        case "selectAction":
+          // Gray background with black text (adjust to match your exact screenshot color)
+          return {
+            backgroundColor: "#D1D1D1",
+            color: "#000",
+            padding: `10px 0px`,
+            borderRadius: `5px`
+          }
+
         default:
           return {}
       }
@@ -83,15 +95,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantStyles = getVariantStyles(variant)
     const sizeStyles = getSizeStyles(size)
-
+    console.log('variant', variant)
+    console.log('variantStyles', variantStyles)
     const Comp = asChild ? Slot : "button"
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         style={{
-          ...variantStyles,
           ...sizeStyles,
+
+          ...variantStyles,
           fontFamily: theme.fonts.family,
         }}
         {...props}

@@ -1,12 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/context/ThemeContext";
-import { useNavigate } from "react-router-dom";
 
 
 
 export default function SpecialButton() {
     const { theme } = useTheme()
-    const navigate = useNavigate()
 
 
     const buttonStyle: React.CSSProperties = {
@@ -25,9 +23,7 @@ export default function SpecialButton() {
 
     return (
         <Button
-            style={buttonStyle} onClick={() => {
-                navigate('/buyer/shippingDetails/testinId')
-            }} >Go To Shipping Information </Button>
+            style={buttonStyle} >Go To Shipping Information </Button>
     )
 }
 

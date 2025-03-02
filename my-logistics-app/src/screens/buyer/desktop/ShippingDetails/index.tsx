@@ -19,12 +19,15 @@ import { DataTableForPo } from "./DataTable"
 import CircleGauge from "@/components/ui/CircleGuage"
 import changeRequest from "@/assets/Delivery and online parcel tracking.svg"
 import { GuageComponetForPo } from "./GuageComponentForPo"
+import ShipDate from "@/assets/ship_dates.svg"
+import ShippingDates from "./ShippingDates"
+import ShippingMode from "./ShippingMode"
 export default function Home() {
     const { theme } = useTheme()
     const { id } = useParams()
 
     return (
-        <DashboardLayout headerName={`PO#${id} Overview`}>
+        <DashboardLayout headerName={`Shipping Details PO#${id} Overview`}>
             {/* Today's Status Section Placeholder */}
             <section className="mb-8">
                 <StatusDashboard />
@@ -53,11 +56,7 @@ export default function Home() {
                 />
             </section>
 
-            <section className="mb-8 flex" style={{ justifyContent: 'center' }}>
-                <div>
-                    <SpecialButton />
-                </div>
-            </section>
+
             <section className="mb-8">
                 <DocumentHeader
                     Icon={<img src={Building} alt="Ship illustration" className="w-10 h-10 object-contain" />}
@@ -71,32 +70,42 @@ export default function Home() {
 
 
 
-            <section className="mb-8 mt-8">
+
+
+            <section className="mb-8">
+
+                <DataTableForPo showDetailedPackingList={true} />
+            </section>
+            <section className="mb-8">
                 <DocumentHeader
-                    Icon={<img src={changeRequest} alt="Ship illustration" className="w-10 h-10 object-contain" />}
-                    title="Ship-by-date Change Request"
-                    subtitle="Approve or reject the requested ship mode"
+                    Icon={<img src={ShipDate} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                    title="Ship Dates"
+                    subtitle="Shipping ad cargo results"
                     showSeeMore={false}
                     onSeeMoreClick={() => console.log('See More clicked')}
                 />
-                <div>
-                    <GuageComponetForPo />
-                </div>
-            </section>
+                <ShippingDates
+                    poShipDate="4 Mar 25"
+                    cargoReadyDate="26 Feb 25"
+                />
 
+            </section>
             <section className="mb-8">
                 <DocumentHeader
                     Icon={<img src={Building} alt="Ship illustration" className="w-10 h-10 object-contain" />}
-                    title="Ship Mode Change Request"
-                    subtitle="Approve or reject the requested Ship-by-Date"
+                    title="Ship Modes"
+                    subtitle="Ship mode as approved"
                     showSeeMore={false}
                     onSeeMoreClick={() => console.log('See More clicked')}
                 />
-                <DataTableForPo />
+                <ShippingMode
+                    poShipDate="4 Mar 25"
+                    cargoReadyDate="26 Feb 25"
+                />
             </section>
 
             <section className="mb-8" >
-                <div className="w-full max-w-7xl mx-auto p-4" style={{ background: theme.colors.thertiary, borderRadius: "12px" }}>
+                <div className="w-full  mx-auto p-4" style={{ background: theme.colors.thertiary, borderRadius: "15px", }}>
                     <DocumentHeader
                         Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
                         title="Documentation Overview"
@@ -133,6 +142,7 @@ export default function Home() {
                 </div>
 
             </section>
+
         </DashboardLayout>
     )
 }
