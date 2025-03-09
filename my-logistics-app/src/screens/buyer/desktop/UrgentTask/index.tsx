@@ -25,16 +25,16 @@ export default function Home() {
 
 
             {/* Task Card Section Placeholder */}
-            <section className="mb-8" >
-                <div className="w-full max-w-7xl mx-auto p-4" style={{ background: theme.colors.thertiary }}>
+            <section className="mb-16" >
+                <div className="w-full max-w-7xl mx-auto p-4" >
                     <DocumentHeader
-                        Icon={<img src={UrgentTask} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                        Icon={<img src={UrgentTask} alt="Ship illustration" style={{ height: '6rem', width: '6rem' }} className="w-10 h-10 object-contain" />}
                         title="Urgent Tasks"
                         subtitle="Actions these PO's to avoid any delays to the shipment    "
-                        showSeeMore
+
                         onSeeMoreClick={() => console.log('See More clicked')}
                     />
-                    <div className="app" style={{ width: '100%', margin: "0 auto", padding: "20px" }}>
+                    <div className="app" style={{ width: '100%', margin: "0 auto", padding: "20px", background: theme.colors.thertiary, borderRadius: '15px' }}>
 
                         <Slider>
                             <NotificationCard

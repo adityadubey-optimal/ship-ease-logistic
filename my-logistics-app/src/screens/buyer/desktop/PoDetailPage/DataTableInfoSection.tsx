@@ -140,7 +140,7 @@ export default function OrderHeader({
                     onClick={onAction}
                 >
                     {/* Icon placeholder - replace with your SVG */}
-                    <div style={{ width: `${useResponsiveSize(16, 40)}px`, height: `${useResponsiveSize(16, 40)}px`, position: "relative" }}><img src={inProgress} style={{ height: '100%', width: '100%' }} /></div>
+                    <div style={{ width: `${useResponsiveSize(25, 40)}px`, height: `${useResponsiveSize(25, 40)}px`, position: "relative" }}><img src={inProgress} style={{ height: '100%', width: '100%' }} /></div>
                     {ActionButtonText ? ActionButtonText : `Action Required: Approve Quantity Variation`}
                 </Button>
 

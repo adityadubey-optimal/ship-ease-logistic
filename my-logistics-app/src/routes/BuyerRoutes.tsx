@@ -8,7 +8,7 @@ import PoDetailsBuyerDesktop from '../screens/buyer/desktop/PoDetailPage';
 import PoDetailsBuyerMobile from '../screens/buyer/mobile/PoDetailsPage';
 import DocumentListMobile from '../screens/buyer/mobile/DecoumentationMobile'
 import DocumentListDesktop from '../screens/buyer/desktop/DocumentationDesktop';
-import ShippingDetailsMobile from '../screens/buyer/mobile/BuyerHomeMobile/ShippingDetails';
+import ShippingDetailsMobile from '../screens/buyer/mobile/ShippingDetails';
 import ShippingDetailsDesktop from '../screens/buyer/desktop/ShippingDetails';
 import ShippingReconcilationMobile from '../screens/buyer/mobile/PoReconcilationPage';
 import ShippingReconcilationDesktop from '../screens/buyer/desktop/PoReconcilationPage';

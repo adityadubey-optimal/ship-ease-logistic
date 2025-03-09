@@ -1,113 +1,214 @@
-"use client"
 
-import type React from "react"
 
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
-import { useTheme } from "@/context/ThemeContext"
+import React from "react"
 
-interface ShipDateGaugeProps {
-    poShipDate?: string
-    requestedShipDate?: string
-    requester?: string
-    animate?: boolean
-    className?: string
-    style?: React.CSSProperties
+interface CircleGaugeProps {
+    /** The overall diameter of the gauge (px). */
+    size?: number
+
+    width?: number
+    /** Thickness of the colored ring (px). */
+    ringThickness?: number
+    /** The pointer angle in degrees, where 0° = 3 o'clock, 90° = 6 o'clock, etc. */
+    pointerAngle?: number
+
+    /** Gradient for the outer ring. E.g. "linear-gradient(to right, green, orange)" */
+    ringGradient?: string
+    /** The background color for the inner circle (behind the pointer). */
+    innerCircleColor?: string
+
+    /** The pointer color. */
+    pointerColor?: string
+    /** Radius of the center circle that covers the pointer's origin. */
+    pointerHubRadius?: number
+
+    /** Labels for top, right, left, bottom. */
+    labelTop?: string
+    labelRight?: string
+    labelLeft?: string
+    labelBottom?: string
+
+    /** The large text near the bottom (e.g. "21 Days Delayed"). */
+    bottomText?: string
+    bottomTextSize?: string
+    bottomTextColor?: string
 }
 
-export default function ShipDateGauge({
-    poShipDate = "4 Mar 25",
-    requestedShipDate = "25 Mar 25",
-    requester = "Vendor",
-    animate = true,
-    className,
-    style,
-}: ShipDateGaugeProps) {
-    const { theme } = useTheme()
-    const [rotation, setRotation] = useState(0)
+/**
+ * A circular gauge with:
+ * - Outer ring in a linear gradient (green → orange).
+ * - Inner white circle, leaving a ring of `ringThickness`.
+ * - A pointer (colored bar) with a small center circle/hub.
+ * - Four labels (top, right, left, bottom).
+ * - A larger text near the bottom (like "21 Days Delayed").
+ *
+ * 0° angle is at 3 o'clock, 90° at 6 o'clock, etc.
+ */
+const CircleGauge: React.FC<CircleGaugeProps> = ({
+    size = 200,
+    width = 300,
+    ringThickness = 20,
+    pointerAngle = 0, // 0° => 3 o'clock
+    ringGradient = "linear-gradient(to right, #4caf50, #ff9800)",
+    innerCircleColor = "#fff",
 
-    useEffect(() => {
-        if (animate) {
-            setRotation(90) // Rotate to 90 degrees for the example position
-        }
-    }, [animate])
+    pointerColor = "#00BFC2",
+    pointerHubRadius = 14,
+
+    labelTop = "Within 14 Days",
+    labelRight = "More than 21 Days",
+    labelLeft = "Within 7 Days",
+    labelBottom = "",
+
+    bottomText = "21 Days Delayed",
+    bottomTextSize = "1.25rem",
+    bottomTextColor = "#000",
+}) => {
+    // Wrapper
+    const wrapperStyle: React.CSSProperties = {
+        position: "relative",
+        width: `${size}px`,
+        height: `${size}px`,
+
+        margin: "0 auto",
+    }
+
+    // Outer circle: gradient ring
+    const outerCircleStyle: React.CSSProperties = {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        borderRadius: "50%",
+        background: ringGradient, // e.g. linear-gradient(to right, green, orange)
+        zIndex: 1,
+    }
+
+    // Inner circle: placed inside to create the ring thickness
+    const innerDiameter = size - ringThickness * 2
+    const innerCircleStyle: React.CSSProperties = {
+        position: "absolute",
+        top: `${ringThickness}px`,
+        left: `${ringThickness}px`,
+        width: `${innerDiameter}px`,
+        height: `${innerDiameter}px`,
+        borderRadius: "50%",
+        background: innerCircleColor,
+        zIndex: 2,
+    }
+
+    // Pointer container: rotate around center
+    // 0 deg => 3 o'clock, 90 deg => 6 o'clock, etc.
+    const pointerContainerStyle: React.CSSProperties = {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        width: 0,
+        height: 0,
+        transform: `translate(-50%, -50%) rotate(${pointerAngle}deg)`,
+        transformOrigin: "center center",
+        zIndex: 3,
+    }
+
+    // The pointer is a rectangle that extends from the center circle to the ring
+    const pointerLength = (size / 2) - ringThickness - pointerHubRadius
+    const pointerThickness = ringThickness * 0.6
+    const pointerStyle: React.CSSProperties = {
+        position: "absolute",
+        top: `-${pointerThickness / 2}px`,
+        left: `${pointerHubRadius}px`,
+        width: `${pointerLength}px`,
+        height: `${pointerThickness}px`,
+        backgroundColor: pointerColor,
+        borderRadius: `${pointerThickness / 2}px`,
+    }
+
+    // The pointer's hub: a small circle at the center
+    const pointerHubStyle: React.CSSProperties = {
+        position: "absolute",
+        top: `-${pointerHubRadius}px`,
+        left: `-${pointerHubRadius}px`,
+        width: `${pointerHubRadius * 2}px`,
+        height: `${pointerHubRadius * 2}px`,
+        borderRadius: "50%",
+        backgroundColor: pointerColor,
+    }
+
+    // Label styles
+    const labelCommon: React.CSSProperties = {
+        position: "absolute",
+        color: "#333",
+        textAlign: "center",
+        fontSize: "0.8rem",
+        width: "80px",
+        zIndex: 5,
+    }
+    const labelTopStyle: React.CSSProperties = {
+        ...labelCommon,
+        top: "-3rem",
+        left: "50%",
+        transform: "translateX(-50%)",
+    }
+    const labelRightStyle: React.CSSProperties = {
+        ...labelCommon,
+        right: "-5rem",
+        top: "50%",
+        transform: "translateY(-50%)",
+    }
+    const labelLeftStyle: React.CSSProperties = {
+        ...labelCommon,
+        left: "-5rem",
+        top: "50%",
+        transform: "translateY(-50%)",
+    }
+
+    // If labelBottom is not empty, place it near bottom of the circle
+    const labelBottomStyle: React.CSSProperties = {
+        ...labelCommon,
+        bottom: "-2rem",
+        left: "50%",
+        transform: "translateX(-50%)",
+        width: "100px",
+    }
+
+    // The large text near the bottom (like "21 Days Delayed")
+    const bottomTextStyle: React.CSSProperties = {
+        position: "absolute",
+        bottom: "-2rem",
+        left: "50%",
+        transform: "translateX(-50%)",
+        fontSize: bottomTextSize,
+        color: bottomTextColor,
+        fontWeight: 600,
+        textAlign: "center",
+        zIndex: 5,
+        width: "200px",
+    }
 
     return (
-        <div className={`w-full rounded-2xl overflow-hidden bg-[#E2E2FC] ${className}`} style={style}>
-            {/* Header Section */}
-            <div className="flex justify-between p-4">
-                <div>
-                    <h3 className="text-[#1E1E1E] text-sm font-semibold">PO Ship-by-Date</h3>
-                    <p className="text-[#1E1E1E] text-xl font-bold mt-1">{poShipDate}</p>
-                </div>
-                <div>
-                    <h3 className="text-[#1E1E1E] text-sm font-semibold">Requester</h3>
-                    <p className="text-[#1E1E1E] text-xl mt-1">{requester}</p>
-                </div>
-                <div className="bg-[#002B5C] text-white p-3 rounded-lg">
-                    <h3 className="text-sm font-semibold">Requested Ship-by-Date</h3>
-                    <p className="text-xl font-bold mt-1">{requestedShipDate}</p>
-                </div>
+        <div style={wrapperStyle}>
+            {/* Outer gradient circle */}
+            <div style={outerCircleStyle} />
+            {/* Inner circle to create ring thickness */}
+            <div style={innerCircleStyle} />
+
+            {/* Pointer */}
+            <div style={pointerContainerStyle}>
+                <div style={pointerHubStyle} />
+                <div style={pointerStyle} />
             </div>
 
-            {/* Gauge Section */}
-            <div className="p-4 bg-white">
-                <div className="text-center mb-8">
-                    <p className="text-[#1E1E1E] text-lg">Within 14 Days</p>
-                </div>
+            {/* Labels */}
+            {labelTop && <div style={labelTopStyle}>{labelTop}</div>}
+            {labelRight && <div style={labelRightStyle}>{labelRight}</div>}
+            {labelLeft && <div style={labelLeftStyle}>{labelLeft}</div>}
+            {labelBottom && <div style={labelBottomStyle}>{labelBottom}</div>}
 
-                <div className="relative h-[200px]">
-                    {/* SVG Gauge */}
-                    <svg viewBox="0 0 200 100" className="w-full">
-                        {/* Background Arc */}
-                        <path
-                            d="M20 100 A80 80 0 0 1 180 100"
-                            fill="none"
-                            stroke="#E5E7EB"
-                            strokeWidth="12"
-                            strokeLinecap="round"
-                        />
-
-                        {/* Green Section (Within 7 Days) */}
-                        <path d="M20 100 A80 80 0 0 1 100 20" fill="none" stroke="#00901F" strokeWidth="12" strokeLinecap="round" />
-
-                        {/* Orange Section (More than 21 Days) */}
-                        <path
-                            d="M100 20 A80 80 0 0 1 180 100"
-                            fill="none"
-                            stroke="#FF992C"
-                            strokeWidth="12"
-                            strokeLinecap="round"
-                        />
-
-                        {/* Pointer */}
-                        <motion.g
-                            initial={{ rotate: 0 }}
-                            animate={{ rotate: rotation }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 60,
-                                damping: 15,
-                            }}
-                            style={{ originX: 100, originY: 100 }}
-                        >
-                            <line x1="100" y1="100" x2="100" y2="30" stroke="#00A7B1" strokeWidth="6" />
-                            <circle cx="100" cy="100" r="8" fill="#00A7B1" />
-                        </motion.g>
-                    </svg>
-
-                    {/* Labels */}
-                    <div className="absolute left-4 bottom-0 text-sm">Within 7 Days</div>
-                    <div className="absolute right-4 bottom-0 text-sm">More than 21 Days</div>
-
-                    {/* Center Text */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                        <span className="text-3xl font-bold">21 Days</span>
-                        <span className="text-xl">Delayed</span>
-                    </div>
-                </div>
-            </div>
+            {/* Large text near bottom */}
+            {bottomText && <div style={bottomTextStyle}>{bottomText}</div>}
         </div>
     )
 }
 
+export default CircleGauge

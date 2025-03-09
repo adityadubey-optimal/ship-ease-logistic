@@ -1,32 +1,71 @@
 "use client"
 
 import type React from "react"
-
-import { Menu, Search, X, FileText, FolderDot, User, Settings, FileBarChart, Bell, Filter } from "lucide-react"
+import {
+    Menu,
+    Search,
+    X,
+    FileText,
+    FolderDot,
+    User,
+    Settings,
+    FileBarChart,
+    Bell,
+    Filter,
+    ChevronDown,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import {
+    Sheet,
+    SheetContent,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
 import { useTheme } from "@/context/ThemeContext"
+import useResponsiveSize from "@/hooks/useResponsiveSize"
+import { useIsMobile } from "@/hooks/useMobile"
 
 interface HeaderProps {
     title?: string
     subtitle?: string
 }
 
-export default function Header({ title = "Buyer", subtitle = 'Vendor Ship-By-Date Overview' }: HeaderProps) {
+export default function Header({ title = "Buyer", subtitle = "Vendor Ship-By-Date Overview" }: HeaderProps) {
     const { theme } = useTheme()
+
+    // Define font and icon size variables (responsive)
+    const titleFontSize = '1.25rem'     // Title font size for "COTTON:ON"
+    const titleFontWeight = "700"
+    const subtitleFontSize = '1.05rem'   // Subtitle under the title
+    const subtitleFontWeight = "600"
+
+    const menuButtonSize = useResponsiveSize(50, 50) + "px"     // Menu button (square) size
+    const menuIconSize = useResponsiveSize(20, 20) + "px"         // Menu icon size
+
+    const searchInputHeight = "2.5rem"                            // Fixed height for search input
+    const searchInputPadding = "1rem"                           // Left padding for search input
+
+    const actionIconSize = useResponsiveSize(20, 20) + "px"       // Size for bell and filter icons
+
     return (
         <header className="bg-white border-b">
             {/* Title Section */}
-            <div className="px-1 py-2">
+            <div style={{}}>
                 <div className="flex items-center gap-3">
                     <Sheet>
                         <SheetTrigger asChild>
-                            <Button variant="icon" size="mobile" className="shrink-0" style={{
-                                height: '50px',
-                                width: '50px'
-                            }}>
-                                <Menu className="h-5 w-5" />
+                            <Button
+                                variant="icon"
+                                size="mobile"
+                                className="shrink-0"
+                                style={{
+                                    height: menuButtonSize,
+                                    width: menuButtonSize,
+                                }}
+                            >
+                                <Menu style={{ height: menuIconSize, width: menuIconSize }} />
                                 <span className="sr-only">Open menu</span>
                             </Button>
                         </SheetTrigger>
@@ -36,7 +75,7 @@ export default function Header({ title = "Buyer", subtitle = 'Vendor Ship-By-Dat
                                     <SheetTitle className="text-2xl font-bold">Menu</SheetTitle>
                                     <SheetTrigger asChild>
                                         <Button variant="icon" size="mobile" className="h-8 w-8">
-                                            <X className="h-5 w-5" />
+                                            <X style={{ height: menuIconSize, width: menuIconSize }} />
                                         </Button>
                                     </SheetTrigger>
                                 </div>
@@ -65,37 +104,126 @@ export default function Header({ title = "Buyer", subtitle = 'Vendor Ship-By-Dat
                             </div>
                         </SheetContent>
                     </Sheet>
-                    <div className="text-xl font-bold text-[#FF0000]">COTTON:ON</div>
-                    {subtitle && <h1 className="text-lg font-semibold mt-2">{subtitle}</h1>}
-
+                    <div className="text-xl font-bold" style={{ fontSize: titleFontSize, fontWeight: titleFontWeight, color: "#FF0000" }}>
+                        COTTON:ON
+                    </div>
+                    {subtitle && (
+                        <h1 className="text-lg font-semibold mt-2" style={{ fontSize: subtitleFontSize, fontWeight: subtitleFontWeight }}>
+                            {subtitle}
+                        </h1>
+                    )}
                 </div>
             </div>
 
             {/* Search Section */}
-            <div className="px-4 pb-3">
-                <div className="relative" style={{
-                    display: 'flex'
-                }}>
+            <div className="">
+                {/* <div className="relative flex">
+                    <Input
+                        placeholder="Search..."
+                        className="border-2 border-[#E5E1FF] focus:border-[#4318FF] focus:ring-1 focus:ring-[#4318FF]"
+                        style={{
+                            height: searchInputHeight,
+                            paddingLeft: searchInputPadding,
+                            borderColor: theme.colors.borderColor,
+                            borderRadius: "5px",
+                            // transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+                            border: `0.5px solid ${theme.colors.primary}`,
 
-                    <Input placeholder="Search..." className="pl-8 h-9" style={{ borderColor: theme.colors.borderColor }} />
+
+                        }}
+                        onFocus={(e) => {
+                            e.currentTarget.style.setProperty("--tw-ring-color", "transparent", "important")
+                            e.currentTarget.style.setProperty("--tw-ring-offset-width", "0px", "important")
+                            e.currentTarget.style.outline = "none"
+                            e.currentTarget.style.boxShadow = "none"
+                        }}
+                        onBlur={(e) => {
+                            // Optionally restore values on blur
+                            e.currentTarget.style.setProperty("--tw-ring-color", theme.colors.borderColor, "important")
+                            e.currentTarget.style.setProperty("--tw-ring-offset-width", "0px", "important")
+                            e.currentTarget.style.outline = ""
+                            e.currentTarget.style.boxShadow = ""
+                        }}
+                    />
                     <div className="flex items-center gap-4 flex-shrink-0">
-                        <button className="p-2 bg-white rounded-lg hover:bg-gray-50 transition-colors" style={{
-                            border: '1px solid',
-                            borderColor: theme.colors.borderColor
-                        }}>
-                            <Bell className="w-5 h-5 text-gray-600" />
+                        <button
+                            className="p-2 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+                            style={{
+                                border: "1px solid",
+                                borderColor: theme.colors.borderColor,
+                            }}
+                        >
+                            <Bell style={{ width: actionIconSize, height: actionIconSize, color: "gray" }} />
                             <span className="sr-only">Notifications</span>
                         </button>
-                        <button className="p-2 bg-white rounded-lg hover:bg-gray-50 transition-colors" style={{
-                            border: '1px solid',
-                            borderColor: theme.colors.borderColor
-                        }} >
-                            <Filter className="w-5 h-5 text-gray-600" />
+                        <button
+                            className="p-2 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+                            style={{
+                                border: "1px solid",
+                                borderColor: theme.colors.borderColor,
+                            }}
+                        >
+                            <Filter style={{ width: actionIconSize, height: actionIconSize, color: "gray" }} />
+                            <span className="sr-only">Filters</span>
+                        </button>
+                    </div>
+                </div> */}
+                <div className="relative flex items-center" style={{ justifyContent: 'center' }}>
+                    {/* Input Container (65%) */}
+                    <div style={{ width: "60%" }}>
+                        <Input
+                            placeholder="Search..."
+                            className="border-2 focus:outline-none"
+                            style={{
+                                height: searchInputHeight,
+                                paddingLeft: searchInputPadding,
+                                borderColor: theme.colors.borderColor,
+                                borderRadius: "5px",
+                                border: `0.5px solid ${theme.colors.primary}`,
+                            }}
+                            onFocus={(e) => {
+                                e.currentTarget.style.setProperty("--tw-ring-color", "transparent", "important")
+                                e.currentTarget.style.setProperty("--tw-ring-offset-width", "0px", "important")
+                                e.currentTarget.style.outline = "none"
+                                e.currentTarget.style.boxShadow = "none"
+                            }}
+                            onBlur={(e) => {
+                                e.currentTarget.style.setProperty("--tw-ring-color", theme.colors.borderColor, "important")
+                                e.currentTarget.style.setProperty("--tw-ring-offset-width", "0px", "important")
+                                e.currentTarget.style.outline = ""
+                                e.currentTarget.style.boxShadow = ""
+                            }}
+                        />
+                    </div>
+
+                    {/* Icons Container (25%) */}
+                    <div style={{ width: "30%" }} className="flex flex-wrap items-center justify-end gap-2">
+                        <button
+                            className="p-2 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+                            style={{
+                                border: "1px solid",
+                                borderColor: theme.colors.borderColor,
+                                height: "40px",
+                                width: "40px",
+                            }}
+                        >
+                            <Bell style={{ width: "20px", height: "20px", color: "gray" }} />
+                            <span className="sr-only">Notifications</span>
+                        </button>
+                        <button
+                            className="p-2 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+                            style={{
+                                border: "1px solid",
+                                borderColor: theme.colors.borderColor,
+                                height: "40px",
+                                width: "40px",
+                            }}
+                        >
+                            <Filter style={{ width: "20px", height: "20px", color: "gray" }} />
                             <span className="sr-only">Filters</span>
                         </button>
                     </div>
                 </div>
-
             </div>
         </header>
     )
@@ -114,7 +242,7 @@ function MenuLink({
             size="mobile"
             className="w-full h-auto py-3 px-4 justify-start gap-3 text-base font-normal bg-[#E6E6FF] hover:bg-[#D9D9FF] border-b border-[#D9D9FF] rounded-none"
         >
-            <Icon className="h-5 w-5" />
+            <Icon style={{ width: "20px", height: "20px" }} />
             {label}
         </Button>
     )

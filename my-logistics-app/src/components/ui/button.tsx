@@ -95,8 +95,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantStyles = getVariantStyles(variant)
     const sizeStyles = getSizeStyles(size)
-    console.log('variant', variant)
-    console.log('variantStyles', variantStyles)
+
     const Comp = asChild ? Slot : "button"
     return (
       <Comp

@@ -21,7 +21,7 @@ export default function DashboardLayout({ headerName, children }: DashboardLayou
             <Header pageName={headerName} />
 
             {/* Main Layout */}
-            <div className="flex h-[calc(100vh-73px)]">
+            <div className="flex h-[calc(100vh-120px)]">
                 {/* Sidebar */}
                 <div
                     className={`transition-all duration-300 ease-in-out ${isSidebarOpen ? "translate-x-0" : "-translate-x-64"}`}

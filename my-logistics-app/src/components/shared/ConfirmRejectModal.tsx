@@ -40,6 +40,8 @@ interface ConfirmModalProps {
 
     /** Optional icon to display in the header, e.g. CheckCircle or XCircle. */
     headerIcon?: React.ReactNode
+
+    isReject?: boolean
 }
 
 export function ConfirmModal({
@@ -52,6 +54,7 @@ export function ConfirmModal({
     onConfirm,
     initialComment = "",
     headerIcon,
+    isReject = false,
 }: ConfirmModalProps) {
     const { theme } = useTheme()
     const [comment, setComment] = React.useState(initialComment)
@@ -124,7 +127,7 @@ export function ConfirmModal({
                         variant={confirmVariant}
                         size="desktop"
                         onClick={handleConfirm}
-                        style={{ fontSize: `${baseFontSize}px`, backgroundColor: theme.colors.success, color: 'white', padding: `${useResponsiveSize(10, 15)}px ${useResponsiveSize(15, 25)}px` }}
+                        style={isReject ? { fontSize: `${baseFontSize}px`, backgroundColor: theme.colors.error, color: 'white', padding: `${useResponsiveSize(10, 15)}px ${useResponsiveSize(15, 25)}px` } : { fontSize: `${baseFontSize}px`, backgroundColor: theme.colors.success, color: 'white', padding: `${useResponsiveSize(10, 15)}px ${useResponsiveSize(15, 25)}px` }}
                     >
                         {confirmLabel}
                     </Button>

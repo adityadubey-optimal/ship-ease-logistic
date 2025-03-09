@@ -26,17 +26,6 @@ export default function Home() {
                 <StatusDashboard />
             </section>
 
-            {/* Metrics Section Placeholder */}
-            <section className="mb-1 p-4">
-                <PoBookingCard />
-
-            </section>
-
-            {/* Tasks Section Placeholder */}
-            <section className="mb-1 p-4">
-
-                <StatusCardContainer />
-            </section>
 
             {/* Task Card Section Placeholder */}
             <section className="mb-1" >
@@ -91,48 +80,7 @@ export default function Home() {
             </section>
             {/*Documetn overview section */}
 
-            <section className="mb-1 p-4" >
-                <div className="w-full max-w-7xl mx-auto p-2" >
-                    <DocumentHeader
-                        Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
-                        title="Documentation Overview"
-                        subtitle="Documents uploaded in the portal"
-                        showSeeMore={false}
-                        showSeeMoreIcon
-                        onSeeMoreClick={() => console.log('See More clicked')}
-                    />
-                    <div className="w-full p-2" style={{}}>
-                        <DocumentList
-                            documentName="Commercial Invoices"
-                            // submittedDate="19 Feb 2025"
-                            count={94}
-                        // onDownload={() => console.log("Download clicked")}
-                        // onView={() => console.log("View clicked")}
-                        />
-                        <DocumentList
-                            documentName="Commercial Invoices"
-                            // submittedDate="19 Feb 2025"
-                            count={94}
-                        // onDownload={() => console.log("Download clicked")}
-                        // onView={() => console.log("View clicked")}
-                        />
-                        <DocumentList
-                            documentName="Commercial Invoices"
-                            // submittedDate="19 Feb 2025"
-                            count={94}
-                        // onDownload={() => console.log("Download clicked")}
-                        // onView={() => console.log("View clicked")}
-                        />
-                    </div>
-                </div>
 
-            </section>
-
-            <DataChart />
-
-            <QuantityTable />
-
-            <ShipDateGauge />
         </DashboardLayout>
     )
 }

@@ -27,6 +27,7 @@ export default function SigninPageMobile() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log("Form submitted:", formData)
+    navigate('/buyer/home')
   }
 
   const relativeContainerStyle: React.CSSProperties = {

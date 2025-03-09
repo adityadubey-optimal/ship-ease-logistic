@@ -15,9 +15,11 @@ import { Button } from "@/components/ui/button"
 import IconButton from "@/components/ui/IconButton"
 import { QuantityTable } from "@/components/mobile/quantityTableMobile"
 import ShipDateGauge from "@/components/mobile/shipDaysGauage"
+import { useNavigate } from "react-router-dom"
+import DocumentListPro from "@/components/ui/documentListNew"
 export default function Home() {
     const { theme } = useTheme()
-
+    const navigate = useNavigate()
 
     return (
         <DashboardLayout>
@@ -39,16 +41,19 @@ export default function Home() {
             </section>
 
             {/* Task Card Section Placeholder */}
-            <section className="mb-1" >
-                <div className="w-full max-w-7xl mx-auto p-2" style={{ background: theme.colors.thertiary }}>
+            <section className="mb-1" style={{ background: theme.colors.thertiary, }}>
+                <div className="w-full max-w-7xl mx-auto p-4" >
                     <DocumentHeader
                         Icon={<img src={UrgentTask} alt="Ship illustration" className="w-20 h-20 object-contain" />}
                         title="Urgent Tasks"
                         subtitle="Actions these PO's to avoid any delays to the shipment    "
                         showSeeMore={false}
-                        onSeeMoreClick={() => console.log('See More clicked')}
+                        onSeeMoreClick={() => {
+
+                            navigate('/buyer/urgentTask')
+                        }}
                     />
-                    <div className="app" style={{ width: '100%', margin: "0 auto", padding: "20px" }}>
+                    <div className="app" style={{ width: '100%', margin: "0 auto", padding: "0 px 20px" }}>
 
 
                         <NotificationCard
@@ -59,7 +64,7 @@ export default function Home() {
                             actionRequired="Approve ship date"
                             requestFrom="Vendor"
                             urgent={true}
-                            onGoToPO={() => { console.log('clicked') }}
+                            onGoToPO={() => { navigate('/buyer/poDetails/234324') }}
                         />
                         <NotificationCard
                             poNumber="137284638746"
@@ -69,7 +74,7 @@ export default function Home() {
                             actionRequired="Approve ship date"
                             requestFrom="Vendor"
                             urgent={true}
-                            onGoToPO={() => { console.log('clicked') }}
+                            onGoToPO={() => { navigate('/buyer/poDetails/234324') }}
                         />
 
 
@@ -99,40 +104,79 @@ export default function Home() {
                         subtitle="Documents uploaded in the portal"
                         showSeeMore={false}
                         showSeeMoreIcon
-                        onSeeMoreClick={() => console.log('See More clicked')}
+                        onSeeMoreClick={() => {
+                            console.log('testing')
+                            navigate('/buyer/documentList')
+                        }}
+                        onSeeMoreIconClick={() => {
+                            console.log('testing')
+                            navigate('/buyer/documentList')
+                        }}
+                        containerStyle={{ paddingBottom: '1rem' }}
                     />
-                    <div className="w-full p-2" style={{}}>
-                        <DocumentList
-                            documentName="Commercial Invoices"
-                            // submittedDate="19 Feb 2025"
-                            count={94}
-                        // onDownload={() => console.log("Download clicked")}
-                        // onView={() => console.log("View clicked")}
-                        />
-                        <DocumentList
-                            documentName="Commercial Invoices"
-                            // submittedDate="19 Feb 2025"
-                            count={94}
-                        // onDownload={() => console.log("Download clicked")}
-                        // onView={() => console.log("View clicked")}
-                        />
-                        <DocumentList
-                            documentName="Commercial Invoices"
-                            // submittedDate="19 Feb 2025"
-                            count={94}
-                        // onDownload={() => console.log("Download clicked")}
-                        // onView={() => console.log("View clicked")}
-                        />
-                    </div>
+                    <DocumentListPro
+                        documents={[
+                            {
+                                title: "Commercial Invoice",
+                                submissionDate: "19 Feb 2025",
+                                onDownload: () => console.log("Downloading Commercial Invoice"),
+                                onView: () => console.log("Viewing Commercial Invoice"),
+                            },
+                            {
+                                title: "Marks and Numbers",
+                                submissionDate: "19 Feb 2025",
+                                onDownload: () => console.log("Downloading Marks and Numbers"),
+                                onView: () => console.log("Viewing Marks and Numbers"),
+                            },
+                            {
+                                title: "Booking Confirmations",
+                                submissionDate: "19 Feb 2025",
+                                onDownload: () => console.log("Downloading Booking Confirmations"),
+                                onView: () => console.log("Viewing Booking Confirmations"),
+                            },
+                        ]}
+                        showIcons={true}
+                        showSubmittedText={true}
+                        styles={{
+                            backgroundColor: "#E2E2FC",
+                            textColor: "#1E1E1E",
+                            borderColor: "#D1D5DB",
+                            buttonBackground: theme.colors.secondary,
+                            iconColor: "#2563EB",
+                            fontSize: {
+                                title: {
+                                    mobile: "1rem",
+                                    desktop: "1.125rem",
+                                },
+                                date: {
+                                    mobile: "0.65rem",
+                                    desktop: "0.875rem",
+                                },
+                            },
+                            fontWeight: {
+                                title: {
+                                    mobile: "550",
+                                    desktop: "550",
+                                },
+                                date: {
+                                    mobile: "300",
+                                    desktop: "300",
+                                }
+                            },
+                            padding: {
+                                iconContainer: "0.5rem",
+                            },
+                        }}
+                    />
                 </div>
 
             </section>
 
-            <DataChart />
+            {/* <DataChart />
 
-            <QuantityTable />
+     
 
-            <ShipDateGauge />
+            <ShipDateGauge /> */}
         </DashboardLayout>
     )
 }

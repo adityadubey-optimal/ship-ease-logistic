@@ -1,4 +1,5 @@
-import CircleGauge from "@/components/ui/CircleGuage"
+import CircleGauge from "@/components/mobile/shipDaysGauage"
+
 import { useTheme } from "@/context/ThemeContext"
 import { Button } from "@/components/ui/button"
 import GuageComponentHeader from "./GiageComponentHeader"

@@ -18,7 +18,7 @@ export const DataTableForPo = () => {
 
 
     return (
-        <div style={{ background: theme.colors.thertiary }}>
+        <div style={{ background: theme.colors.thertiary, borderRadius: '25px' }}>
             <OrderHeader
                 poNumber="2846395275"
                 buyer="Sample Buyer"

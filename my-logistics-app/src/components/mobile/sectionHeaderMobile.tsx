@@ -1,5 +1,9 @@
+
+
+"use client"
+
 import type React from "react"
-import { ArrowRight, CircleArrowLeft, CircleArrowRight } from "lucide-react"
+import { ArrowRight, CircleArrowRight } from "lucide-react"
 import { useTheme } from "../../context/ThemeContext"
 
 interface DocumentHeaderProps {
@@ -8,21 +12,36 @@ interface DocumentHeaderProps {
     subtitle?: string
     showSeeMore?: boolean
     onSeeMoreClick?: () => void
+    onSeeMoreIconClick?: () => void
     showSeeMoreIcon?: boolean
+    /** Optional inline styles for the topmost container */
+    containerStyle?: React.CSSProperties
 }
 
-const DocumentHeader = ({ Icon, title, subtitle, showSeeMore = false, onSeeMoreClick, showSeeMoreIcon }: DocumentHeaderProps) => {
+export default function DocumentHeader({
+    Icon,
+    title,
+    subtitle,
+    showSeeMore = false,
+    onSeeMoreClick,
+    showSeeMoreIcon,
+    containerStyle,
+    onSeeMoreIconClick
+}: DocumentHeaderProps) {
     const { theme } = useTheme()
 
     return (
-        <div className="flex items-center justify-between w-full p-4 ">
+        <div
+            className="flex items-center justify-between w-full"
+            style={containerStyle} // Apply custom container styles
+        >
             <div className="flex items-center gap-4">
                 {Icon}
                 <div className="flex flex-col">
                     <h1
                         style={{
-                            fontSize: theme.fonts.mobile.heading.size,
-                            fontWeight: theme.fonts.mobile.heading.weight,
+                            fontSize: theme.fonts.mobile.SectionHeader.title.size,
+                            fontWeight: theme.fonts.mobile.SectionHeader.title.weight,
                             color: theme.colors.textPrimary,
                             lineHeight: "1.2",
                         }}
@@ -32,7 +51,8 @@ const DocumentHeader = ({ Icon, title, subtitle, showSeeMore = false, onSeeMoreC
                     {subtitle && (
                         <p
                             style={{
-                                fontSize: theme.fonts.mobile.body.size,
+                                fontSize: theme.fonts.mobile.SectionHeader.subtitle.size,
+                                fontWeight: theme.fonts.mobile.SectionHeader.subtitle.weight,
                                 color: theme.colors.textSecondary,
                                 marginTop: "4px",
                             }}
@@ -44,7 +64,11 @@ const DocumentHeader = ({ Icon, title, subtitle, showSeeMore = false, onSeeMoreC
             </div>
 
             {showSeeMoreIcon && (
-                <CircleArrowRight className="w-5 h-5" style={{ color: theme.colors.textPrimary, height: '25px', width: '25px' }} />
+                <CircleArrowRight
+                    onClick={onSeeMoreIconClick}
+                    className="w-5 h-5"
+                    style={{ color: theme.colors.textPrimary, height: "25px", width: "25px" }}
+                />
             )}
 
             {showSeeMore && (
@@ -63,6 +87,3 @@ const DocumentHeader = ({ Icon, title, subtitle, showSeeMore = false, onSeeMoreC
         </div>
     )
 }
-
-export default DocumentHeader
-

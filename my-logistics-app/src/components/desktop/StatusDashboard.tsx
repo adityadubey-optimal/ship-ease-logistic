@@ -18,8 +18,8 @@ export default function StatusDashboard({ ImportPoButton = false }: { ImportPoBu
     // Responsive dimensions (in pixels)
     const SHIP_BY_DATE_CARD_WIDTH = useResponsiveSize(350, 400); // Ship-by-Date card width scales from 350px to 400px
     const DAYS_TO_SHIP_CARD_WIDTH = useResponsiveSize(500, 600);   // Days-to-Ship card width scales from 500px to 600px
-    const PO_CARD_WIDTH = useResponsiveSize(160, 180);           // PO card width scales from 160px to 180px
-    const CARD_HEIGHT = useResponsiveSize(80, 180);            // Card height scales from 180px to 220px
+    const PO_CARD_WIDTH = useResponsiveSize(160, 120);           // PO card width scales from 160px to 180px
+    const CARD_HEIGHT = useResponsiveSize(80, 120);            // Card height scales from 180px to 220px
     return (
         <div className="w-full max-w-7xl mx-auto p-4" style={{ background: 'transparent' }}>
             {/* Header Section */}
@@ -53,10 +53,10 @@ export default function StatusDashboard({ ImportPoButton = false }: { ImportPoBu
                     style={{
                         backgroundColor: theme.colors.cardBackground,
                         borderRadius: "8px",
-                        padding: "24px",
+                        padding: "1rem",
                         minWidth: SHIP_BY_DATE_CARD_WIDTH,
                         maxWidth: SHIP_BY_DATE_CARD_WIDTH,
-                        height: CARD_HEIGHT,
+                        height: `calc(${CARD_HEIGHT} - 10px)`,
                     }}
                 >
                     <div className="flex justify-between items-center h-full">
@@ -104,14 +104,14 @@ export default function StatusDashboard({ ImportPoButton = false }: { ImportPoBu
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "space-between",
-                        padding: "24px",
+                        padding: "24px 0px 24px 24px",
                     }}
                 >
                     <img
                         src={Ship}
                         alt="Ship illustration"
                         className="object-contain"
-                        style={{ height: `${useResponsiveSize(80, 120)}px`, width: `${useResponsiveSize(80, 120)}px` }}
+                        style={{ height: `${useResponsiveSize(80, 110)}px`, width: `${useResponsiveSize(80, 110)}px` }}
                     />
                     <p
                         style={{
@@ -135,12 +135,17 @@ export default function StatusDashboard({ ImportPoButton = false }: { ImportPoBu
                     <div
                         style={{
                             backgroundColor: theme.colors.secondary,
-                            padding: "24px",
+                            height: `calc(${CARD_HEIGHT}- 0px)`,
+                            width: `calc(${CARD_HEIGHT}- 10px)`,
+                            // padding: "24px",
                             borderRadius: "8px",
                             position: "relative",
                         }}
                     >
-                        <img src={CalendarIcon} alt="Calendar Icon" />
+                        <img src={CalendarIcon} alt="Calendar Icon" style={{
+                            height: `calc(${CARD_HEIGHT}- 15px)`,
+                            width: `calc(${CARD_HEIGHT}- 15px)`,
+                        }} />
                         <span
                             style={{
                                 position: "absolute",

@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/context/ThemeContext"
 import useResponsiveSize from "@/hooks/useResponsiveSize"
-
+import { useNavigate } from "react-router-dom"
 interface POTableStyles {
     header?: {
         backgroundColor?: string
@@ -166,7 +166,7 @@ function POTable({ data, styles = {}, onRowSelect, onGoToPO, showTotals = false,
     )
 
     return (
-        <div className="overflow-auto" style={{ height: "400px", width: "100%", fontSize: responsiveRowFontSize, fontWeight: "400", borderRadius: "15px", boxShadow: "0px 18px 27px rgba(0, 0, 0, 0.15)" }} ref={tableRef}>
+        <div className="overflow-auto" style={{ maxHeight: "400px", width: "100%", fontSize: responsiveRowFontSize, fontWeight: "400", borderRadius: "15px", boxShadow: "0px 18px 27px rgba(0, 0, 0, 0.15)" }} ref={tableRef}>
             <table className="w-full border-collapse">
                 <thead style={{ backgroundColor: mergedStyles.header?.backgroundColor, fontSize: mergedStyles.header?.fontSize, fontWeight: mergedStyles.header?.fontWeight, color: mergedStyles.header?.textColor }}>
                     <tr>
@@ -288,6 +288,8 @@ const totals = {
 }
 
 export default function SomePage() {
+    const navigate = useNavigate()
+
     return (
         <div className="p-4">
             <h1 className="text-2xl font-bold mb-4">Cancelled PO Table</h1>
@@ -296,7 +298,11 @@ export default function SomePage() {
                 showTotals={true}
                 //   totalsData={totals}
                 onRowSelect={(selectedIds) => console.log("Selected rows:", selectedIds)}
-                onGoToPO={(poNumber) => console.log("Navigate to PO:", poNumber)}
+                onGoToPO={(poNumber) => {
+                    console.log("Navigate to PO:", poNumber)
+
+                    navigate('/buyer/poDetails/234234')
+                }}
                 styles={{
                     header: {
                         backgroundColor: "#E2E2FC",

@@ -5,8 +5,9 @@ import { useIsMobile } from "@/hooks/useMobile"
 export default function StatusDashboard() {
     const { theme } = useTheme()
     const isMobile = useIsMobile()
+    const wrapperClass = isMobile ? "w-full max-w-7xl mx-auto" : "w-full max-w-7xl mx-auto p-4"
     return (
-        <div className="w-full max-w-7xl mx-auto p-4">
+        <div className={`${wrapperClass}`}>
             <div className="flex gap-4" style={{
                 marginBottom: '10px'
             }}>

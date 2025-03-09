@@ -1,6 +1,6 @@
 import DashboardLayout from "@/components/mobile/layout"
 import StatusDashboard from '@/components/mobile/statusDashboardMobile'
-import PoBookingCard from '@/components/mobile/PoBookingCardMobile'
+import PoBookingCard from './PoBookingCard'
 import StatusCardContainer from '@/components/mobile/statusContainerMobile'
 import DocumentHeader from "@/components/mobile/sectionHeaderMobile"
 import UrgentTask from "@assets/urgentTask.svg";
@@ -15,15 +15,29 @@ import { Button } from "@/components/ui/button"
 import IconButton from "@/components/ui/IconButton"
 import { QuantityTable } from "@/components/mobile/quantityTableMobile"
 import ShipDateGauge from "@/components/mobile/shipDaysGauage"
+import VendorHeader from "@/components/mobile/VendorDetails"
+import { useParams } from "react-router-dom"
+import { DataTableForPo } from "./DataTable"
+
 export default function Home() {
     const { theme } = useTheme()
+    const { id } = useParams()
 
 
     return (
-        <DashboardLayout>
+        <DashboardLayout subtitle={`PO#${id} Overview`}>
             {/* Today's Status Section Placeholder */}
             <section className="mb-1 p-4" style={{ paddingBottom: '0px' }}>
                 <StatusDashboard />
+            </section>
+            <section className="mb-1 p-4">
+                <PoBookingCard />
+
+            </section>
+
+            <section className="mb-1">
+                <DataTableForPo />
+
             </section>
 
 

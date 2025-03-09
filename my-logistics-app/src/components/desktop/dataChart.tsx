@@ -10,6 +10,7 @@ import { useTheme } from "@/context/ThemeContext"
 import useResponsiveSize from "@/hooks/useResponsiveSize"
 import { ConfirmModal } from "../shared/ConfirmRejectModal"
 import { CheckCircle, XCircle } from 'lucide-react'
+import { useIsMobile } from "@/hooks/useMobile"
 
 interface ProductData {
     id: number
@@ -67,6 +68,7 @@ const generateRandomData = (): ProductData => ({
 
 export default function ExampleScrollableTable({ showActions = true, showTotals = true }) {
     const { theme } = useTheme()
+    const isMobile = useIsMobile()
     // Generate 20 rows of product data using the generateRandomData function
     const [tableData, setTableData] = useState<ProductData[]>(
         Array(20)
@@ -93,9 +95,14 @@ export default function ExampleScrollableTable({ showActions = true, showTotals 
 
 
     return (
-        <div className="p-6" style={{
+        <div className="p-6" style={isMobile ? {
+            borderRadius: "15px",
+            paddingTop: '0px'
+        } : {
+
             // background: theme.colors.dataTableBackground, 
-            borderRadius: "15px"
+            borderRadius: "15px",
+
         }}>
             {/* <h1 className="text-2xl font-bold mb-4">Product Inventory</h1> */}
             <ScrollableDataTable
@@ -171,12 +178,13 @@ export default function ExampleScrollableTable({ showActions = true, showTotals 
 
             {showRejectModel && (
                 <ConfirmModal
-                    showModal={showAcceptModel}
+                    showModal={showRejectModel}
                     onClose={() => setShowRejectModel(false)}
                     title="Are you sure you want to reject this request?"
                     description="This action cannot be undone."
                     confirmLabel="Reject"
                     confirmVariant="reject"
+                    isReject
                     onConfirm={(comment) => console.log("Rejected with comment:", comment)}
                     headerIcon={<XCircle className="h-6 w-6 text-red-600" />}
                 />

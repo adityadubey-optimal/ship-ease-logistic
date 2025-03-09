@@ -840,7 +840,7 @@ const StatusCard = ({
         boxShadow: theme.shadows.cardWithSpread,
         padding: isMobile ? "10px" : "24px",
         width: status === "error" ? widthError : width,
-        minWidth: "220px",
+        minWidth: isMobile ? "180px" : "220px",
         minHeight: `${cardHeight}px`,
         marginBottom: isMobile ? "0px" : "20px",
       }}
