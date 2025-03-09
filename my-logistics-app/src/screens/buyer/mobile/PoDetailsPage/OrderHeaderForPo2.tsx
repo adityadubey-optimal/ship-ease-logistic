@@ -79,7 +79,7 @@ export default function ShipModeCard({
             fontSize: '0.6rem',
             fontWeight: 500,
             color: mergedStyles.valueColor,
-            textAlign: 'center',
+            textAlign: 'center' as 'center',
         },
         label: {
             fontSize: mergedStyles.fontSize.label,

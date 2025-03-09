@@ -66,11 +66,11 @@ export default function ShipDateHeader({
             fontSize: `${dateSize}px`,
             fontWeight: 600,
             fontFamily: theme.fonts.family,
-            textAlign: "center"
+            textAlign: "center" as 'center'
         },
         accentContainer: {
             backgroundColor: accentColor,
-            textAlign: 'centr',
+            textAlign: 'center' as 'center',
             padding: "0px 5px",
             width: '25%'
         },
