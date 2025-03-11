@@ -111,6 +111,10 @@ function NavButton({ icon: Icon, label, isActive = false, onClick }: NavItem) {
                 size="mobile"
                 className={`flex-1 flex flex-col h-auto gap-1 px-2 ${isActive ? "text-primary" : ""}`}
                 onClick={onClick}
+                style={{
+                    flex: "1 1 auto",
+                    minWidth: 0,
+                }}
             >
                 <Icon className="h-5 w-5" />
                 <span className="text-xs font-normal">{label}</span>
