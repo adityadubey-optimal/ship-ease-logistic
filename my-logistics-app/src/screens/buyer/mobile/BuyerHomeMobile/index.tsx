@@ -29,13 +29,13 @@ export default function Home() {
             </section>
 
             {/* Metrics Section Placeholder */}
-            <section className="mb-1 p-4">
+            <section className="mb-1 p-4" style={{ paddingBottom: '0rem', paddingTop: '0.5rem' }}>
                 <PoBookingCard />
 
             </section>
 
             {/* Tasks Section Placeholder */}
-            <section className="mb-1 p-4">
+            <section className="mb-1 p-4" style={{ paddingBottom: '0.5rem', paddingTop: "0.5rem" }}>
 
                 <StatusCardContainer />
             </section>

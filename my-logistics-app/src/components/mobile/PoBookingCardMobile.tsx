@@ -142,7 +142,7 @@ export default function PoBookingCard() {
 
     return (
         <div className="w-full max-w-7xl mx-auto" style={{ background: "transparent", paddingBottom: '0px' }}>
-            <Card className="p-6 shadow-md relative">
+            <Card className="p-2 shadow-md relative">
                 <div className="flex flex-col gap-6">
                     {/* Header Section */}
                     <div className="flex items-center justify-between">
@@ -221,10 +221,11 @@ export default function PoBookingCard() {
                                 fontWeight: bookingCardFonts.progressText.weight,
                                 display: 'flex',
                                 flexDirection: 'column',
-                                alignItems: 'center'
+                                alignItems: 'center',
+                                position: 'relative'
                             }}
                         >
-                            <span className="text-lg">{"😊"}</span> -14 Days
+                            <span className="text-lg" style={{ position: 'absolute', top: '-20px' }}>{"😊"}</span> -14 Days
                         </span>
                         <span
                             style={{
