@@ -28,7 +28,7 @@ export default function ShippingDates({ poShipDate, cargoReadyDate, styles = {} 
     const { theme } = useTheme()
 
     // Compute responsive sizes for the labels and dates
-    const responsiveLabelSize = useResponsiveSize(14, 16)
+    const responsiveLabelSize = useResponsiveSize(14, 18)
     const responsiveDateSize = useResponsiveSize(18, 24)
 
     // Use passed styles if provided, otherwise use the responsive sizes as defaults.
@@ -42,8 +42,8 @@ export default function ShippingDates({ poShipDate, cargoReadyDate, styles = {} 
             date: `${responsiveDateSize}px`,
         },
         fontWeight = {
-            label: "500",
-            date: "600",
+            label: "700",
+            date: "300",
         },
         borderRadius = "15px",
         boxShadow = "0px 17.989px 26.983px 8.994px rgba(0, 0, 0, 0.15)",

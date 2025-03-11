@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import GuageComponentHeader from "./GiageComponentHeader"
 import { Card } from "@/components/ui/card"
 import ShipDateHeader from "./CircleGuageHeader"
+import AcceptRejectButton from './AcceptRejectButton'
 
 export const GuageComponetForPo = () => {
     const { theme } = useTheme()
@@ -17,7 +18,7 @@ export const GuageComponetForPo = () => {
     const actionButtonTextColor = "#1E1E1E"
 
 
-    return (<div style={{ padding: '20px' }}>
+    return (<div style={{ padding: '20px', backgroundColor: theme.colors.dataTableBackground, borderRadius: '25px' }}>
 
         <GuageComponentHeader
 
@@ -31,12 +32,12 @@ export const GuageComponetForPo = () => {
                 actionButtonTextColor: "#1E1E1E",
             }}
         />
-        <div style={{ padding: '20px', background: theme.colors.dataTableBackground }}>
+        <div style={{ padding: '20px', background: theme.colors.dataTableBackground, borderRadius: '10px' }}>
             <Card style={{ boxShadow: theme.shadows.cardWithSpread, borderRadius: '10px' }}>
 
 
 
-                <div className="p-4" style={{ background: theme.colors.thertiary }}>
+                <div className="" style={{ background: theme.colors.guageheaderColor, borderRadius: '10px' }}>
                     <ShipDateHeader
                         poShipDate="4 Mar 25"
                         requester="Vendor"
@@ -68,6 +69,7 @@ export const GuageComponetForPo = () => {
                 </div>
             </Card>
         </div>
+        <AcceptRejectButton />
     </div>
 
     )

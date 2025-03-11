@@ -80,7 +80,7 @@ export default function Home() {
                     showSeeMore={false}
                     onSeeMoreClick={() => console.log('See More clicked')}
                 />
-                <div>
+                <div >
                     <GuageComponetForPo />
                 </div>
             </section>

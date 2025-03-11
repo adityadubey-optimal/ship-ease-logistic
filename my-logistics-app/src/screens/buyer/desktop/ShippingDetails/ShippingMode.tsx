@@ -42,8 +42,8 @@ export default function ShippingMode({ poShipDate, cargoReadyDate, styles = {} }
             date: `${responsiveDateSize}px`,
         },
         fontWeight = {
-            label: "500",
-            date: "600",
+            label: "700",
+            date: "400",
         },
         borderRadius = "15px",
         boxShadow = "0px 17.989px 26.983px 8.994px rgba(0, 0, 0, 0.15)",
