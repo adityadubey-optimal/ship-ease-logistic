@@ -8,13 +8,14 @@ interface DocumentHeaderProps {
     subtitle?: string
     showSeeMore?: boolean
     onSeeMoreClick?: () => void
+    containerStyle?: React.CSSProperties
 }
 
-const DocumentHeader = ({ Icon, title, subtitle, showSeeMore = false, onSeeMoreClick }: DocumentHeaderProps) => {
+const DocumentHeader = ({ Icon, title, subtitle, showSeeMore = false, onSeeMoreClick, containerStyle }: DocumentHeaderProps) => {
     const { theme } = useTheme()
 
     return (
-        <div className="flex items-center justify-between w-full p-4 ">
+        <div className="flex items-center justify-between w-full p-4 " style={containerStyle}>
             <div className="flex items-center gap-4">
                 {Icon}
                 <div className="flex flex-col">

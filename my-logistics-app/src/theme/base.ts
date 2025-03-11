@@ -5,7 +5,7 @@
 
 import { Weight } from "lucide-react"
 
-function getResponsiveSize(minSize: number, maxSize: number) {
+export function getResponsiveSize(minSize: number, maxSize: number) {
     // Define your breakpoints (in pixels)
     const minViewport = 800;
     const maxViewport = 1700;
@@ -60,7 +60,8 @@ export const baseColors = {
 
     dataTableBackground: "#D0D7FF",
     guageheaderColor: '#C4CDFF',
-    notificationCardTextHeaderColor: '#002B75'
+    notificationCardTextHeaderColor: '#002B75',
+    vnedorText: '#616161',
 }
 
 export const baseFonts = {
@@ -168,11 +169,11 @@ export const baseFonts = {
                 weight: "500"
             },
             infoDescription: {
-                size: getResponsiveSize(1.6, 2) + "rem",
-                weight: "1000"
+                size: getResponsiveSize(1.2, 1.5) + "rem",
+                weight: "300"
             },
             shipingButtonFont: {
-                size: getResponsiveSize(1.20, 1.4) + "rem",
+                size: getResponsiveSize(1.15, 1.25) + "rem",
                 weight: "600"
             }
         },
@@ -197,9 +198,9 @@ export const baseFonts = {
             weight: "400", // bold
         },
         notification: {
-            size: "11px",
+            size: "14px",
             weight: "400", // regular
-            notificationCardWeight: '600'
+            notificationCardWeight: '800'
         },
 
         // New additions for status cards

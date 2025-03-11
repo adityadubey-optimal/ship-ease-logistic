@@ -1,6 +1,6 @@
 import DashboardLayout from "@/components/desktop/Layout"
 import StatusDashboard from '@/components/desktop/StatusDashboard'
-import PoBookingCard from './BookingCard'
+import PoBookingCard from '@/components/desktop/PoBookingCard'
 import StatusCardContainer from '@/components/desktop/statusCardContainer'
 import DocumentHeader from "@/components/desktop/sectionHeader"
 import UrgentTask from "@assets/urgentTask.svg";
@@ -11,35 +11,30 @@ import Slider from "@/components/ui/slider"
 import { DocumentList } from "@/components/ui/documentList"
 import ProgressChart from "@/components/ui/progressChart"
 import DataChart from "@/components/desktop/dataChart"
-import { DataTableForPo } from "./DataTable"
-
+import { useNavigate } from "react-router-dom"
+import DocumentListPro from '@/components/ui/documentListNew'
 export default function Home() {
     const { theme } = useTheme()
-
+    const navigate = useNavigate()
 
     return (
-        <DashboardLayout headerName="Vendors Ship-By-Date Overview">
+        <DashboardLayout headerName={'Vendors Ship-By-Date Overview'}>
             {/* Today's Status Section Placeholder */}
-            <section className="mb-8">
-                <StatusDashboard ImportPoButton />
+            <section className="mb-2">
+                <StatusDashboard />
             </section>
-            <section className="mb-8">
+
+            {/* Metrics Section Placeholder */}
+            <section className="mb-2">
                 <PoBookingCard />
 
             </section>
 
+            {/* Tasks Section Placeholder */}
+            <section className="mb-2">
 
-
-            {/* Task Card Section Placeholder */}
-            <section className="mb-8" >
-                <div className="w-full max-w-7xl mx-auto p-4" style={{ background: theme.colors.secondary, borderRadius: '30px', paddingBottom: '2rem' }}>
-
-                    <DataTableForPo showTotal={false} showActions={false} />
-                </div>
-
+                <StatusCardContainer />
             </section>
-
-
 
         </DashboardLayout>
     )

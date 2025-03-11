@@ -377,7 +377,7 @@ export function ScrollableDataTable<T extends object>({
                     {data.map((row, rowIndex) => {
                         const rowId = getRowId(row)
                         const isSelected = selectedRows.has(rowId)
-                        const rowBgColor = isSelected ? "rgb(239 246 255)" : rowIndex % 2 === 0 ? "white" : "rgb(249 250 251)"
+                        const rowBgColor = isSelected ? "rgba(118, 118, 118, 0.30)" : "white"
 
                         return (
                             <tr

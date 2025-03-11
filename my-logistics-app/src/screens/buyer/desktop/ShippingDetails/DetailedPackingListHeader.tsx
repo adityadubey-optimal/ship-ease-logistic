@@ -50,7 +50,7 @@ export default function PackingListHeader({
     const fontSize = useResponsiveSize(14, 16)
     const labelSize = useResponsiveSize(14, 16)
 
-    const { backgroundColor = "#E2E2FC", textColor = "#1E1E1E", inputBackground = "#E2E2FC" } = styles
+    const { backgroundColor = "#E2E2FC", textColor = "#1E1E1E", inputBackground = theme.colors.guageheaderColor } = styles
 
     const [values, setValues] = useState({
         buyer,
@@ -89,6 +89,7 @@ export default function PackingListHeader({
                 fontSize: `${labelSize}px`,
                 color: textColor,
                 fontWeight: "500",
+                width: '140px',
             }}
         >
             {text}:
@@ -171,7 +172,7 @@ export default function PackingListHeader({
                 </div>
 
                 {/* Right Column */}
-                <div className="space-y-4">
+                <div className="space-y-4" style={{ width: '55%' }}>
                     <div className="flex justify-between items-center">
                         {renderLabel("Purchase Order")}
                         {renderValue(purchaseOrder)}

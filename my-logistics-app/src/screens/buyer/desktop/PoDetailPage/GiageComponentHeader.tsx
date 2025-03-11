@@ -70,17 +70,19 @@ export default function GuageComponentHeader({
                         color: actionButtonTextColor,
                         borderRadius: "9999px",
                         boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-                        padding: "12px 24px",
+                        padding: "0px 12px",
                         display: "flex",
                         alignItems: "center",
                         gap: "12px",
-                        fontSize: "18px",
+
+                        fontSize: "1.45rem",
                         fontWeight: "600",
+                        width: '100%'
                     }}
                     onClick={onAction}
                 >
                     {/* Icon placeholder - replace with your SVG */}
-                    <div style={{ width: `${useResponsiveSize(16, 40)}px`, height: `${useResponsiveSize(16, 40)}px`, position: "relative" }}><img src={inProgress} style={{ height: '100%', width: '100%' }} /></div>
+                    <div style={{ width: `${useResponsiveSize(40, 70)}px`, height: `${useResponsiveSize(40, 70)}px`, position: "relative" }}><img src={inProgress} style={{ height: '100%', width: '100%' }} /></div>
                     Action Required: Approve Quantity Variation
                 </Button>
 

@@ -9,7 +9,9 @@ import GenericInput from "@/components/ui/InputField"
 import { useTheme } from "../../../context/ThemeContext"
 import logoImage from '@assets/Group 134@2x.png'
 import { useNavigate } from "react-router-dom"
+import { useAuth } from '@/hooks/useAuth'
 export default function SigninPage() {
+  const { login, persona } = useAuth()
   const navigate = useNavigate()
   const { theme } = useTheme()
   const [formData, setFormData] = useState({
@@ -26,7 +28,15 @@ export default function SigninPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log("Form submitted:", formData)
-    navigate('/buyer')
+    // navigate('/buyer')
+    const { username: email, password } = formData
+    navigate(`/buyer/home`)
+    // if (login(email, password)) {
+    //   // Navigate based on the persona set
+    //   navigate(`/${persona}`)
+    // } else {
+    //   console.log("Invalid credentials")
+    // }
   }
 
   // Styles using theme

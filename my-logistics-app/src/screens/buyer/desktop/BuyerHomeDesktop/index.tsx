@@ -203,7 +203,7 @@ export default function Home() {
                 <div className="w-full max-w-7xl mx-auto p-4" >
                     <DocumentHeader
                         Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
-                        title="Canceleed//declined POs"
+                        title="Cancelled//declined POs"
                         subtitle="PO's declined by vendor"
                         showSeeMore={false}
                         onSeeMoreClick={() => console.log('See More clicked')}

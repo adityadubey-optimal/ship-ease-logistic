@@ -49,7 +49,7 @@ const NotificationCard = ({
                     }}>
 
                         <div
-                            className="w-fit px-5 py-1 rounded-full"
+                            className="w-fit px-3 py-1 rounded-full"
                             style={{
                                 backgroundColor: theme.colors.errorBgNotification,
                                 color: theme.colors.error,
@@ -73,7 +73,7 @@ const NotificationCard = ({
                         <div className="flex flex-col gap-1">
                             <span
                                 style={{
-                                    color: theme.colors.textPrimary,
+                                    color: theme.colors.notificationCardTextHeaderColor,
                                     fontSize: theme.fonts.web.body.size,
                                     fontWeight: theme.fonts.web.body.weight,
                                 }}
@@ -82,9 +82,9 @@ const NotificationCard = ({
                             </span>
                             <span
                                 style={{
-                                    color: theme.colors.textPrimary,
+                                    color: theme.colors.notificationCardTextHeaderColor,
                                     fontSize: theme.fonts.web.body.size,
-                                    fontWeight: theme.fonts.web.body.weight,
+                                    fontWeight: '700',
                                 }}
                             >
                                 Ship-by-date: {shipByDate}

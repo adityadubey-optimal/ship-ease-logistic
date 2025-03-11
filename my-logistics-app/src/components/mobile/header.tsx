@@ -69,7 +69,7 @@ export default function Header({ title = "Buyer", subtitle = "Vendor Ship-By-Dat
                                 <span className="sr-only">Open menu</span>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="left" className="w-[300px] sm:w-[400px] p-0">
+                        <SheetContent side="left" className="w-[300px] sm:w-[400px] p-0" style={{ zIndex: '99999999999999' }}>
                             <SheetHeader className="p-4 border-b">
                                 <div className="flex items-center justify-between">
                                     <SheetTitle className="text-2xl font-bold">Menu</SheetTitle>

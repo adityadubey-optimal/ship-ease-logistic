@@ -23,6 +23,8 @@ import ShipDate from "@/assets/ship_dates.svg"
 import ShippingDates from "./ShippingDates"
 import ShippingMode from "./ShippingMode"
 import DocumentListPro from '@/components/ui/documentListNew'
+import Box from "@/assets/box.svg"
+import DeliveryOnline from "@/assets/Delivery and online parcel tracking.svg"
 export default function Home() {
     const { theme } = useTheme()
     const { id } = useParams()
@@ -60,11 +62,12 @@ export default function Home() {
 
             <section className="mb-8">
                 <DocumentHeader
-                    Icon={<img src={Building} alt="Ship illustration" className="w-10 h-10 object-contain" />}
-                    title="SKU Change Request"
-                    subtitle="SKU units are derived from the uploaded PO"
+                    Icon={<img src={Box} alt="Ship illustration" className="w-10 h-10 object-contain" style={{ height: '3.5rem', width: '3.5rem   ' }} />}
+                    title="SKU Packing List"
+                    subtitle="Packing list as uploaded by the vendor"
                     showSeeMore={false}
                     onSeeMoreClick={() => console.log('See More clicked')}
+                    containerStyle={{ borderRadius: '35px' }}
                 />
                 <DataTableForPo />
             </section>
@@ -79,7 +82,7 @@ export default function Home() {
             </section>
             <section className="mb-8">
                 <DocumentHeader
-                    Icon={<img src={ShipDate} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                    Icon={<img src={ShipDate} alt="Ship illustration" className="w-10 h-10 object-contain" style={{ height: '5.5rem', width: '5.5rem' }} />}
                     title="Ship Dates"
                     subtitle="Shipping ad cargo results"
                     showSeeMore={false}
@@ -93,7 +96,7 @@ export default function Home() {
             </section>
             <section className="mb-8">
                 <DocumentHeader
-                    Icon={<img src={Building} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                    Icon={<img src={DeliveryOnline} alt="Ship illustration" className="w-10 h-10 object-contain" style={{ height: '5.5rem', width: '5.5rem' }} />}
                     title="Ship Modes"
                     subtitle="Ship mode as approved"
                     showSeeMore={false}

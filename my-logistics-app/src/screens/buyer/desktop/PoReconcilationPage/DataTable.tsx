@@ -46,7 +46,9 @@ export const DataTableForPo = ({
                     actionButtonTextColor: "#1E1E1E",
                 }}
             />
-            <DataChart showTotals={showTotal} showActions={showActions} />
+            <div style={{ paddingBottom: '2rem' }}>
+                <DataChart showTotals={showTotal} showActions={showActions} />
+            </div>
             <SpecialButton />
         </div>
     )

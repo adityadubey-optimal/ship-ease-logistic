@@ -932,6 +932,7 @@ const StatusCard = ({
               flexDirection: "column",
               backgroundColor: theme.colors.statusCardErrorBackground,
               borderRadius: "9px",
+
             }}
           >
             <CircleAlert

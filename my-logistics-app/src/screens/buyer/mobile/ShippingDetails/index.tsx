@@ -24,6 +24,7 @@ import ShippingDatesDisplay from "./ShipDates"
 import Building from "@assets/boxes_with_labels.svg"
 import ShippingDatesDisplayMode from "./ShipModes"
 import NotificationTable from "./NotificationTable"
+import DeliveryOnline from "@/assets/Delivery and online parcel tracking.svg"
 
 
 export default function Home() {
@@ -66,7 +67,7 @@ export default function Home() {
 
             <section className="mb-1 p-4">
                 <DocumentHeader
-                    Icon={<img src={Building} alt="Ship illustration" className="w-20 h-20 object-contain" />}
+                    Icon={<img src={DeliveryOnline} alt="Ship illustration" className="w-20 h-20 object-contain" />}
                     title="Ship Modes"
                     subtitle="Ship mode as approved"
                     showSeeMore={false}

@@ -24,7 +24,7 @@ export default function PoBookingCard() {
                                     fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.poBookingPercentageFont.weight,
                                 }}
                             >
-                                80%
+                                80
                             </span>
                             <span
                                 style={{
@@ -33,11 +33,48 @@ export default function PoBookingCard() {
                                     fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.pobokingDescription.weight,
                                 }}
                             >
-                                PO's Booked for Ship-by-Date
+                                POs updated in the portal
                             </span>
                         </div>
 
                     </div>
+
+                    <div className="flex justify-between px-2">
+                        <span
+                            style={{
+                                color: theme.colors.textSecondary,
+                                fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
+                                fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
+                                width: '70px',
+                                textAlign: 'center',
+                            }}
+                        >
+
+                        </span>
+                        <span
+                            style={{
+                                color: theme.colors.textSecondary,
+                                fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
+                                fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
+                                width: '70px',
+                                textAlign: 'center',
+                            }}
+                        >
+                            80
+                        </span>
+                        <span
+                            style={{
+                                color: theme.colors.textSecondary,
+                                fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
+                                fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
+                                width: '70px',
+                                textAlign: 'center',
+                            }}
+                        >
+                            100
+                        </span>
+                    </div>
+
 
                     {/* Progress Bar Section */}
                     <div className="relative">
@@ -62,6 +99,8 @@ export default function PoBookingCard() {
                                 color: theme.colors.textSecondary,
                                 fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
                                 fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
+                                width: '70px',
+                                textAlign: 'center',
                             }}
                         >
 
@@ -71,6 +110,8 @@ export default function PoBookingCard() {
                                 color: theme.colors.textSecondary,
                                 fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
                                 fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
+                                width: '70px',
+                                textAlign: 'center',
                             }}
                         >
                             Total PO's in portal
@@ -80,6 +121,8 @@ export default function PoBookingCard() {
                                 color: theme.colors.textSecondary,
                                 fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
                                 fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
+                                width: '70px',
+                                textAlign: 'center',
                             }}
                         >
                             total PO's issued

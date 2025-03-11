@@ -8,15 +8,17 @@ import { Link, useNavigate } from "react-router-dom"
 import GenericInput from "@/components/ui/InputField"
 import { useTheme } from "../../../context/ThemeContext"
 import logoImage from '@assets/Group 134@2x.png'
+import { useAuth } from '@/hooks/useAuth'
 
 export default function SigninPageMobile() {
-
+  const { login, persona } = useAuth()
   const navigate = useNavigate()
   const { theme } = useTheme()
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   })
+
 
   const [showPassword, setShowPassword] = useState(false)
 
@@ -27,8 +29,19 @@ export default function SigninPageMobile() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log("Form submitted:", formData)
-    navigate('/buyer/home')
+    const { username: email, password } = formData
+    navigate(`/buyer/home`)
+    // if (login(email, password)) {
+    //   // Navigate based on the persona set
+    //   navigate(`/${persona}`)
+    // } else {
+    //   console.log("Invalid credentials")
+    // }
+    // navigate('/buyer/home')
+
   }
+
+
 
   const relativeContainerStyle: React.CSSProperties = {
     position: "relative",

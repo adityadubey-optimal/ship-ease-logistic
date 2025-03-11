@@ -82,15 +82,19 @@ export default function OrderHeader({
                     <Select value={selectedColor} onValueChange={setSelectedColor}>
                         <SelectTrigger
                             style={{
-                                width: "160px",
-                                backgroundColor: "rgba(203, 213, 225, 0.2)",
+                                width: "100%",
+                                backgroundColor: "#C4CDFF",
                                 color: textColor,
-                                padding: "8px 16px",
-                                borderRadius: "4px",
+                                padding: "1rem 16px",
+                                borderRadius: "9999px",
                                 display: "flex",
                                 justifyContent: "space-between",
                                 alignItems: "center",
                                 cursor: "pointer",
+                                fontSize: '1.15rem',
+                                fontWeight: '600',
+                                height: '50px'
+
                             }}
                         >
                             <SelectValue placeholder="Select color" />
@@ -112,15 +116,17 @@ export default function OrderHeader({
 
                     display: "flex",
                     flexDirection: "column",
-                    gap: "32px",
-                    alignItems: "flex-end",
+                    gap: "22px",
+                    alignItems: "flex-start",
+                    width: '40%',
+
                 }}
             >
 
 
 
-                <DetailRow label="Total PO Quantity" value={`${orderDetails.totalPoQuantity} Pcs`} />
-                <DetailRow label="Net Weight" value={`${orderDetails.netWeight} Pcs`} />
+                <DetailRow label="Buyer" value={`${orderDetails.totalPoQuantity} Pcs`} />
+                <DetailRow label="Brand" value={`${orderDetails.netWeight} Pcs`} />
 
 
             </div >

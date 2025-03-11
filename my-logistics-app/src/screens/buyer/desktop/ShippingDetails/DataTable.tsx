@@ -19,7 +19,7 @@ export const DataTableForPo = ({ showDetailedPackingList = false }: { showDetail
 
 
     return (
-        <div style={{ background: theme.colors.thertiary }}>
+        <div style={{ background: theme.colors.secondary, borderRadius: '35px' }}>
             {showDetailedPackingList ? <ShippingDetailsHeader
                 buyer="Sample Buyer"
                 brand="Sample Brand"
@@ -43,7 +43,7 @@ export const DataTableForPo = ({ showDetailedPackingList = false }: { showDetail
                     onAction={() => console.log("Action clicked")}
                     ActionButtonText={`Action Required, Approve Ship-By-Date`}
                     styles={{
-                        backgroundColor: theme.colors.dataTableBackground,
+                        backgroundColor: theme.colors.secondary,
                         textColor: "#1E1E1E",
                         fontSize: "16px",
                         fontWeight: "400",

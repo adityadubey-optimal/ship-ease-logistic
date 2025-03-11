@@ -6,6 +6,8 @@ import { ChevronDown } from "lucide-react"
 import useResponsiveSize from "@/hooks/useResponsiveSize"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import inProgress from '@/assets/In Progress.svg'
+import { useTheme } from "@/context/ThemeContext"
+
 interface OrderHeaderProps {
     poNumber: string
     buyer?: string
@@ -45,6 +47,8 @@ export default function OrderHeader({
     styles = {},
     ActionButtonText,
 }: OrderHeaderProps) {
+    const { theme } = useTheme()
+
     const [selectedColor, setSelectedColor] = useState(color)
     const fontSize = useResponsiveSize(14, 16)
 
@@ -85,19 +89,24 @@ export default function OrderHeader({
                     <Select value={selectedColor} onValueChange={setSelectedColor}>
                         <SelectTrigger
                             style={{
-                                width: "160px",
-                                backgroundColor: "rgba(203, 213, 225, 0.2)",
+                                width: "100%",
+                                backgroundColor: theme.colors.guageheaderColor,
                                 color: textColor,
-                                padding: "8px 16px",
-                                borderRadius: "4px",
+                                padding: "1rem 16px",
+                                borderRadius: "9999px",
+
                                 display: "flex",
                                 justifyContent: "space-between",
                                 alignItems: "center",
+                                fontSize: '1.15rem',
+                                fontWeight: '600',
                                 cursor: "pointer",
+                                height: '50px'
+
                             }}
                         >
                             <SelectValue placeholder="Select color" />
-                            <ChevronDown size={16} />
+
                         </SelectTrigger>
                         <SelectContent>
                             {colors.map((c) => (
@@ -128,19 +137,20 @@ export default function OrderHeader({
                         backgroundColor: actionButtonColor,
                         color: actionButtonTextColor,
                         borderRadius: "9999px",
-                        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-                        padding: "12px 24px",
+                        boxShadow: "0px 28.557px 42.836px 14.279px rgba(0, 0, 0, 0.15)",
+                        padding: "0px 12px",
                         display: "flex",
                         alignItems: "center",
                         gap: "12px",
-                        fontSize: "18px",
+                        fontSize: "1.45rem",
                         fontWeight: "600",
+                        width: '100%'
                     }}
 
                     onClick={onAction}
                 >
                     {/* Icon placeholder - replace with your SVG */}
-                    <div style={{ width: `${useResponsiveSize(25, 40)}px`, height: `${useResponsiveSize(25, 40)}px`, position: "relative" }}><img src={inProgress} style={{ height: '100%', width: '100%' }} /></div>
+                    <div style={{ width: `${useResponsiveSize(40, 70)}px`, height: `${useResponsiveSize(40, 70)}px`, position: "relative" }}><img src={inProgress} style={{ height: '100%', width: '100%' }} /></div>
                     {ActionButtonText ? ActionButtonText : `Action Required: Approve Quantity Variation`}
                 </Button>
 

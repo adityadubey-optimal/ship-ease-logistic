@@ -75,7 +75,7 @@ export default function OrderHeader({
         >
             {/* Left Section */}
             <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "50%", flexWrap: 'wrap', justifyContent: 'space-between' }}>
-                <h1 style={{ fontSize: "24px", fontWeight: "700", color: theme.colors.authPageheadingColor }}>Select PO to be imported in to the portal</h1>
+                <h1 style={{ fontSize: "24px", fontWeight: "700", color: theme.colors.authPageheadingColor }}>Select POs to be imported in to the portal</h1>
 
 
 
