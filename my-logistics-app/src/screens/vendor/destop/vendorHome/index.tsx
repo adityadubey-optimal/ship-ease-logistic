@@ -20,7 +20,6 @@ import Vector from "@/assets/Vector.svg"
 import Hazard from "@/assets/fluent_approvals-app-24-filled.svg"
 import checkbox from "@/assets/ic_twotone-pending-actions.svg"
 import { CustomActions } from './CustomActions'
-import { CalendarWithColors, ColorDate } from '@/components/ui/CalendarWithColors'
 import { addDays } from 'date-fns';
 import useResponsiveSize from '@/hooks/useResponsiveSize'
 import NotificationTable from "./NotificationTable"
