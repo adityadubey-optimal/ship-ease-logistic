@@ -12,12 +12,12 @@ interface DocumentHeaderProps {
     headerTextStyle?: React.CSSProperties
     subTitleTextStyle?: React.CSSProperties
     colorTheme?: string
+    date?: string
 }
 
-const DocumentHeader = ({ Icon, title, subtitle, showSeeMore = false, onSeeMoreClick, containerStyle, headerTextStyle, subTitleTextStyle, colorTheme }: DocumentHeaderProps) => {
+const DocumentHeader = ({ Icon, date, title, subtitle, showSeeMore = false, onSeeMoreClick, containerStyle, headerTextStyle, subTitleTextStyle, colorTheme }: DocumentHeaderProps) => {
     const { theme } = useTheme()
-    console.log('headerTextStyle', headerTextStyle)
-    console.log('colorTheme', colorTheme)
+
     return (
         <div className="flex items-center justify-between w-full p-4 " style={containerStyle}>
             <div className="flex items-center gap-4">
@@ -34,7 +34,8 @@ const DocumentHeader = ({ Icon, title, subtitle, showSeeMore = false, onSeeMoreC
 
                         }}
                     >
-                        {title}
+                        {date ? (<>{title} <span style={{ color: theme.colors.success }}>{date}</span></>) : title}
+
                     </h1>
                     {subtitle && (
                         <p

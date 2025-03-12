@@ -142,24 +142,30 @@ const CircleGauge: React.FC<CircleGaugeProps> = ({
         textAlign: "center",
         fontSize: "0.8rem",
         width: "80px",
+
         zIndex: 5,
     }
     const labelTopStyle: React.CSSProperties = {
         ...labelCommon,
         top: "-3rem",
         left: "50%",
+        width: "80px",
         transform: "translateX(-50%)",
     }
     const labelRightStyle: React.CSSProperties = {
         ...labelCommon,
-        right: "-5rem",
+        right: "-4rem",
         top: "50%",
+        width: "50px",
         transform: "translateY(-50%)",
+
+
     }
     const labelLeftStyle: React.CSSProperties = {
         ...labelCommon,
         left: "-5rem",
         top: "50%",
+        width: "80px",
         transform: "translateY(-50%)",
     }
 

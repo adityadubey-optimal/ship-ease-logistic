@@ -949,6 +949,7 @@ const StatusCard = ({
                 fontWeight: isMobile ? theme.fonts.mobile.body.weight : theme.fonts.web.body.weight,
                 textAlign: "center",
                 color: theme.colors.textSecondary,
+                width: '135px'
               }}
             >
               {additionalInfo}
