@@ -4,6 +4,7 @@ import React from "react"
 import { Eye, ChevronDown } from "lucide-react"
 import { Button } from "./button"
 import useResponsiveSize from "@/hooks/useResponsiveSize"
+import { useIsMobile } from "@/hooks/useMobile"
 
 
 export const styles = {
@@ -72,6 +73,7 @@ interface FormData {
 }
 
 export function SSCCLabelForm({ poNumber, onGenerate, onCancel }: SSCCLabelFormProps) {
+    const isMobile = useIsMobile()
     const [formData, setFormData] = React.useState<FormData>({
         shipTo: "",
         shipFrom: "",
@@ -137,6 +139,18 @@ export function SSCCLabelForm({ poNumber, onGenerate, onCancel }: SSCCLabelFormP
     }
 
     const buttonBaseStyle = {
+        flex: 1,
+        height: styles.sizes.buttonHeight,
+        padding: styles.spacing.buttonPadding,
+        fontSize: styles.fonts.sizes.button,
+        fontWeight: styles.fonts.weights.button,
+        color: styles.colors.buttonText,
+        border: "none",
+        borderRadius: '25px',
+        cursor: "pointer",
+    }
+
+    const buttonMobileStlye = {
         flex: 1,
         height: styles.sizes.buttonHeight,
         padding: styles.spacing.buttonPadding,
@@ -259,7 +273,12 @@ export function SSCCLabelForm({ poNumber, onGenerate, onCancel }: SSCCLabelFormP
                     />
                 </div>
 
-                <div style={buttonContainerStyle}>
+                <div style={isMobile ? {
+                    display: "flex",
+                    flexDirection: 'column',
+                    gap: "7px",
+                    marginTop: "32px",
+                } : buttonContainerStyle}>
                     <Button type="submit" style={generateButtonStyle}>
                         Generate SSCC Label
                     </Button>

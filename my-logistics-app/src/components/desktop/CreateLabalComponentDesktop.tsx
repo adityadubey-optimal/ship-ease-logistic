@@ -9,9 +9,11 @@ import DocumentList from "./DocumentationListUpload"
 import { ThemedSonnerToaster } from "@/components/ui/toasterComponent"
 import { useTheme } from "@/context/ThemeContext"
 import DocumentHeader from "@/components/desktop/sectionHeader"
+import DocumetnHeaderMobile from "../mobile/sectionHeaderMobile"
 import scanIcon from '@/assets/Scanning QR code.svg';
 import { SSCCLabelForm } from "@/components/ui/CrearLabelForm"
 import { toast } from "sonner"
+import { useIsMobile } from "@/hooks/useMobile"
 interface DocumentsDialogExampleProps {
     open: boolean
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -104,9 +106,63 @@ function renderLabelPreview({ setOpen, open }: DocumentsDialogExampleProps) {
 
 export function CreateLabelModalComponent({ open, setOpen }: DocumentsDialogExampleProps) {
     const { theme } = useTheme()
-
+    const isMobile = useIsMobile()
     const [showLabel, setShowLabel] = React.useState(false)
-    return (
+    return isMobile ? (<>
+
+        <Dialog open={open} onOpenChange={setOpen}>
+            <DialogContent
+                className="sm:max-w-full w-[90%] h-[90%] overflow-auto"
+                style={{
+                    backgroundColor: theme.colors.thertiary,
+                    borderRadius: 25,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    zIndex: 99999999999999999
+
+                }}
+            >
+                {/* You can add a top bar or anything you wish */}
+                <DialogHeader>
+                    {showLabel ? <></> :
+                        <DocumetnHeaderMobile
+                            Icon={<img src={scanIcon} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                            title="Print Carton SSCC Label"
+                            subtitle="Enter the information and send the label to print"
+                            showSeeMore={false}
+                            onSeeMoreClick={() => {
+                                console.log('See More clicked')
+
+                            }}
+                            containerStyle={{}}
+                        />
+                    }
+                </DialogHeader>
+
+                <div className="my-4" >
+                    {showLabel ?
+                        (renderLabelPreview({ open, setOpen }))
+                        : (
+                            <SSCCLabelForm
+                                poNumber="284639525"
+                                onGenerate={(data) => {
+
+                                    console.log("Generate:", data)
+                                    setShowLabel(true)
+                                }}
+                                onCancel={() => console.log("Cancelled")}
+                            />
+                        )}
+
+                </div>
+
+
+            </DialogContent>
+        </Dialog >
+
+        {/* Place your ThemedToaster at root level so the toasts can appear */}
+        < ThemedSonnerToaster toastBgColor="#333" toastTextColor="#fff" position="top-right" />
+    </>) : (
         <>
 
             <Dialog open={open} onOpenChange={setOpen}>
@@ -116,7 +172,8 @@ export function CreateLabelModalComponent({ open, setOpen }: DocumentsDialogExam
                         backgroundColor: theme.colors.thertiary,
                         borderRadius: 25,
                         display: 'flex',
-                        flexDirection: 'column'
+                        flexDirection: 'column',
+
                     }}
                 >
                     {/* You can add a top bar or anything you wish */}

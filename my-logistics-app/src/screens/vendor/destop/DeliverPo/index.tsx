@@ -1,6 +1,5 @@
 import DashboardLayout from "@/components/desktop/Layout"
 import StatusDashboard from '@/components/desktop/StatusDashboard'
-import PoBookingCard from '@/components/desktop/PoBookingCard'
 import StatusCardContainer from '@/components/desktop/statusCardContainer'
 import DocumentHeader from "@/components/desktop/sectionHeader"
 import UrgentTask from "@assets/urgentTask.svg";
@@ -14,6 +13,9 @@ import DataChart from "@/components/desktop/dataChart"
 import { useNavigate } from "react-router-dom"
 import DocumentListPro from '@/components/ui/documentListNew'
 import VendorOptions from '@/components/desktop/vendorOptions'
+import PoBookingCard from './PoBookingCard'
+import ExampleScrollableTable from '@/components/desktop/DataChartForShipper'
+
 
 export default function Home() {
     const { theme } = useTheme()
@@ -33,10 +35,64 @@ export default function Home() {
                 </div>
             </section>
 
+            <section className="mb-2">
+                <PoBookingCard />
+
+            </section>
+
+
             {/* Tasks Section Placeholder */}
             <section className="mb-2" >
 
                 <StatusCardContainer />
+            </section>
+
+            <section className="mb-2">
+                <div className="w-full max-w-7xl mx-auto p-4"  >
+                    <DocumentHeader
+                        Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                        title="POs booked for cargo ready date:"
+                        date="26 Feb 25"
+                        subtitle="Select Purchase Order to Print or Amend SSCC Labels"
+                        showSeeMore={false}
+                        onSeeMoreClick={() => console.log('See More clicked')}
+                        headerTextStyle={{ color: theme.colors.yellowHeaderText }}
+                        colorTheme={theme.colors.yellowHeaderText}
+                    />
+                    <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
+                        <ExampleScrollableTable showDocuments={true} showDocumentsSubcolumns={true}
+
+                        />
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section className="mb-2">
+                <div className="w-full max-w-7xl mx-auto p-4"  >
+                    <DocumentHeader
+                        Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                        title="POs booked for cargo ready date:"
+                        date="26 Feb 25"
+                        subtitle="Select Purchase Order to Print or Amend SSCC Labels"
+                        showSeeMore={false}
+                        onSeeMoreClick={() => console.log('See More clicked')}
+                        headerTextStyle={{ color: theme.colors.yellowHeaderText }}
+                        colorTheme={theme.colors.yellowHeaderText}
+                    />
+                    <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
+                        <ExampleScrollableTable showDocuments={true} showDocumentsSubcolumns={true}
+
+                        />
+
+
+                    </div>
+
+                </div>
+
             </section>
 
         </DashboardLayout>

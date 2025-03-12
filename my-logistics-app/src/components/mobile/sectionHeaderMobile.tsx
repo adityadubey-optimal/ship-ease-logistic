@@ -16,6 +16,10 @@ interface DocumentHeaderProps {
     showSeeMoreIcon?: boolean
     /** Optional inline styles for the topmost container */
     containerStyle?: React.CSSProperties
+    headerTextStyle?: React.CSSProperties
+    subTitleTextStyle?: React.CSSProperties
+    colorTheme?: string
+    date?: string
 }
 
 export default function DocumentHeader({
@@ -26,7 +30,9 @@ export default function DocumentHeader({
     onSeeMoreClick,
     showSeeMoreIcon,
     containerStyle,
-    onSeeMoreIconClick
+    onSeeMoreIconClick,
+    headerTextStyle, subTitleTextStyle, colorTheme, date
+
 }: DocumentHeaderProps) {
     const { theme } = useTheme()
 
@@ -42,11 +48,11 @@ export default function DocumentHeader({
                         style={{
                             fontSize: theme.fonts.mobile.SectionHeader.title.size,
                             fontWeight: theme.fonts.mobile.SectionHeader.title.weight,
-                            color: theme.colors.textPrimary,
+                            color: colorTheme ? colorTheme : theme.colors.textPrimary,
                             lineHeight: "1.2",
                         }}
                     >
-                        {title}
+                        {date ? (<>{title} <span style={{ color: theme.colors.success }}>{date}</span></>) : title}
                     </h1>
                     {subtitle && (
                         <p

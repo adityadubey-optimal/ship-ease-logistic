@@ -48,6 +48,7 @@ export function CargoDateModal({
                 style={{
                     backgroundColor: "#E2E2FC", // Lavender-like background
                     borderRadius: 0,
+                    zIndex: 9999999999999999999
                 }}
             >
                 <div className="flex flex-col h-full">

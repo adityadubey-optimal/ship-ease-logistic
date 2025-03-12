@@ -17,6 +17,13 @@ import { QuantityTable } from "@/components/mobile/quantityTableMobile"
 import ShipDateGauge from "@/components/mobile/shipDaysGauage"
 import { useNavigate } from "react-router-dom"
 import DocumentListPro from "@/components/ui/documentListNew"
+import VendorOptions from '@/components/mobile/VendorOptionsMobile'
+import ExampleScrollableTable from '@/components/desktop/DataChartForShipper'
+import { DataTableForPo } from './CargoReadyDateBooking'
+import AcceptRejectButton from "@/components/ui/AcceptRejectButton"
+
+
+
 export default function Home() {
     const { theme } = useTheme()
     const navigate = useNavigate()
@@ -26,6 +33,11 @@ export default function Home() {
             {/* Today's Status Section Placeholder */}
             <section className="mb-1 p-4" style={{ paddingBottom: '0px' }}>
                 <StatusDashboard />
+            </section>
+
+            <section className="mb-1 p-4">
+                <VendorOptions defaultSelectedIndex={1} />
+
             </section>
 
             {/* Metrics Section Placeholder */}
@@ -40,143 +52,156 @@ export default function Home() {
                 <StatusCardContainer />
             </section>
 
-            {/* Task Card Section Placeholder */}
-            <section className="mb-1" style={{ background: theme.colors.thertiary, }}>
-                <div className="w-full max-w-7xl mx-auto p-4" >
-                    <DocumentHeader
-                        Icon={<img src={UrgentTask} alt="Ship illustration" className="w-20 h-20 object-contain" />}
-                        title="Urgent Tasks"
-                        subtitle="Actions these PO's to avoid any delays to the shipment    "
-                        showSeeMore={false}
-                        onSeeMoreClick={() => {
 
-                            navigate('/buyer/urgentTask')
-                        }}
-                    />
-                    <div className="app" style={{ width: '100%', margin: "0 auto", padding: "0 px 20px" }}>
+            <section className="mb-2">
+                <div className="w-full max-w-7xl mx-auto "  >
+                    <div className="p-4">
+                        <DocumentHeader
+                            Icon={<img src={UrgentTask} alt="Ship illustration" style={{ height: '6rem', width: '6rem' }} className="w-10 h-10 object-contain" />}
+                            title="Cargo ready Date Booking"
+                            subtitle="Book delivery to CFS site"
+                            showSeeMore={false}
+                            onSeeMoreClick={() => console.log('See More clicked')}
 
-
-                        <NotificationCard
-                            poNumber="137284638746"
-                            shipByDate="04 Mar 25"
-                            fromLocation="China CN-SHA"
-                            toLocation="Australia AU"
-                            actionRequired="Approve ship date"
-                            requestFrom="Vendor"
-                            urgent={true}
-                            onGoToPO={() => { navigate('/buyer/poDetails/234324') }}
+                            subTitleTextStyle={{}}
+                            containerStyle={{ borderRadius: '25px' }}
                         />
-                        <NotificationCard
-                            poNumber="137284638746"
-                            shipByDate="04 Mar 25"
-                            fromLocation="China CN-SHA"
-                            toLocation="Australia AU"
-                            actionRequired="Approve ship date"
-                            requestFrom="Vendor"
-                            urgent={true}
-                            onGoToPO={() => { navigate('/buyer/poDetails/234324') }}
-                        />
-
-
-
-
-
                     </div>
-                    <div style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        width: '100%'
-                    }}>
-                        <IconButton text={"See More"} onClick={() => {
-                            console.log('clicked')
-                        }} size={"desktop"} ></IconButton>
+                    <div style={{ background: theme.colors.secondary, borderRadius: '35px' }}>
+                        <DataTableForPo />
+                        <div style={{ display: 'flex', justifyContent: "center" }}>
+                            <AcceptRejectButton />
+                        </div>
                     </div>
-                </div>
 
-            </section>
-            {/*Documetn overview section */}
-
-            <section className="mb-1 p-4" >
-                <div className="w-full max-w-7xl mx-auto p-2" >
-                    <DocumentHeader
-                        Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
-                        title="Documentation Overview"
-                        subtitle="Documents uploaded in the portal"
-                        showSeeMore={false}
-                        showSeeMoreIcon
-                        onSeeMoreClick={() => {
-                            console.log('testing')
-                            navigate('/buyer/documentList')
-                        }}
-                        onSeeMoreIconClick={() => {
-                            console.log('testing')
-                            navigate('/buyer/documentList')
-                        }}
-                        containerStyle={{ paddingBottom: '1rem' }}
-                    />
-                    <DocumentListPro
-                        documents={[
-                            {
-                                title: "Commercial Invoice",
-                                submissionDate: "19 Feb 2025",
-                                onDownload: () => console.log("Downloading Commercial Invoice"),
-                                onView: () => console.log("Viewing Commercial Invoice"),
-                            },
-                            {
-                                title: "Marks and Numbers",
-                                submissionDate: "19 Feb 2025",
-                                onDownload: () => console.log("Downloading Marks and Numbers"),
-                                onView: () => console.log("Viewing Marks and Numbers"),
-                            },
-                            {
-                                title: "Booking Confirmations",
-                                submissionDate: "19 Feb 2025",
-                                onDownload: () => console.log("Downloading Booking Confirmations"),
-                                onView: () => console.log("Viewing Booking Confirmations"),
-                            },
-                        ]}
-                        showIcons={true}
-                        showSubmittedText={true}
-                        styles={{
-                            backgroundColor: "#E2E2FC",
-                            textColor: "#1E1E1E",
-                            borderColor: "#D1D5DB",
-                            buttonBackground: theme.colors.secondary,
-                            iconColor: "#2563EB",
-                            fontSize: {
-                                title: {
-                                    mobile: "1rem",
-                                    desktop: "1.125rem",
-                                },
-                                date: {
-                                    mobile: "0.65rem",
-                                    desktop: "0.875rem",
-                                },
-                            },
-                            fontWeight: {
-                                title: {
-                                    mobile: "550",
-                                    desktop: "550",
-                                },
-                                date: {
-                                    mobile: "300",
-                                    desktop: "300",
-                                }
-                            },
-                            padding: {
-                                iconContainer: "0.5rem",
-                            },
-                        }}
-                    />
                 </div>
 
             </section>
 
-            {/* <DataChart />
+            <section className="mb-2">
+                <div className="w-full max-w-7xl mx-auto"  >
+                    <div className="p-4">
+                        <DocumentHeader
+                            Icon={<img src={UrgentTask} alt="Ship illustration" style={{ height: '6rem', width: '6rem' }} className="w-10 h-10 object-contain" />}
+                            title="Cargo Ready Date URGENT Booking"
+                            subtitle="Action these POs to avoid any delay to the shipment"
+                            showSeeMore={false}
+                            onSeeMoreClick={() => console.log('See More clicked')}
+                            headerTextStyle={{ color: theme.colors.yellowHeaderText }}
+                            subTitleTextStyle={{}}
+                            colorTheme={theme.colors.redHeaderText}
+                        />
+                    </div>
+                    <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
+                        <DataChart height="400px" actionFlag={"ship_by_date_booking"} />
 
-     
+                    </div>
 
-            <ShipDateGauge /> */}
+                </div>
+
+
+            </section>
+
+            <section className="mb-2">
+                <div className="w-full max-w-7xl mx-auto"  >
+                    <div className="p-4">
+                        <DocumentHeader
+                            Icon={<img src={UrgentTask} alt="Ship illustration" style={{ height: '6rem', width: '6rem' }} className="w-10 h-10 object-contain" />}
+                            title="Cargo Ready Date Pending Booking"
+                            subtitle="Send reminders to the stakeholders for pending actions"
+                            showSeeMore={false}
+                            onSeeMoreClick={() => console.log('See More clicked')}
+                            headerTextStyle={{ color: theme.colors.yellowHeaderText }}
+                            colorTheme={theme.colors.yellowHeaderText}
+                        />
+                    </div>
+                    <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
+                        <DataChart height="400px" actionFlag={"ship_by_date_booking"} />
+
+
+                    </div>
+
+                </div>
+
+            </section>
+            <section className="mb-2">
+                <div className="w-full max-w-7xl mx-auto"  >
+                    <div className="p-4">
+                        <DocumentHeader
+                            Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                            title="PO Change Requests Pending Documents"
+                            subtitle="Send reminders to the stakeholders for pending actions"
+                            showSeeMore={false}
+                            onSeeMoreClick={() => console.log('See More clicked')}
+                            headerTextStyle={{ color: theme.colors.yellowHeaderText }}
+                            colorTheme={theme.colors.yellowHeaderText}
+                        />
+                    </div>
+                    <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
+                        <ExampleScrollableTable showDocumentsSubcolumns={true} showDocuments={false}
+
+                        />
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section className="mb-2">
+                <div className="w-full max-w-7xl mx-auto"  >
+                    <div className="p-4">
+                        <DocumentHeader
+                            Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                            title="POs booked for cargo ready date:"
+                            date="24 Feb 25"
+                            subtitle="Select Purchase Order to Print or Amend SSCC Labels"
+                            showSeeMore={false}
+                            onSeeMoreClick={() => console.log('See More clicked')}
+                            headerTextStyle={{ color: theme.colors.yellowHeaderText }}
+                            colorTheme={theme.colors.yellowHeaderText}
+                        />
+                    </div>
+                    <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
+                        <ExampleScrollableTable showDocuments={true} showDocumentsSubcolumns={true}
+
+                        />
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section className="mb-2">
+                <div className="w-full max-w-7xl mx-auto"  >
+                    <div className="p-4">
+                        <DocumentHeader
+                            Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                            title="POs booked for cargo ready date:"
+                            date="26 Feb 25"
+                            subtitle="Select Purchase Order to Print or Amend SSCC Labels"
+                            showSeeMore={false}
+                            onSeeMoreClick={() => console.log('See More clicked')}
+                            headerTextStyle={{ color: theme.colors.yellowHeaderText }}
+                            colorTheme={theme.colors.yellowHeaderText}
+                        />
+                    </div>
+                    <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
+                        <ExampleScrollableTable showDocuments={true} showDocumentsSubcolumns={true}
+
+                        />
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
         </DashboardLayout>
     )
 }

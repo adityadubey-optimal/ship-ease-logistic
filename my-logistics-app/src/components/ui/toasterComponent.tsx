@@ -21,6 +21,7 @@ export function ThemedSonnerToaster({
                 style: {
                     backgroundColor: toastBgColor,
                     color: toastTextColor,
+                    zIndex: 99999999999999999999999
                 },
             }}
         />

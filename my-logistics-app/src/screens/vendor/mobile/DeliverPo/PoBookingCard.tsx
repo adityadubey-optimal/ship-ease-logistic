@@ -15,28 +15,6 @@ export default function PoBookingCard() {
                     {/* Header Section */}
                     <div className="flex items-center justify-between">
                         <div>
-                            <div className="flex  gap-3" style={{
-                                alignItems: 'baseline'
-                            }}>
-                                <span
-                                    style={{
-                                        color: theme.colors.textSecondary,
-                                        fontSize: `${getResponsiveSize(1.2, 1.75)}rem`,
-                                        fontWeight: 800,
-                                    }}
-                                >
-                                    20
-                                </span>
-                                <span
-                                    style={{
-                                        color: theme.colors.textSecondary,
-                                        fontSize: `${getResponsiveSize(1.2, 1.75)}rem`,
-                                        fontWeight: 800,
-                                    }}
-                                >
-                                    New POs issued
-                                </span>
-                            </div>
 
                             <div className="flex  gap-3" style={{
                                 alignItems: 'baseline'
@@ -74,7 +52,7 @@ export default function PoBookingCard() {
                                     fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.statusMessage.weight,
                                 }}
                             >
-                                Keep going
+                                Congratulations! Last 20 PO's booked on-time
                             </span>
                         </div>
 

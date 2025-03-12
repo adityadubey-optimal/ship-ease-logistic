@@ -152,7 +152,7 @@ export default function PurchaseOrderTableExample() {
                 data={data as any}
                 selectable
                 showActions={false} // we already have a custom “Action” column
-                getRowId={(row) => { return '' }}
+                getRowId={(row) => ''}
                 height="auto"
                 width="100%"
                 tableStyles={{

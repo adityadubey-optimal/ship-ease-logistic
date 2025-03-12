@@ -126,8 +126,8 @@ export default function Home() {
                         colorTheme={theme.colors.yellowHeaderText}
                     />
                     <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
-                        <ExampleScrollableTable
-                        //  showTotals={false} actionFlag={"ship_by_date_booking"} 
+                        <ExampleScrollableTable showDocumentsSubcolumns={true} showDocuments={false}
+
                         />
 
 
@@ -150,8 +150,8 @@ export default function Home() {
                         colorTheme={theme.colors.yellowHeaderText}
                     />
                     <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
-                        <ExampleScrollableTable
-                        //  showTotals={false} actionFlag={"ship_by_date_booking"}
+                        <ExampleScrollableTable showDocuments={true} showDocumentsSubcolumns={true}
+
                         />
 
 
@@ -174,8 +174,8 @@ export default function Home() {
                         colorTheme={theme.colors.yellowHeaderText}
                     />
                     <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
-                        <ExampleScrollableTable
-                        //  showTotals={false} actionFlag={"ship_by_date_booking"}
+                        <ExampleScrollableTable showDocuments={true} showDocumentsSubcolumns={true}
+
                         />
 
 
