@@ -42,7 +42,7 @@ export default function DataChartDesktop() {
 
 
     return (
-        <section className="mb-8 max-w-7xl mx-auto p-4" style={{ background: theme.colors.thertiary }}>
+        <section className="mb-8 max-w-7xl mx-auto p-1" style={{ background: theme.colors.thertiary }}>
 
             <div className="w-full max-w-4xl mx-auto">
                 <ProgressChart data={sampleData} height={500} />

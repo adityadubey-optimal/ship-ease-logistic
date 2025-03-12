@@ -14,7 +14,9 @@ const buttonVariants = cva(
         approve: "",
         reject: "",
         icon: "",
-        selectAction: ""
+        selectAction: "",
+        calendar: "",
+        ghost: "",
       },
       size: {
         mobile: "",
@@ -39,7 +41,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const { theme } = useTheme()
 
 
-    const getVariantStyles = (variant: "primary" | "approve" | "reject" | "icon" | "selectAction" | null | undefined) => {
+    const getVariantStyles = (variant: "primary" | "approve" | "reject" | "icon" | "selectAction" | "calendar" | "ghost" | null | undefined) => {
       switch (variant) {
         case "primary":
           return {
@@ -60,6 +62,22 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           return {
             backgroundColor: "transparent",
             color: theme.colors.textPrimary,
+          }
+        case "calendar":
+          return {
+            backgroundColor: "transparent",
+            color: theme.colors.textPrimary,
+            // "&:hover": {
+            //   backgroundColor: theme.colors.hover,
+            // },
+          }
+        case "ghost":
+          return {
+            backgroundColor: "transparent",
+            color: theme.colors.textPrimary,
+            // "&:hover": {
+            //   backgroundColor: theme.colors.hover,
+            // },
           }
         case "selectAction":
           // Gray background with black text (adjust to match your exact screenshot color)

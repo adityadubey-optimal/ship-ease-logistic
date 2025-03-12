@@ -32,10 +32,10 @@ export default function OrderHeader() {
                 <div style={{ display: "flex", flexDirection: "row", gap: "16px", flexWrap: 'wrap', justifyContent: 'space-between' }}>
 
                     <div style={{ display: "flex", flexDirection: "row", gap: "8px", }}>
-                        <p>PO Quantity : 1.545</p>
+                        <p>PO Quantity : 1,545</p>
                     </div>
                     <div style={{ display: "flex", flexDirection: "row", gap: "8px", }}>
-                        <p>Vendor Quantity: 1593</p>
+                        <p>Vendor Quantity: 1,593</p>
                     </div>
 
                 </div>

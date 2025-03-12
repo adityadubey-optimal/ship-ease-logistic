@@ -37,7 +37,7 @@ export default function Home() {
                 <StatusDashboard />
             </section>
 
-            <section className="mb-1 p-4">
+            <section className="mb-1 p-4" style={{ paddingTop: '0px' }}>
                 <VendorHeader
                     vendor="Vendor Name"
                     brand="Rubi"
@@ -134,7 +134,7 @@ export default function Home() {
                     showSeeMore={false}
                     onSeeMoreClick={() => console.log('See More clicked')}
                     containerStyle={{
-                        padding: '0.5rem 1rem 2rem 1rem',
+                        padding: '0.5rem 1rem 0rem 1rem',
 
                     }}
                 />

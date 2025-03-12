@@ -44,6 +44,7 @@ export default function StatusDashboard() {
 
                             width: '160px',
                             padding: '5px',
+                            height: '75%'
                         }}>
                             <div>
                                 <p

@@ -100,7 +100,8 @@ export default function ShipModeCard({
 
         },
         topItemContainer: {
-            width: 'fit-content'
+            width: 'fit-content',
+            padding: '2px',
         },
     }
 
@@ -121,9 +122,9 @@ export default function ShipModeCard({
                 </div>
 
                 {/* Requested Ship Mode */}
-                <div style={styleVars.topItemContainer}>
-                    <h3 style={{ ...styleVars.heading }}>Requested Ship Mode</h3>
-                    <p style={{ ...styleVars.value, fontSize: '0.9rem' }}>{requestedShipMode}</p>
+                <div style={{ ...styleVars.topItemContainer, background: "#002B5C", color: 'white', borderRadius: '15px', width: '25%', textAlign: 'center' }}>
+                    <h3 style={{ ...styleVars.heading, color: "white" }}>Requested Ship Mode</h3>
+                    <p style={{ ...styleVars.value, fontSize: '0.9rem', color: "white" }}>{requestedShipMode}</p>
                 </div>
             </div>
 

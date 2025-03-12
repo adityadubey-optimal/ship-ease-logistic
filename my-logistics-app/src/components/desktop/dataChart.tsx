@@ -11,7 +11,13 @@ import useResponsiveSize from "@/hooks/useResponsiveSize"
 import { ConfirmModal } from "../shared/ConfirmRejectModal"
 import { CheckCircle, XCircle } from 'lucide-react'
 import { useIsMobile } from "@/hooks/useMobile"
-
+import { CargoDateModal } from './CargoDateModal'
+import { SelectionMode } from '@/components/ui/calenderProps'
+import { CargoDateModalMultipalPO } from '@/components/desktop/CargoDateModalMultiplePo';
+import { DocumentsDialogExample } from "@/components/desktop/uploadDocumentModal"
+import { CreateLabelModalComponent } from "./CreateLabalComponentDesktop"
+import { RequestByAir } from './RequestByAirComponent'
+import { UploadPackingListModal } from "./UploadPackinstListModal"
 interface ProductData {
     id: number
     size: string
@@ -28,6 +34,16 @@ interface ProductData {
     lastUpdated: string
     onApprove?: (data: any) => void
     onReject?: (data: any) => void
+}
+
+interface ExampleScrollableTableProps {
+    showActions?: boolean;
+    showTotals?: boolean;
+    height?: string;
+    customActions?: () => React.ReactElement | null;
+    actionFlag?: string;
+    customStyle?: React.CSSProperties;
+    customContainerStyle?: React.CSSProperties;
 }
 
 const columns = [
@@ -66,7 +82,14 @@ const generateRandomData = (): ProductData => ({
 
 })
 
-export default function ExampleScrollableTable({ showActions = true, showTotals = true }) {
+export default function ExampleScrollableTable({ showActions = true,
+    showTotals = true,
+    height = "400px",
+    customActions = () => null,
+    actionFlag,
+    customStyle,
+    customContainerStyle,
+}: ExampleScrollableTableProps): React.ReactElement {
     const { theme } = useTheme()
     const isMobile = useIsMobile()
     // Generate 20 rows of product data using the generateRandomData function
@@ -75,6 +98,7 @@ export default function ExampleScrollableTable({ showActions = true, showTotals 
             .fill(null)
             .map(generateRandomData)
     )
+    const [selectedRows, setSelectedRows] = useState([])
     const [showAcceptModel, setShowAcceptModel] = useState(false)
     const [showRejectModel, setShowRejectModel] = useState(false)
     const [openedRow, setOpenedRow] = useState(null)
@@ -84,8 +108,8 @@ export default function ExampleScrollableTable({ showActions = true, showTotals 
         )
     }
 
-    const rowFontSize = useResponsiveSize(14, 18)
-    const headerFontSize = useResponsiveSize(16, 22)
+    const rowFontSize = useResponsiveSize(10, 15)
+    const headerFontSize = useResponsiveSize(10, 16)
     const totals = {
         poQuantity: 1545,
         vendorQuantity: 1593,
@@ -93,16 +117,52 @@ export default function ExampleScrollableTable({ showActions = true, showTotals 
         // ... etc for any numeric columns
     }
 
+    const [isBookCargoModalOpen, setIsBookCargoModalOpen] = useState(false)
+    const [isMultiplBookingModalOpen, setIsMultiplBookingModalOpen] = useState(false)
+    const [selectionMode, setSelectionMode] = useState<SelectionMode>("range")
+    const [isDocumentListupload, setIsDocumentListupload] = useState(false)
+    const [isCreateLabelModalComponent, setIsCreateLabelModalComponent] = useState(false)
+    const [isRequestAir, setIsrequestAir] = useState(false)
+    const [uploadPackinglistModal, setUploadPackinglistModal] = useState(false)
+    const onSelectionChange = (selectedRows: any) => {
+        setSelectedRows(selectedRows);
+    }
+
+    const availableDates = [
+        new Date(2025, 1, 10),
+        new Date(2025, 1, 11),
+        new Date(2025, 1, 12),
+        new Date(2025, 1, 15),
+        new Date(2025, 1, 16),
+        new Date(2025, 1, 17),
+        new Date(2025, 1, 18),
+        new Date(2025, 1, 21),
+        new Date(2025, 1, 22),
+        new Date(2025, 1, 24),
+        new Date(2025, 1, 25),
+        new Date(2025, 1, 26),
+    ]
+
+    const blockedDates = [
+        new Date(2025, 1, 13),
+        new Date(2025, 1, 14),
+        new Date(2025, 1, 19),
+        new Date(2025, 1, 20),
+        new Date(2025, 1, 23),
+        new Date(2025, 1, 27),
+        new Date(2025, 1, 28),
+    ]
 
     return (
         <div className="p-6" style={isMobile ? {
             borderRadius: "15px",
-            paddingTop: '0px'
+            paddingTop: '0px',
+            ...customContainerStyle,
         } : {
 
             // background: theme.colors.dataTableBackground, 
             borderRadius: "15px",
-
+            ...customContainerStyle,
         }}>
             {/* <h1 className="text-2xl font-bold mb-4">Product Inventory</h1> */}
             <ScrollableDataTable
@@ -120,14 +180,77 @@ export default function ExampleScrollableTable({ showActions = true, showTotals 
 
                             setShowRejectModel(true)
 
-                        }
+                        },
+                        View: (row: any) => {
+                            console.log('Viewefdsfsdfsd', row)
+                            setOpenedRow(row)
+
+
+
+                        },
+                        Download: (row: any) => {
+                            console.log('Downloadfsdfsdf', row)
+                            setOpenedRow(row)
+
+
+
+                        },
+
+                        SubmitDocs: (row: any) => {
+                            console.log('SubmitDocs', row)
+                            setOpenedRow(row)
+                            setIsDocumentListupload(true)
+
+
+
+                        },
+                        PrintSSCC: (row: any) => {
+                            console.log('PrintSSCC', row)
+                            setOpenedRow(row)
+                            setIsCreateLabelModalComponent(true)
+
+
+
+                        },
+                        RequestAirShipment: (row: any) => {
+                            console.log('RequestAirShipment', row)
+                            setOpenedRow(row)
+                            setIsrequestAir(true)
+
+
+                        },
+
+                        UploadPackingList: (row: any) => {
+                            console.log('UploadPackingList', row)
+                            setOpenedRow(row)
+                            setUploadPackinglistModal(true)
+
+
+                        },
+
+
+                        BookCargo: (row: any) => {
+                            console.log('BookCargo', row)
+                            setOpenedRow(row)
+                            if (selectedRows.length > 1) {
+                                setIsMultiplBookingModalOpen(true)
+                            }
+                            else {
+                                setIsBookCargoModalOpen(true)
+                            }
+
+
+
+                        },
+
                     }
                 })}
-                height="400px"
+                height={height}
                 width="100%"
                 showActions={showActions}
                 showTotals={showTotals}
                 totalsData={totals}
+                onSelectionChange={onSelectionChange}
                 tableStyles={{
                     headerFontSize: `${headerFontSize}px`,
                     headerFontWeight: "600",
@@ -135,9 +258,11 @@ export default function ExampleScrollableTable({ showActions = true, showTotals 
                     rowFontWeight: "400",
                     svgSize: "1.2rem",
                     checkboxSize: "1.1rem",
+                    ...customStyle,
                 }}
-
+                actionFlag={actionFlag}
                 onRowChange={handleRowChange}
+                customActions={customActions}
                 customEditComponent={(value, row, column, onSave, onCancel) => {
                     // Define a custom editor component for the cell
                     const CustomEditor = () => {
@@ -189,6 +314,58 @@ export default function ExampleScrollableTable({ showActions = true, showTotals 
                     headerIcon={<XCircle className="h-6 w-6 text-red-600" />}
                 />
             )}
+
+            {isBookCargoModalOpen && (
+
+
+
+
+
+
+                <CargoDateModal
+                    isOpen={isBookCargoModalOpen}
+                    onClose={() => setIsBookCargoModalOpen(false)}
+                    onConfirm={(date: any) => {
+                        console.log("Selected date:", date)
+                        setIsBookCargoModalOpen(false)
+                    }}
+                    poNumber="284639525"
+                    mode={selectionMode}
+                    availableDates={availableDates}
+                    blockedDates={blockedDates}
+                />
+            )}
+
+            {isMultiplBookingModalOpen && (
+                <CargoDateModalMultipalPO
+                    isOpen={isMultiplBookingModalOpen}
+                    onClose={() => setIsMultiplBookingModalOpen(false)}
+                    onConfirm={(date: any) => {
+                        console.log("Selected date:", date)
+                        setIsMultiplBookingModalOpen(false)
+                    }}
+                    poNumber="284639525"
+                    mode={selectionMode}
+                    availableDates={availableDates}
+                    blockedDates={blockedDates} />
+            )}
+            {isDocumentListupload && (
+                <DocumentsDialogExample open={isDocumentListupload} setOpen={setIsDocumentListupload} />
+            )}
+
+            {isCreateLabelModalComponent && (
+                <CreateLabelModalComponent open={isCreateLabelModalComponent} setOpen={setIsCreateLabelModalComponent} />
+            )}
+
+            {isRequestAir && (
+                <RequestByAir open={isRequestAir} setOpen={setIsrequestAir} />
+            )}
+
+            {uploadPackinglistModal && (
+                <UploadPackingListModal open={uploadPackinglistModal} setOpen={setUploadPackinglistModal} />
+            )}
+
+
         </div>
     )
 }

@@ -9,11 +9,15 @@ interface DocumentHeaderProps {
     showSeeMore?: boolean
     onSeeMoreClick?: () => void
     containerStyle?: React.CSSProperties
+    headerTextStyle?: React.CSSProperties
+    subTitleTextStyle?: React.CSSProperties
+    colorTheme?: string
 }
 
-const DocumentHeader = ({ Icon, title, subtitle, showSeeMore = false, onSeeMoreClick, containerStyle }: DocumentHeaderProps) => {
+const DocumentHeader = ({ Icon, title, subtitle, showSeeMore = false, onSeeMoreClick, containerStyle, headerTextStyle, subTitleTextStyle, colorTheme }: DocumentHeaderProps) => {
     const { theme } = useTheme()
-
+    console.log('headerTextStyle', headerTextStyle)
+    console.log('colorTheme', colorTheme)
     return (
         <div className="flex items-center justify-between w-full p-4 " style={containerStyle}>
             <div className="flex items-center gap-4">
@@ -23,8 +27,11 @@ const DocumentHeader = ({ Icon, title, subtitle, showSeeMore = false, onSeeMoreC
                         style={{
                             fontSize: theme.fonts.web.heading.size,
                             fontWeight: theme.fonts.web.heading.weight,
-                            color: theme.colors.textPrimary,
+                            color: colorTheme ? colorTheme : theme.colors.textPrimary,
+
+
                             lineHeight: "1.2",
+
                         }}
                     >
                         {title}
@@ -35,6 +42,7 @@ const DocumentHeader = ({ Icon, title, subtitle, showSeeMore = false, onSeeMoreC
                                 fontSize: theme.fonts.web.body.size,
                                 color: theme.colors.textSecondary,
                                 marginTop: "4px",
+                                ...subTitleTextStyle,
                             }}
                         >
                             {subtitle}

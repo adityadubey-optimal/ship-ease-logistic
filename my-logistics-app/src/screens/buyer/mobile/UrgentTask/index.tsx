@@ -20,7 +20,7 @@ export default function Home() {
 
 
     return (
-        <DashboardLayout>
+        <DashboardLayout title="All Urgent Tasks">
             {/* Today's Status Section Placeholder */}
             <section className="mb-1 p-4" style={{ paddingBottom: '0px' }}>
                 <StatusDashboard />
@@ -29,7 +29,7 @@ export default function Home() {
 
             {/* Task Card Section Placeholder */}
             <section className="mb-1" >
-                <div className="w-full max-w-7xl mx-auto p-2" style={{ background: theme.colors.thertiary }}>
+                <div className="w-full max-w-7xl mx-auto p-2" style={{ background: theme.colors.thertiary, }}>
                     <DocumentHeader
                         Icon={<img src={UrgentTask} alt="Ship illustration" className="w-20 h-20 object-contain" />}
                         title="Urgent Tasks"
@@ -37,7 +37,7 @@ export default function Home() {
                         showSeeMore={false}
                         onSeeMoreClick={() => console.log('See More clicked')}
                     />
-                    <div className="app" style={{ width: '100%', margin: "0 auto", padding: "20px" }}>
+                    <div className="app" style={{ width: '100%', margin: "0 auto", padding: "0px 20px 20px 20px" }}>
 
 
                         <NotificationCard

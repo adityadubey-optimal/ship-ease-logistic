@@ -33,6 +33,12 @@ interface OrderHeaderProps {
         actionButtonTextColor?: string
     },
     ActionButtonText?: string
+    showActionButton?: boolean
+    showPo?: boolean
+    showBrand?: boolean
+    showBuyer?: boolean
+    selectionLabelText?: string
+    selectionLabelStyle?: React.CSSProperties
 }
 
 export default function OrderHeader({
@@ -46,6 +52,12 @@ export default function OrderHeader({
     onAction,
     styles = {},
     ActionButtonText,
+    showActionButton = true,
+    showPo = true,
+    showBrand = true,
+    showBuyer = true,
+    selectionLabelText = undefined,
+    selectionLabelStyle,
 }: OrderHeaderProps) {
     const { theme } = useTheme()
 
@@ -77,15 +89,15 @@ export default function OrderHeader({
         >
             {/* Left Section */}
             <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "50%", flexWrap: 'wrap', justifyContent: 'space-between' }}>
-                <h1 style={{ fontSize: "24px", fontWeight: "700" }}>PO: {poNumber}</h1>
+                {showPo ? <h1 style={{ fontSize: "24px", fontWeight: "700" }}>PO: {poNumber}</h1> : null}
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                    <p>Buyer: {buyer}</p>
-                    <p>Brand: {brand}</p>
+                    {showBuyer ? <p>Buyer: {buyer}</p> : null}
+                    {showBrand ? <p>Brand: {brand}</p> : null}
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                    <h2 style={{ fontSize: "20px", fontWeight: "600" }}>{productName}</h2>
+                    <h2 style={selectionLabelStyle ? selectionLabelStyle : { fontSize: "20px", fontWeight: "600" }}>{selectionLabelText ? selectionLabelText : productName}</h2>
                     <Select value={selectedColor} onValueChange={setSelectedColor}>
                         <SelectTrigger
                             style={{
@@ -130,7 +142,7 @@ export default function OrderHeader({
                 }}
             >
                 {/* Action Button */}
-                <Button
+                {showActionButton && <Button
                     variant="primary"
                     size="desktop"
                     style={{
@@ -152,7 +164,7 @@ export default function OrderHeader({
                     {/* Icon placeholder - replace with your SVG */}
                     <div style={{ width: `${useResponsiveSize(40, 70)}px`, height: `${useResponsiveSize(40, 70)}px`, position: "relative" }}><img src={inProgress} style={{ height: '100%', width: '100%' }} /></div>
                     {ActionButtonText ? ActionButtonText : `Action Required: Approve Quantity Variation`}
-                </Button>
+                </Button>}
 
                 {/* Order Details Grid */}
                 <div

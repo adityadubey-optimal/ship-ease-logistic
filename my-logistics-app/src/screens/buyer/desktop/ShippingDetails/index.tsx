@@ -15,7 +15,7 @@ import { useParams } from "react-router-dom"
 import VendorHeader from './vendorDetials'
 import { Button } from "@/components/ui/button"
 import SpecialButton from "./CustomButton"
-import { DataTableForPo } from "./DataTable"
+import { DataTableForPo } from "@/components/desktop/DataTableForSkuDesktop"
 import CircleGauge from "@/components/ui/CircleGuage"
 import changeRequest from "@/assets/Delivery and online parcel tracking.svg"
 import { GuageComponetForPo } from "./GuageComponentForPo"

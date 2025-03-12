@@ -35,7 +35,7 @@ export const GuageComponetForPo = () => {
                     }}
                 />
                 <div style={{ background: 'white' }}>
-                    <div className="p-6" style={{ height: 'calc(300px + 10rem)', display: 'flex', alignItems: 'center', }}>
+                    <div className="p-6" style={{ height: 'calc(300px)', display: 'flex', alignItems: 'center', }}>
                         <ShipDateGauge
                             size={200}
                             ringThickness={10}

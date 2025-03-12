@@ -10,7 +10,7 @@ import NotificationCard from "@/components/mobile/NotificationCardMobile"
 import Slider from "@/components/ui/slider"
 import { DocumentList } from "@/components/ui/documentList"
 import ProgressChart from "@/components/ui/progressChart"
-import DataChart from "@/components/mobile/DataChartMobile"
+import DataChart from "@/components/desktop/dataChart"
 import { Button } from "@/components/ui/button"
 import IconButton from "@/components/ui/IconButton"
 import { QuantityTable } from "@/components/mobile/quantityTableMobile"
@@ -29,13 +29,13 @@ export default function Home() {
             </section>
 
             {/* Metrics Section Placeholder */}
-            <section className="mb-1 p-4" style={{ paddingBottom: '0rem', paddingTop: '0.5rem' }}>
+            <section className="mb-1 p-4">
                 <PoBookingCard />
 
             </section>
 
             {/* Tasks Section Placeholder */}
-            <section className="mb-1 p-4" style={{ paddingBottom: '0.5rem', paddingTop: "0.5rem" }}>
+            <section className="mb-1 p-4">
 
                 <StatusCardContainer />
             </section>
@@ -172,45 +172,11 @@ export default function Home() {
 
             </section>
 
-            <section className="mb-1 " >
-                <div className="w-full max-w-7xl mx-auto p-4" style={{ paddingBottom: '0rem' }}>
-                    <DocumentHeader
-                        Icon={<></>}
-                        title="Cargo Ready Overview"
-                        subtitle="Cargo Ready Overview for Ship-By-Date 04 March 25"
-                        showSeeMore={false}
+            {/* <DataChart />
 
-                        onSeeMoreClick={() => {
-                            console.log('testing')
-                            navigate('/buyer/documentList')
-                        }}
-                        onSeeMoreIconClick={() => {
-                            console.log('testing')
-                            navigate('/buyer/documentList')
-                        }}
-                        containerStyle={{ paddingBottom: '0rem' }}
-                    />
-                </div>
-                <section className="mb-1 p-4" style={{ paddingBottom: '0rem', paddingTop: '0.5rem' }}>
-                    <StatusDashboard />
+     
 
-                </section>
-
-                {/* Tasks Section Placeholder */}
-                <section className="mb-1 p-4" style={{ paddingBottom: '0.5rem', paddingTop: "0.5rem" }}>
-
-                    <StatusCardContainer />
-                </section>
-                <DataChart />
-
-
-            </section>
-
-
-
-
-
-            {/* <ShipDateGauge />  */}
+            <ShipDateGauge /> */}
         </DashboardLayout>
     )
 }

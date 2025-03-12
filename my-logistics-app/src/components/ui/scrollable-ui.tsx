@@ -50,20 +50,149 @@ interface ScrollableDataTableProps<T> {
         onSave: (newValue: any) => void,
         onCancel: () => void
     ) => React.ReactNode
+    customActions?: any
+    actionFlag?: string
 }
 
 function renderActionCell<T>(
     row: any,
     isMobile: boolean,
     onApprove?: (row: any) => void,
-    onReject?: (row: any) => void
+    onReject?: (row: any) => void,
+    customActions?: any,
+    actionFlag?: string,
 ) {
     function handleSelect(action: string) {
         if (action === "Approve") row.onApprove?.(row)
         if (action === "Reject") row.onReject?.(row)
-    }
+        if (action === "View") row.View?.(row)
+        if (action === "Download") row.Download?.(row)
+        if (action === "Accept") row.onApprove?.(row)
+        if (action === "Decline") row.onReject?.(row)
+        if (action === "SubmitDocs") row.SubmitDocs?.(row)
+        if (action === "PrintSSCC") row.PrintSSCC?.(row)
+        if (action === "RequestAirShipment") row.RequestAirShipment?.(row)
+        if (action === "UploadPackingList") row.UploadPackingList?.(row)
+        if (action === "BookCargo") row.BookCargo?.(row)
 
-    if (isMobile) {
+
+    }
+    console.log('actionFlag', actionFlag)
+
+    if (actionFlag) {
+        if (actionFlag === 'active_purchase_order') {
+
+            return (<DropdownMenu>
+                <DropdownMenuTrigger asChild>
+
+                    {isMobile ? <Button variant="icon" size="mobile" className="p-2">
+                        <MoreVertical className="w-4 h-4" />
+                    </Button> : <Button variant="selectAction" size="desktop" className="w-[150px]">
+                        Select Action
+                    </Button>
+                    }
+
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" style={{ width: "150px" }} className="bg-gray-200 text-black border-none">
+                    <DropdownMenuItem
+                        onClick={() => handleSelect("View")}
+                        className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                    >
+                        View                    </DropdownMenuItem>
+                    <DropdownMenuSeparator className="my-1 border-gray-400" />
+                    <DropdownMenuItem
+                        onClick={() => handleSelect("Download")}
+                        className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                    >
+                        Download
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator className="my-1 border-gray-400" />
+                    <DropdownMenuItem
+                        onClick={() => handleSelect("Accept")}
+                        className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                    >
+                        Accept
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator className="my-1 border-gray-400" />
+                    <DropdownMenuItem
+                        onClick={() => handleSelect("Decline")}
+                        className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                    >
+                        Decline
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator className="my-1 border-gray-400" />
+                </DropdownMenuContent>
+            </DropdownMenu>
+            )
+
+        }
+        if (actionFlag === 'ship_by_date_booking') {
+            return (
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+
+                        {isMobile ? <Button variant="icon" size="mobile" className="p-2">
+                            <MoreVertical className="w-4 h-4" />
+                        </Button> : <Button variant="selectAction" size="desktop" className="w-[150px]">
+                            Select Action
+                        </Button>
+                        }
+
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" style={{ width: "150px" }} className="bg-gray-200 text-black border-none">
+                        <DropdownMenuItem
+                            onClick={() => handleSelect("BookCargo")}
+                            className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                        >
+                            Book Cargo                    </DropdownMenuItem>
+                        <DropdownMenuSeparator className="my-1 border-gray-400" />
+                        <DropdownMenuItem
+                            onClick={() => handleSelect("SubmitDocs")}
+                            className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                        >
+                            Submit Docs                    </DropdownMenuItem>
+                        <DropdownMenuSeparator className="my-1 border-gray-400" />
+                        <DropdownMenuItem
+                            onClick={() => handleSelect("PrintSSCC")}
+                            className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                        >
+                            Print SSCC
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator className="my-1 border-gray-400" />
+                        <DropdownMenuItem
+                            onClick={() => handleSelect("RequestAirShipment")}
+                            className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                        >
+                            Request Air Shipment
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator className="my-1 border-gray-400" />
+                        <DropdownMenuItem
+                            onClick={() => handleSelect("UploadPackingList")}
+                            className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                        >
+                            Upload Packing List
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator className="my-1 border-gray-400" />
+                        <DropdownMenuItem
+                            onClick={() => handleSelect("View")}
+                            className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                        >
+                            View PO
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator className="my-1 border-gray-400" />
+                        <DropdownMenuItem
+                            onClick={() => handleSelect("Download")}
+                            className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                        >
+                            DownloadPO
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator className="my-1 border-gray-400" />
+                    </DropdownMenuContent>
+                </DropdownMenu>
+            )
+        }
+    }
+    else if (isMobile) {
         // On mobile, show a 3-dot icon
         return (
             <DropdownMenu>
@@ -89,7 +218,9 @@ function renderActionCell<T>(
                 </DropdownMenuContent>
             </DropdownMenu>
         )
-    } else {
+    }
+
+    else {
         // On desktop, show "Select Action" button
         return (
             <DropdownMenu>
@@ -135,6 +266,8 @@ export function ScrollableDataTable<T extends object>({
     customEditComponent,
     showTotals = false,
     totalsData,
+    customActions,
+    actionFlag,
 }: ScrollableDataTableProps<T>) {
     const { theme } = useTheme()
     const isMobile = useIsMobile()
@@ -455,7 +588,7 @@ export function ScrollableDataTable<T extends object>({
                                             width: isMobile ? "50px" : "150px",
                                         }}
                                     >
-                                        {renderActionCell(row, isMobile, onApprove, onReject)}
+                                        {renderActionCell(row, isMobile, onApprove, onReject, customActions, actionFlag)}
                                     </td>
                                 )}
                             </tr>

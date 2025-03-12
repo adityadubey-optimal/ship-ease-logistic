@@ -1,0 +1,23 @@
+:root {
+    --calendar-bg: #ffffff;
+    --calendar-border: #e2e8f0;
+    --calendar-text: #1a202c;
+    --calendar-disabled: #cbd5e0;
+    --calendar-available: #9ae6b4;
+    --calendar-blocked: #feb2b2;
+    --calendar-selected: #4299e1;
+    --calendar-today-border: #3182ce;
+    --calendar-hover: #ebf8ff;
+}
+
+.dark {
+    --calendar-bg: #1a202c;
+    --calendar-border: #2d3748;
+    --calendar-text: #e2e8f0;
+    --calendar-disabled: #4a5568;
+    --calendar-available: #2f855a;
+    --calendar-blocked: #c53030;
+    --calendar-selected: #2b6cb0;
+    --calendar-today-border: #4299e1;
+    --calendar-hover: #2a4365;
+}

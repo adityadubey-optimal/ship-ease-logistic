@@ -4,6 +4,7 @@ import type { ReactNode } from "react"
 import { useState } from "react"
 import Header from "./header"
 import BottomNav from "./mobileNav"
+import AiIcon from './AiIconComponent';
 
 interface MobileLayoutProps {
     children: ReactNode
@@ -27,6 +28,8 @@ export default function MobileLayout({ children, title, subtitle, activeNavItem 
 
             {/* Bottom Navigation */}
             <BottomNav activeItem={activeNavItem} />
+
+            <AiIcon />
         </div>
     )
 }

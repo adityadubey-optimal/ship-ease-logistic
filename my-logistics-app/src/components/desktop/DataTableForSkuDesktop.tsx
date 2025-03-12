@@ -1,6 +1,6 @@
 import DataChart from "@/components/desktop/dataChart"
-import ShippingDetailsHeader from "./DetailedPackingListHeader"
-import OrderHeader from "./DataTableInfoSection"
+import ShippingDetailsHeader from "./DetailedPackingListHeaderForSKU"
+import OrderHeader from "@/components/desktop/DataTableInfoSectionDetailPackingList"
 import { useTheme } from "@/context/ThemeContext"
 
 

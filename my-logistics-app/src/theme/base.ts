@@ -62,6 +62,14 @@ export const baseColors = {
     guageheaderColor: '#C4CDFF',
     notificationCardTextHeaderColor: '#002B75',
     vnedorText: '#616161',
+
+    calendarBackground: '#ECE6F0',
+    calendarAvailable: '#BDD5C6',
+    calendarBlock: '#FF4949',
+    calenderHeader: "#767676",
+    calendarText: '#2A2A2A',
+    redHeaderText: '#FF2200',
+    yellowHeaderText: '#EF8C02'
 }
 
 export const baseFonts = {
@@ -277,7 +285,7 @@ export const baseFonts = {
                     weight: "600"
                 },
                 pageHeaderFont: {
-                    size: 0.9 + "rem",
+                    size: 1.05 + "rem",
                     weight: "600"
                 },
                 pageHeaderLight: {
