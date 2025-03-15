@@ -28,7 +28,6 @@ import PurchaseOrderTableExample from './ChangeRequestPendingApproval'
 
 export default function Home() {
     const { theme } = useTheme()
-    console.log('tehem', theme)
     const navigate = useNavigate()
 
     const [dateRange, setDateRange] = useState<[Date | undefined, Date | undefined]>([undefined, undefined])

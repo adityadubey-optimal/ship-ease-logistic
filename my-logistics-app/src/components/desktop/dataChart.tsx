@@ -44,6 +44,7 @@ interface ExampleScrollableTableProps {
     actionFlag?: string;
     customStyle?: React.CSSProperties;
     customContainerStyle?: React.CSSProperties;
+    showDownloadButton?: boolean;
 }
 
 const columns = [
@@ -89,6 +90,7 @@ export default function ExampleScrollableTable({ showActions = true,
     actionFlag,
     customStyle,
     customContainerStyle,
+    showDownloadButton,
 }: ExampleScrollableTableProps): React.ReactElement {
     const { theme } = useTheme()
     const isMobile = useIsMobile()
@@ -351,7 +353,7 @@ export default function ExampleScrollableTable({ showActions = true,
                     blockedDates={blockedDates} />
             )}
             {isDocumentListupload && (
-                <DocumentsDialogExample open={isDocumentListupload} setOpen={setIsDocumentListupload} />
+                <DocumentsDialogExample open={isDocumentListupload} setOpen={setIsDocumentListupload} showDownloadButton={showDownloadButton} />
             )}
 
             {isCreateLabelModalComponent && (

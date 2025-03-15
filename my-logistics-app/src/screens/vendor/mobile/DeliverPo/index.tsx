@@ -18,6 +18,9 @@ import ShipDateGauge from "@/components/mobile/shipDaysGauage"
 import { useNavigate } from "react-router-dom"
 import VendorOptions from '@/components/mobile/VendorOptionsMobile'
 import ExampleScrollableTable from '@/components/desktop/DataChartForShipper'
+import Hazard from "@/assets/fluent_approvals-app-24-filled.svg"
+import PurchaseOrderTableExample from '../vendorHome/ChangeRequestPendingApproval'
+
 
 
 import DocumentListPro from "@/components/ui/documentListNew"
@@ -91,6 +94,28 @@ export default function Home() {
                         <ExampleScrollableTable showDocumentsSubcolumns={true} showDocuments={true}
 
                         />
+
+
+                    </div>
+
+                </div>
+
+            </section>
+            <section className="mb-12">
+                <div className="w-full max-w-7xl mx-auto "  >
+                    <div className=" p-4">
+                        <DocumentHeader
+                            Icon={<img src={Hazard} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                            title="PO Change Requests Pending Approval"
+                            subtitle="Send reminders to the stakeholders for pending actions"
+                            showSeeMore={false}
+                            onSeeMoreClick={() => console.log('See More clicked')}
+                            headerTextStyle={{ color: theme.colors.yellowHeaderText }}
+                            colorTheme={theme.colors.yellowHeaderText}
+                        />
+                    </div>
+                    <div style={{ background: theme.colors.secondary, borderRadius: '25px', paddingTop: "1.5rem", marginTop: '1rem' }}>
+                        <PurchaseOrderTableExample />
 
 
                     </div>

@@ -26,6 +26,7 @@ import { useIsMobile } from "@/hooks/useMobile"
 interface DocumentsDialogExampleProps {
     open: boolean
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
+    showDownloadButton?: boolean
 }
 
 
@@ -103,7 +104,8 @@ export function UploadPackingListModal({ open, setOpen }: DocumentsDialogExample
                         backgroundColor: theme.colors.thertiary,
                         borderRadius: 25,
                         display: 'flex',
-                        flexDirection: 'column'
+                        flexDirection: 'column',
+                        zIndex: 9999999999,
                     }}
                 >
                     {/* You can add a top bar or anything you wish */}

@@ -7,7 +7,7 @@ import useResponsiveSize from "@/hooks/useResponsiveSize";
 import { useNavigate } from "react-router-dom";
 // import shipIcon from "../assets/ship-icon.png" // Make sure this path is correct
 
-export default function StatusDashboard({ ImportPoButton = false }: { ImportPoButton?: boolean }) {
+export default function StatusDashboard({ ImportPoButton = false, showAddPoButton = true, showShipByDate = true }: { ImportPoButton?: boolean, showAddPoButton?: boolean, showShipByDate?: boolean }) {
     const { theme } = useTheme()
     const navigate = useNavigate()
     // const SHIP_BY_DATE_CARD_WIDTH = "350px";
@@ -16,7 +16,7 @@ export default function StatusDashboard({ ImportPoButton = false }: { ImportPoBu
     // const CARD_HEIGHT = "180px";
 
     // Responsive dimensions (in pixels)
-    const SHIP_BY_DATE_CARD_WIDTH = useResponsiveSize(350, 400); // Ship-by-Date card width scales from 350px to 400px
+    const SHIP_BY_DATE_CARD_WIDTH = useResponsiveSize(300, 400); // Ship-by-Date card width scales from 350px to 400px
     const DAYS_TO_SHIP_CARD_WIDTH = useResponsiveSize(500, 600);   // Days-to-Ship card width scales from 500px to 600px
     const PO_CARD_WIDTH = useResponsiveSize(160, 120);           // PO card width scales from 160px to 180px
     const CARD_HEIGHT = useResponsiveSize(80, 120);            // Card height scales from 180px to 220px
@@ -91,79 +91,79 @@ export default function StatusDashboard({ ImportPoButton = false }: { ImportPoBu
                         />
                     </div>
                 </div>
+                {showShipByDate && (
 
-                {/* Days to Ship Card */}
-                <div
-                    style={{
-                        backgroundColor: "white",
-                        border: `1px solid ${theme.colors.secondary}`,
-                        borderRadius: "8px",
-                        minWidth: DAYS_TO_SHIP_CARD_WIDTH,
-                        maxWidth: DAYS_TO_SHIP_CARD_WIDTH,
-                        height: CARD_HEIGHT,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        padding: "24px 0px 24px 24px",
-                    }}
-                >
-                    <img
-                        src={Ship}
-                        alt="Ship illustration"
-                        className="object-contain"
-                        style={{ height: `${useResponsiveSize(80, 110)}px`, width: `${useResponsiveSize(80, 110)}px` }}
-                    />
-                    <p
-                        style={{
-                            color: theme.colors.textSecondary,
-                            fontSize: theme.fonts.web.buyerHomePage.statusCard.calendarDescription.size,
-                            fontWeight: theme.fonts.web.buyerHomePage.statusCard.calendarDescription.weight,
-                            padding: "15px",
-                        }}
-                    >
-                        <span
-                            style={{
-                                color: theme.colors.textSecondary,
-                                fontWeight: theme.fonts.web.buyerHomePage.statusCard.calendarDate.weight,
-                                fontSize: theme.fonts.web.buyerHomePage.statusCard.calendarDate.size,
-                            }}
-                        >
-                            14 days
-                        </span>{" "}
-                        to Ship-by-Date
-                    </p>
                     <div
                         style={{
-                            backgroundColor: theme.colors.secondary,
-                            height: `calc(${CARD_HEIGHT}- 0px)`,
-                            width: `calc(${CARD_HEIGHT}- 10px)`,
-                            // padding: "24px",
+                            backgroundColor: "white",
+                            border: `1px solid ${theme.colors.secondary}`,
                             borderRadius: "8px",
-                            position: "relative",
+                            minWidth: DAYS_TO_SHIP_CARD_WIDTH,
+                            maxWidth: DAYS_TO_SHIP_CARD_WIDTH,
+                            height: CARD_HEIGHT,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            padding: "24px 0px 24px 24px",
                         }}
                     >
-                        <img src={CalendarIcon} alt="Calendar Icon" style={{
-                            height: `calc(${CARD_HEIGHT}- 15px)`,
-                            width: `calc(${CARD_HEIGHT}- 15px)`,
-                        }} />
-                        <span
+                        <img
+                            src={Ship}
+                            alt="Ship illustration"
+                            className="object-contain"
+                            style={{ height: `${useResponsiveSize(80, 110)}px`, width: `${useResponsiveSize(80, 110)}px` }}
+                        />
+                        <p
                             style={{
-                                position: "absolute",
-                                top: "50%",
-                                left: "50%",
-                                transform: "translate(-50%, -50%)",
-                                color: theme.colors.textPrimary,
-                                fontSize: theme.fonts.web.buyerHomePage.statusCard.calendarFont.size,
-                                fontWeight: theme.fonts.web.buyerHomePage.statusCard.calendarFont.weight,
+                                color: theme.colors.textSecondary,
+                                fontSize: theme.fonts.web.buyerHomePage.statusCard.calendarDescription.size,
+                                fontWeight: theme.fonts.web.buyerHomePage.statusCard.calendarDescription.weight,
+                                padding: "15px",
                             }}
                         >
-                            14
-                        </span>
-                    </div>
-                </div>
+                            <span
+                                style={{
+                                    color: theme.colors.textSecondary,
+                                    fontWeight: theme.fonts.web.buyerHomePage.statusCard.calendarDate.weight,
+                                    fontSize: theme.fonts.web.buyerHomePage.statusCard.calendarDate.size,
+                                }}
+                            >
+                                14 days
+                            </span>{" "}
+                            to Ship-by-Date
+                        </p>
+                        <div
+                            style={{
+                                backgroundColor: theme.colors.secondary,
+                                height: `calc(${CARD_HEIGHT}- 0px)`,
+                                width: `calc(${CARD_HEIGHT}- 10px)`,
+                                // padding: "24px",
+                                borderRadius: "8px",
+                                position: "relative",
+                            }}
+                        >
+                            <img src={CalendarIcon} alt="Calendar Icon" style={{
+                                height: `calc(${CARD_HEIGHT}- 15px)`,
+                                width: `calc(${CARD_HEIGHT}- 15px)`,
+                            }} />
+                            <span
+                                style={{
+                                    position: "absolute",
+                                    top: "50%",
+                                    left: "50%",
+                                    transform: "translate(-50%, -50%)",
+                                    color: theme.colors.textPrimary,
+                                    fontSize: theme.fonts.web.buyerHomePage.statusCard.calendarFont.size,
+                                    fontWeight: theme.fonts.web.buyerHomePage.statusCard.calendarFont.weight,
+                                }}
+                            >
+                                14
+                            </span>
+                        </div>
+                    </div>)}
 
                 {/* Calendar and Add PO Card */}
-                <div
+                {showAddPoButton && <div
                     style={{
                         minWidth: PO_CARD_WIDTH,
                         maxWidth: PO_CARD_WIDTH,
@@ -196,94 +196,10 @@ export default function StatusDashboard({ ImportPoButton = false }: { ImportPoBu
                             {!ImportPoButton ? `Add PO` : `Import Po`}
                         </span>
                     </Button>
-                </div>
+                </div>}
             </div>
 
-            {/* Grid Section */}
-            {/* <div className="grid grid-cols-1 md:grid-cols-[350px_auto_160px] gap-4">
-                <div style={{ backgroundColor: theme.colors.cardBackground, borderRadius: "8px", padding: "24px" }}>
-                    <div className="flex justify-between items-center">
-                        <div>
-                            <p
-                                style={{
-                                    color: theme.colors.textPrimary,
-                                    fontSize: theme.fonts.web.buyerHomePage.statusCard.shipHeader.size,
-                                    fontWeight: theme.fonts.web.buyerHomePage.statusCard.shipHeader.weight,
-                                    marginBottom: "8px",
-                                }}
-                            >
-                                For Ship-by-Date:
-                            </p>
-                            <p
-                                style={{
-                                    color: theme.colors.textPrimary,
-                                    fontSize: theme.fonts.web.buyerHomePage.statusCard.dateFont.size,
-                                    fontWeight: theme.fonts.web.buyerHomePage.statusCard.dateFont.weight,
-                                }}
-                            >
-                                4 Mar 25
-                            </p>
-                        </div>
-                        <Edit2 style={{ color: theme.colors.textPrimary, height: "20px", width: "20px", cursor: "pointer" }} />
-                    </div>
-                </div>
 
-                <div
-                    style={{
-                        backgroundColor: "white",
-                        border: `1px solid ${theme.colors.secondary}`,
-                        borderRadius: "8px",
-                        maxWidth: '700px'
-                    }}
-                    className="flex items-center justify-between"
-                >
-
-                    <img src={Ship} alt="Ship illustration" className=" object-contain" style={{ padding: "24px", height: "120px", width: '120px' }} />
-                    <p
-                        style={{
-                            color: theme.colors.textSecondary,
-                            fontSize: theme.fonts.web.buyerHomePage.statusCard.calendarDescription.size,
-                            fontWeight: theme.fonts.web.buyerHomePage.statusCard.calendarDescription.weight,
-                            padding: "15px"
-                        }}
-                    >
-                        <span style={{ color: theme.colors.textSecondary, fontWeight: theme.fonts.web.buyerHomePage.statusCard.calendarDate.weight, fontSize: theme.fonts.web.buyerHomePage.statusCard.calendarDate.size }}>14 days</span> to Ship-by-Date
-                    </p>
-                    <div style={{ backgroundColor: theme.colors.secondary, padding: "24px", borderRadius: "8px" }}>
-                        <div className="flex items-center gap-2" style={{ position: 'relative' }}>
-                            <img src={CalendarIcon} />
-                            <span
-                                style={{
-                                    position: 'absolute',
-                                    transform: 'translate(50%, 10px)',
-                                    color: theme.colors.textPrimary,
-                                    fontSize: theme.fonts.web.buyerHomePage.statusCard.calendarFont.size,
-                                    fontWeight: theme.fonts.web.buyerHomePage.statusCard.calendarFont.weight,
-                                }}
-                            >
-                                14
-                            </span>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div className="flex items-center justify-end">
-                    <Button
-                        className="text-white h-full w-160 p-0 rounded-lg flex flex-col items-center justify-center"
-                        style={{ backgroundColor: theme.colors.primary, justifyContent: 'center', display: 'flex', flexDirection: 'column', width: '160px', height: '100%', borderRadius: theme.borderRadius.borderRadius, }}
-                    >
-                        <CirclePlus className="h-5 w-5" style={{ height: '25px', width: '25px' }} />
-                        <span
-                            style={{
-                                fontSize: theme.fonts.web.secondaryHeading.size, fontWeight: theme.fonts.web.secondaryHeading.weight
-                            }}
-                        >
-                            Add PO
-                        </span>
-                    </Button>
-                </div>
-            </div> */}
         </div>
     )
 }

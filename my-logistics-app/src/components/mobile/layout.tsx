@@ -11,9 +11,10 @@ interface MobileLayoutProps {
     title?: string
     subtitle?: string
     activeNavItem?: string
+    showSelectAccont?: boolean
 }
 
-export default function MobileLayout({ children, title, subtitle, activeNavItem }: MobileLayoutProps) {
+export default function MobileLayout({ children, title, subtitle, activeNavItem, showSelectAccont = false }: MobileLayoutProps) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
     return (

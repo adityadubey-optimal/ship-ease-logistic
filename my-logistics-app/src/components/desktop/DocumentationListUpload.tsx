@@ -66,6 +66,7 @@ interface DocumentListProps {
     }
     showIcons?: boolean
     showSubmittedText?: boolean
+    showDownloadButton?: boolean
 }
 
 const defaultStyles = {
@@ -98,6 +99,7 @@ export default function DocumentList({
     // We won’t use showIcons in this new version
     showIcons = false,
     showSubmittedText = true,
+    showDownloadButton = false,
 }: DocumentListProps) {
     const { theme } = useTheme()
     const isMobile = useIsMobile()
@@ -247,32 +249,64 @@ export default function DocumentList({
                         </div>
 
                         {/* Right section: "Upload" button and hidden file input */}
-                        <div className="flex gap-2 items-center">
-                            <Button
-                                onClick={() => handleUploadClick(index)}
-                                style={{
-                                    backgroundColor: mergedStyles.buttonBackground,
-                                    padding: "0.5rem 1rem",
-                                    borderRadius: mergedStyles.borderRadius.iconContainer,
-                                    fontSize: getFontSize("count"),
-                                    fontWeight: getFontWeight("count"),
-                                    color: mergedStyles.countColor,
-                                    cursor: "pointer",
-                                    border: `1px solid ${mergedStyles.borderColor}`,
-                                }}
-                            >
-                                Upload
-                            </Button>
+                        <div style={(isMobile && showDownloadButton) ? { display: 'flex', flexDirection: 'column', gap: '10px' } : { display: 'flex', flexDirection: 'row', gap: '25px' }}>
+                            <div className="flex gap-2 items-center">
+                                <Button
+                                    onClick={() => handleUploadClick(index)}
+                                    style={{
+                                        backgroundColor: mergedStyles.buttonBackground,
+                                        padding: "0.5rem 1rem",
+                                        borderRadius: mergedStyles.borderRadius.iconContainer,
+                                        fontSize: getFontSize("count"),
+                                        fontWeight: getFontWeight("count"),
+                                        color: mergedStyles.countColor,
+                                        cursor: "pointer",
+                                        border: `1px solid ${mergedStyles.borderColor}`,
+                                        width: '100%'
+                                    }}
+                                >
+                                    Upload
+                                </Button>
 
-                            {/* Hidden file input for single file upload */}
-                            <input
-                                ref={fileInputRefs[index]}
-                                type="file"
-                                style={{ display: "none" }}
-                                multiple={false}
-                                onChange={(e) => handleFileChange(index, e.target.files)}
-                            />
+                                {/* Hidden file input for single file upload */}
+                                <input
+                                    ref={fileInputRefs[index]}
+                                    type="file"
+                                    style={{ display: "none" }}
+                                    multiple={false}
+                                    onChange={(e) => handleFileChange(index, e.target.files)}
+                                />
+                            </div>
+                            {showDownloadButton && <div className="flex gap-2 items-center">
+                                <Button
+                                    // onClick={() => handleUploadClick(index)}
+                                    style={{
+                                        backgroundColor: mergedStyles.buttonBackground,
+                                        padding: "0.5rem 1rem",
+                                        borderRadius: mergedStyles.borderRadius.iconContainer,
+                                        fontSize: getFontSize("count"),
+                                        fontWeight: getFontWeight("count"),
+                                        color: mergedStyles.countColor,
+                                        cursor: "pointer",
+                                        border: `1px solid ${mergedStyles.borderColor}`,
+                                        width: '100%'
+                                    }}
+                                >
+                                    Downlaod
+                                </Button>
+
+                                {/* Hidden file input for single file upload */}
+                                <input
+                                    ref={fileInputRefs[index]}
+                                    type="file"
+                                    style={{ display: "none" }}
+                                    multiple={false}
+                                    onChange={(e) => handleFileChange(index, e.target.files)}
+                                />
+                            </div>
+                            }
                         </div>
+
                     </div>
                 ))}
             </div>

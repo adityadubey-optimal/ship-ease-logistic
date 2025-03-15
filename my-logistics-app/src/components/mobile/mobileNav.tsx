@@ -67,12 +67,81 @@ export default function BottomNav({ activeItem = "home" }: BottomNavProps) {
             },
         },
     ]
+    let content: Partial<NavItem[]> = []
+    switch (true) {
+        case location.pathname.startsWith("/auth"):
+            // content = <div>Auth Routes Component</div>
+            break
+        case location.pathname.startsWith("/buyer"):
+            content = [{
+                icon: Home,
+                label: "Home",
+                isActive: activeItem === "home",
+                onClick: () => {
+                    console.log("testing Home")
+                    navigate("/buyer/home")
+                },
+            },
+            {
+                icon: ListTodo,
+                label: "Tasks",
+                isActive: activeItem === "tasks",
+                onClick: () => {
+                    console.log("testing Tasks")
+                    navigate("/buyer/urgentTask")
+                },
+            },
+            {
+                icon: ListTodo,
+                label: "invisible",
+                isActive: activeItem === "tasks",
+                onClick: () => {
+                    console.log("testing invisible")
+                },
+            },
+            {
+                icon: Settings,
+                label: "Settings",
+                isActive: activeItem === "settings",
+                onClick: () => {
+                    console.log("testing Settings")
+                    navigate("buyer/settings")
+                },
+            },
+            {
+                icon: HelpCircle,
+                label: "Help",
+                isActive: activeItem === "help",
+                onClick: () => {
+                    console.log("testing Help")
+                    navigate("buyer/help")
+                },
+            },]
+            break
+        case location.pathname.startsWith("/shipper"):
+            // content = <div>Shipper Routes Component</div>
+            break
+        case location.pathname.startsWith("/control-tower"):
+            // content = <div>Control Tower Routes Component</div>
+            break
+        case location.pathname.startsWith("/consignee"):
+            // content = <div>Consignee Routes Component</div>
+            break
+        case location.pathname.startsWith("/cfs-receiver"):
+            // content = <div>CFS Receiver Routes Component</div>
+            break
+        default:
+            // content = <div>Default Auth Routes Component</div>
+            break
+    }
+
 
     return (
         <div
             className="fixed bottom-0 left-0 right-0 h-16 border-t bg-white"
             style={{ backgroundColor: "#D0D7FF", zIndex: 99999999999 }}
         >
+
             <nav
                 className="h-full w-full flex items-center justify-between"
                 style={{ position: "relative" }}

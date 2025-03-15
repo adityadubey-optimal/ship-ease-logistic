@@ -14,11 +14,12 @@ import { useIsMobile } from "@/hooks/useMobile"
 interface DocumentsDialogExampleProps {
     open: boolean
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
+    showDownloadButton?: boolean
 }
 
 
 
-export function DocumentsDialogExample({ open, setOpen }: DocumentsDialogExampleProps) {
+export function DocumentsDialogExample({ open, setOpen, showDownloadButton = false }: DocumentsDialogExampleProps) {
     const { theme } = useTheme()
     const isMobile = useIsMobile()
     return isMobile ? (
@@ -43,7 +44,7 @@ export function DocumentsDialogExample({ open, setOpen }: DocumentsDialogExample
 
                     <div className="my-4" style={{ background: theme.colors.thertiary, padding: '1rem' }}>
 
-                        <DocumentList />
+                        <DocumentList showDownloadButton={showDownloadButton} />
                     </div>
 
 
@@ -59,11 +60,12 @@ export function DocumentsDialogExample({ open, setOpen }: DocumentsDialogExample
 
                 <Dialog open={open} onOpenChange={setOpen}>
                     <DialogContent
-                        className="w-[90%] h-[90%] overflow-auto"
+                        className="sm:max-w-full w-[90%] h-[90%] overflow-auto"
                         style={{
                             backgroundColor: theme.colors.thertiary,
                             borderRadius: 25,
                             zIndex: 9999999999999999999,
+                            width: '80vw'
                         }}
                     >
                         {/* You can add a top bar or anything you wish */}
@@ -73,7 +75,7 @@ export function DocumentsDialogExample({ open, setOpen }: DocumentsDialogExample
 
                         <div className="my-4" style={{ background: theme.colors.thertiary, padding: '1rem' }}>
 
-                            <DocumentList />
+                            <DocumentList showDownloadButton={showDownloadButton} />
                         </div>
 
 

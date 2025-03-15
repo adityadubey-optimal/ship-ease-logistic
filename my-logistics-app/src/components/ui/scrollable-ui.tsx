@@ -99,10 +99,10 @@ function renderActionCell<T>(
         if (action === "RequestAirShipment") row.RequestAirShipment?.(row)
         if (action === "UploadPackingList") row.UploadPackingList?.(row)
         if (action === "BookCargo") row.BookCargo?.(row)
+        if (action === 'sendReminder') row.SendReminder?.(row)
 
 
     }
-    console.log('actionFlag', actionFlag)
 
     if (actionFlag) {
         if (actionFlag === 'active_purchase_order') {
@@ -216,6 +216,73 @@ function renderActionCell<T>(
                 </DropdownMenu>
             )
         }
+        if (actionFlag === 'send_reminder_only') {
+            return (
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+
+                        {isMobile ? <Button variant="icon" size="mobile" className="p-2">
+                            <MoreVertical className="w-4 h-4" />
+                        </Button> : <Button variant="selectAction" size="desktop" className="w-[150px]">
+                            Select Action
+                        </Button>
+                        }
+
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" style={{ width: "150px" }} className="bg-gray-200 text-black border-none">
+                        <DropdownMenuItem
+                            onClick={() => handleSelect("sendReminder")}
+                            className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                        >
+                            Send Reminder                    </DropdownMenuItem>
+                        <DropdownMenuSeparator className="my-1 border-gray-400" />
+
+                        <DropdownMenuItem
+                            onClick={() => handleSelect("View")}
+                            className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                        >
+                            View    Document                </DropdownMenuItem>
+
+                    </DropdownMenuContent>
+
+
+                </DropdownMenu>
+            )
+        }
+        if (actionFlag === 'send_reminder_with_shipping_information') {
+            return (
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+
+                        {isMobile ? <Button variant="icon" size="mobile" className="p-2">
+                            <MoreVertical className="w-4 h-4" />
+                        </Button> : <Button variant="selectAction" size="desktop" className="w-[150px]">
+                            Select Action
+                        </Button>
+                        }
+
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" style={{ width: "150px" }} className="bg-gray-200 text-black border-none">
+                        <DropdownMenuItem
+                            onClick={() => handleSelect("sendReminder")}
+                            className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                        >
+                            Send Reminder                    </DropdownMenuItem>
+                        <DropdownMenuSeparator className="my-1 border-gray-400" />
+
+                        <DropdownMenuItem
+                            onClick={() => handleSelect("View")}
+                            className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                        >
+                            View    Shipping Information                </DropdownMenuItem>
+
+                    </DropdownMenuContent>
+
+
+                </DropdownMenu>
+            )
+        }
+
     }
     else if (isMobile) {
         // On mobile, show a 3-dot icon

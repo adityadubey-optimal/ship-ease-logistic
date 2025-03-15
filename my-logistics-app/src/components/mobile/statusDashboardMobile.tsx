@@ -6,7 +6,7 @@ import { useTheme } from "@/context/ThemeContext"
 import Ship from "@assets/Ship.svg"
 import CalendarIcon from '@assets/Calendar.svg';
 
-export default function StatusDashboard() {
+export default function StatusDashboard({ showAddPoButton = true }: { showAddPoButton?: boolean }) {
     const { theme } = useTheme()
 
     return (

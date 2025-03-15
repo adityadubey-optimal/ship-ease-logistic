@@ -52,7 +52,9 @@ interface POData {
 }
 
 /** Example parent component that uses the multi‐row “Documents” header. */
-export default function ExampleScrollableTableWithSubcolumns({ showDocumentsSubcolumns = false, showDocuments = false }: { showDocumentsSubcolumns: boolean, showDocuments: boolean }) {
+export default function ExampleScrollableTableWithSubcolumns({ showDocumentsSubcolumns = false, showDocuments = false, actionFlag = 'ship_by_date_booking', showTotals = false, showDownloadButton }: {
+    showDocumentsSubcolumns: boolean, showDocuments: boolean, actionFlag?: string, showTotals?: boolean, showDownloadButton?: boolean
+}) {
     const { theme } = useTheme()
     const isMobile = useIsMobile()
 
@@ -252,13 +254,16 @@ export default function ExampleScrollableTableWithSubcolumns({ showDocumentsSubc
                             setIsBookCargoModalOpen(true)
                         }
                     },
+                    SendReminder: (t: any) => {
+                        console.log("SendReminder", t)
+                    }
                 }))}
                 // Table styling & behavior
                 height="400px"
                 width="100%"
                 showActions={true}
-                actionFlag="ship_by_date_booking"
-                showTotals={true}
+                actionFlag={actionFlag}
+                showTotals={showTotals}
                 totalsData={totals}
                 onSelectionChange={onSelectionChange}
                 onRowChange={handleRowChange}
@@ -366,6 +371,7 @@ export default function ExampleScrollableTableWithSubcolumns({ showDocumentsSubc
                 <DocumentsDialogExample
                     open={isDocumentListupload}
                     setOpen={setIsDocumentListupload}
+                    showDownloadButton={showDownloadButton}
                 />
             )}
 
@@ -387,6 +393,7 @@ export default function ExampleScrollableTableWithSubcolumns({ showDocumentsSubc
                 <UploadPackingListModal
                     open={uploadPackinglistModal}
                     setOpen={setUploadPackinglistModal}
+
                 />
             )}
         </div>
