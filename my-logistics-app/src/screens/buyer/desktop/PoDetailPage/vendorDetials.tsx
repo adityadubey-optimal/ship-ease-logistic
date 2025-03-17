@@ -26,7 +26,7 @@ interface VendorHeaderProps {
         title: string
         titleValeu: string
     }
-    showVendroBrandDetail: boolean
+    showVendroBrandDetail?: boolean
 }
 
 // Styled components
