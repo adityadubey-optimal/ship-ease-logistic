@@ -26,7 +26,16 @@ export default function Home() {
     const { theme } = useTheme()
     const navigate = useNavigate()
 
-    const vendors = [
+    interface Vendor {
+        id?: string
+        country?: string
+        vendor?: string
+        lat?: number
+        lng?: number
+        category?: "red" | "yellow" | "orange"
+    }
+
+    const vendors: Vendor[] = [
         {
             id: "1",
             country: "China",
