@@ -61,7 +61,7 @@ export default function Home() {
             </section>
             <section className="mb-8">
                 <DocumentHeader
-                    Icon={<img src={Building} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                    Icon={<img src={Building} alt="Ship illustration" className="w-20 h-20 object-contain" />}
                     title="SKU Change Request"
                     subtitle="SKU units are derived from the uploaded PO"
                     showSeeMore={false}
@@ -74,7 +74,7 @@ export default function Home() {
 
             <section className="mb-8 mt-8">
                 <DocumentHeader
-                    Icon={<img src={changeRequest} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                    Icon={<img src={changeRequest} alt="Ship illustration" className="w-25 h-25 object-contain" />}
                     title="Ship-by-date Change Request"
                     subtitle="Approve or reject the requested ship mode"
                     showSeeMore={false}

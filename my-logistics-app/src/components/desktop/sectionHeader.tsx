@@ -12,10 +12,11 @@ interface DocumentHeaderProps {
     headerTextStyle?: React.CSSProperties
     subTitleTextStyle?: React.CSSProperties
     colorTheme?: string
+    dateColor?: string
     date?: string
 }
 
-const DocumentHeader = ({ Icon, date, title, subtitle, showSeeMore = false, onSeeMoreClick, containerStyle, headerTextStyle, subTitleTextStyle, colorTheme }: DocumentHeaderProps) => {
+const DocumentHeader = ({ Icon, date, dateColor, title, subtitle, showSeeMore = false, onSeeMoreClick, containerStyle, headerTextStyle, subTitleTextStyle, colorTheme }: DocumentHeaderProps) => {
     const { theme } = useTheme()
 
     return (
@@ -34,7 +35,7 @@ const DocumentHeader = ({ Icon, date, title, subtitle, showSeeMore = false, onSe
 
                         }}
                     >
-                        {date ? (<>{title} <span style={{ color: theme.colors.success }}>{date}</span></>) : title}
+                        {date ? (<>{title} <span style={{ color: dateColor ? dateColor : theme.colors.success }}>{date}</span></>) : title}
 
                     </h1>
                     {subtitle && (

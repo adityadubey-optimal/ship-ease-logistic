@@ -25,7 +25,7 @@ export default function Home() {
         <DashboardLayout headerName={'Cargo Ready Date Booking'}>
             {/* Today's Status Section Placeholder */}
             <section className="mb-2">
-                <StatusDashboard />
+                <StatusDashboard showAddPoButton={false} loggedInAstext="Orient Craft" />
             </section>
 
             {/* Metrics Section Placeholder */}
@@ -44,7 +44,30 @@ export default function Home() {
             {/* Tasks Section Placeholder */}
             <section className="mb-2">
 
-                <StatusCardContainer />
+                <StatusCardContainer cards={[
+                    {
+                        value: 14,
+                        status: "success" as const,
+                        title: "Good To-go",
+                        subtitle: "Shipments",
+                        width: "300px",
+                    },
+                    {
+                        value: 4,
+                        status: "warning" as const,
+                        title: "Pending",
+                        subtitle: "Shipments",
+                        width: "300px",
+                    },
+                    {
+                        value: 2,
+                        status: "error" as const,
+                        title: "Urgent",
+                        subtitle: "Shipments",
+                        additionalInfo: "20 PO's at risk Need Action",
+                        widthError: "520px",
+                    },
+                ]} />
             </section>
 
 
@@ -64,6 +87,7 @@ export default function Home() {
                     />
 
                     <div style={{ background: theme.colors.secondary, borderRadius: '35px' }}>
+
                         <DataTableForPo />
                         <AcceptRejectButton />
                     </div>
@@ -99,7 +123,7 @@ export default function Home() {
                     <DocumentHeader
                         Icon={<img src={UrgentTask} alt="Ship illustration" style={{ height: '6rem', width: '6rem' }} className="w-10 h-10 object-contain" />}
                         title="Cargo Ready Date Pending Booking"
-                        subtitle="Send reminders to the stakeholders for pending actions"
+                        subtitle="Action these POs to avoid any delay to the shipment"
                         showSeeMore={false}
                         onSeeMoreClick={() => console.log('See More clicked')}
                         headerTextStyle={{ color: theme.colors.yellowHeaderText }}
@@ -119,7 +143,7 @@ export default function Home() {
                     <DocumentHeader
                         Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
                         title="PO Change Requests Pending Documents"
-                        subtitle="Send reminders to the stakeholders for pending actions"
+                        subtitle="Upload Pending Documents"
                         showSeeMore={false}
                         onSeeMoreClick={() => console.log('See More clicked')}
                         headerTextStyle={{ color: theme.colors.yellowHeaderText }}
@@ -146,8 +170,8 @@ export default function Home() {
                         subtitle="Select Purchase Order to Print or Amend SSCC Labels"
                         showSeeMore={false}
                         onSeeMoreClick={() => console.log('See More clicked')}
-                        headerTextStyle={{ color: theme.colors.yellowHeaderText }}
-                        colorTheme={theme.colors.yellowHeaderText}
+                    // headerTextStyle={{ color: theme.colors.yellowHeaderText }}
+                    // colorTheme={theme.colors.yellowHeaderText}
                     />
                     <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
                         <ExampleScrollableTable showDocuments={true} showDocumentsSubcolumns={true}
@@ -170,8 +194,8 @@ export default function Home() {
                         subtitle="Select Purchase Order to Print or Amend SSCC Labels"
                         showSeeMore={false}
                         onSeeMoreClick={() => console.log('See More clicked')}
-                        headerTextStyle={{ color: theme.colors.yellowHeaderText }}
-                        colorTheme={theme.colors.yellowHeaderText}
+                    // headerTextStyle={{ color: theme.colors.yellowHeaderText }}
+                    // colorTheme={theme.colors.yellowHeaderText}
                     />
                     <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
                         <ExampleScrollableTable showDocuments={true} showDocumentsSubcolumns={true}

@@ -1,6 +1,7 @@
 import DataChart from "@/components/desktop/dataChart"
 import OrderHeader from "./CargoReadyBookingHeader"
 import { useTheme } from "@/context/ThemeContext"
+import DocumentHeader from "@/components/desktop/sectionHeader"
 
 
 export const DataTableForPo = ({ showDetailedPackingList = false }: { showDetailedPackingList?: boolean }) => {
@@ -40,7 +41,16 @@ export const DataTableForPo = ({ showDetailedPackingList = false }: { showDetail
                     actionButtonTextColor: "#1E1E1E",
                 }}
             />
+            <DocumentHeader
+                Icon={<img />}
+                title="Select PO's for Cargo Delivery: 24 Feb 25"
+                // subtitle="Book delivery to CFS site"
+                showSeeMore={false}
+                onSeeMoreClick={() => console.log('See More clicked')}
 
+                subTitleTextStyle={{}}
+                containerStyle={{ borderRadius: '25px' }}
+            />
             <DataChart actionFlag="ship_by_date_booking" />
         </div>
     )

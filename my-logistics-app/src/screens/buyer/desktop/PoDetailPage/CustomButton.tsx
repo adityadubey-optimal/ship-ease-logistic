@@ -11,7 +11,7 @@ export default function SpecialButton() {
 
     const buttonStyle: React.CSSProperties = {
         width: "50vw",
-        height: "3.5rem",
+        height: "4rem",
         backgroundColor: theme.colors.primary,
         color: "white",
         border: "none",

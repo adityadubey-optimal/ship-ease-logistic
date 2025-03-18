@@ -31,7 +31,7 @@ const defaultStyles = {
     dateColor: "#1E1E1E",
     fontSize: {
         heading: "1rem",
-        date: "1rem",
+        date: "0.85rem",
     },
     fontWeight: {
         heading: "600",

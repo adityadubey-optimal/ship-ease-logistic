@@ -1,6 +1,6 @@
 
-import { useLocation, Link } from 'react-router-dom'
-import { Home, LayoutList, File, ClipboardList, Settings, Menu } from 'lucide-react'
+import { useLocation, Link, useNavigate } from 'react-router-dom'
+import { Home, LayoutList, File, ClipboardList, Settings, Menu, HelpCircle } from 'lucide-react'
 import { useTheme } from '@/context/ThemeContext'
 import { useState, useEffect } from 'react'
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet'
@@ -19,6 +19,14 @@ function useWindowSize() {
     }, []);
     return windowSize;
 }
+interface NavItem {
+    icon: React.ElementType
+    label: string
+    href?: string
+    onClick?: () => void
+    isActive?: boolean
+}
+
 
 const navItems = [
     { icon: Home, label: 'Dashboard', href: '/buyer/home' },
@@ -27,12 +35,142 @@ const navItems = [
     { icon: ClipboardList, label: 'Reports', href: '/reports' },
     { icon: Settings, label: 'Settings', href: '/settings' },
 ]
+function getNavItems(
+    pathname: string,
+    navigate: ReturnType<typeof useNavigate>,
+    activeItem: string = "home"
+): NavItem[] {
+    switch (true) {
+        case pathname.startsWith("/auth"):
+            return [
+                {
+                    icon: Home,
+                    label: "Auth Home",
+                    href: "/auth/home",
+                    isActive: activeItem === "authHome",
+                    onClick: () => navigate("/auth/home"),
+                },
+            ]
+        case pathname.startsWith("/buyer"):
+            return [
+                {
+                    icon: Home,
+                    label: "Dashboard",
+                    href: "/buyer/home",
+                    isActive: activeItem === "dashboard",
+                    onClick: () => navigate("/buyer/home"),
+                },
+                {
+                    icon: LayoutList,
+                    label: "View All Urgent Tasks",
+                    href: "/buyer/urgentTask",
+                    isActive: activeItem === "orders",
+                    onClick: () => navigate("/buyer/urgentTask"),
+                },
+                {
+                    icon: File,
+                    label: "Documentation Vault",
+                    href: "/buyer/documentList",
+                    isActive: activeItem === "documentList",
+                    onClick: () => navigate("/buyer/documentList"),
+                },
+                {
+                    icon: ClipboardList,
+                    label: "Reports",
+                    href: "/buyer/reports",
+                    isActive: activeItem === "reports",
+                    onClick: () => navigate("/buyer/reports"),
+                },
+                {
+                    icon: Settings,
+                    label: "Settings",
+                    href: "/buyer/settings",
+                    isActive: activeItem === "settings",
+                    onClick: () => navigate("/buyer/settings"),
+                },
+                {
+                    icon: HelpCircle,
+                    label: "Help",
+                    href: "/buyer/help",
+                    isActive: activeItem === "help",
+                    onClick: () => navigate("/buyer/help"),
+                },
+            ]
+        case pathname.startsWith("/shipper"):
+            return [
+                {
+                    icon: Home,
+                    label: "Home",
+                    href: "/shipper/home",
+                    isActive: activeItem === "home",
+                    onClick: () => navigate("/shipper/home"),
+                },
+                {
+                    icon: Home,
+                    label: "Accept-Ship-By-Date",
+                    href: "/shipper/cargo_ready_date",
+                    isActive: activeItem === "cargo_ready_date",
+                    onClick: () => navigate("/shipper/cargo_ready_date"),
+                },
+                {
+                    icon: Home,
+                    label: "Shipper Home",
+                    href: "/shipper/booking_good_to_go",
+                    isActive: activeItem === "booking_good_to_go",
+                    onClick: () => navigate("/shipper/booking_good_to_go"),
+                },
+            ]
+        case pathname.startsWith("/control-tower"):
+            return [
+                {
+                    icon: Home,
+                    label: "Tower Dashboard",
+                    href: "/control-tower/dashboard",
+                    isActive: activeItem === "dashboard",
+                    onClick: () => navigate("/control-tower/dashboard"),
+                },
+            ]
+        case pathname.startsWith("/consignee"):
+            return [
+                {
+                    icon: Home,
+                    label: "Consignee Home",
+                    href: "/consignee/home",
+                    isActive: activeItem === "home",
+                    onClick: () => navigate("/consignee/home"),
+                },
+            ]
+        case pathname.startsWith("/cfs-receiver"):
+            return [
+                {
+                    icon: Home,
+                    label: "CFS Receiver",
+                    href: "/cfs-receiver/home",
+                    isActive: activeItem === "home",
+                    onClick: () => navigate("/cfs-receiver/home"),
+                },
+            ]
+        default:
+            return [
+                {
+                    icon: Home,
+                    label: "Default Home",
+                    href: "/auth/home",
+                    isActive: activeItem === "home",
+                    onClick: () => navigate("/auth/home"),
+                },
+            ]
+    }
+}
 
 export default function Sidebar() {
     const { pathname } = useLocation()
+    const location = useLocation()
+    const navigate = useNavigate()
     const { theme } = useTheme()
     const { width } = useWindowSize()
     const [opnProfile, setOpenProfile] = useState(false)
+    const navItems = getNavItems(location.pathname, navigate, "home")
 
     // We'll show the static sidebar only if the width is 1200px or more.
     const isHamburger = width !== undefined && width < 1200
@@ -52,19 +190,25 @@ export default function Sidebar() {
                         <nav className="space-y-1">
                             {navItems.map((item) => {
                                 const isActive = pathname === item.href
-                                return (
-                                    <Link
-                                        key={item.href}
-                                        to={item.href}
-                                        className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${isActive
-                                            ? 'bg-[#4318FF] text-white'
-                                            : 'text-gray-700 hover:bg-gray-100'
-                                            }`}
-                                    >
-                                        <item.icon className="w-5 h-5" />
-                                        <span>{item.label}</span>
-                                    </Link>
-                                )
+                                return (<Link
+                                    key={item.label}
+                                    to={item.href!}
+                                    onClick={item.onClick}
+                                    style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: "0.75rem",
+                                        padding: "0.5rem 1rem",
+                                        borderRadius: "8px",
+                                        backgroundColor: isActive ? theme.colors.primary : "transparent",
+                                        color: isActive ? "white" : "#333",
+                                        textDecoration: "none",
+                                        marginBottom: "0.5rem",
+                                    }}
+                                >
+                                    <item.icon className="w-5 h-5" />
+                                    <span>{item.label}</span>
+                                </Link>)
                             })}
                         </nav>
                     </div>
@@ -100,20 +244,27 @@ export default function Sidebar() {
                                 <nav className="space-y-1">
                                     {navItems.map((item) => {
                                         const isActive = pathname === item.href
-                                        return (
-                                            <Link
-                                                key={item.href}
-                                                to={item.href}
-                                                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${isActive
-                                                    ? 'bg-[#4318FF] text-white'
-                                                    : 'text-gray-700 hover:bg-gray-100'
-                                                    }`}
-                                            >
-                                                <item.icon className="w-5 h-5" />
-                                                <span>{item.label}</span>
-                                            </Link>
-                                        )
-                                    })}
+                                        return (<Link
+                                            key={item.label}
+                                            to={item.href!}
+                                            onClick={item.onClick}
+                                            style={{
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "0.75rem",
+                                                padding: "0.5rem 1rem",
+                                                borderRadius: "8px",
+                                                backgroundColor: isActive ? theme.colors.primary : "transparent",
+                                                color: isActive ? "white" : "#333",
+                                                textDecoration: "none",
+                                                marginBottom: "0.5rem",
+                                            }}
+                                        >
+                                            <item.icon className="w-5 h-5" />
+                                            <span>{item.label}</span>
+                                        </Link>)
+                                    }
+                                    )}
                                 </nav>
                             </div>
                             <div className="absolute bottom-0 w-full p-4 border-t border-[#E5E1FF]" onClick={() => {

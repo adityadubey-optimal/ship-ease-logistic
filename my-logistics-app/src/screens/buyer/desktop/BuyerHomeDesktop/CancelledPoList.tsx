@@ -289,10 +289,10 @@ const totals = {
 
 export default function SomePage() {
     const navigate = useNavigate()
+    const { theme } = useTheme()
 
     return (
         <div className="p-4">
-            <h1 className="text-2xl font-bold mb-4">Cancelled PO Table</h1>
             <POTable
                 data={tableData}
                 showTotals={true}
@@ -305,7 +305,7 @@ export default function SomePage() {
                 }}
                 styles={{
                     header: {
-                        backgroundColor: "#E2E2FC",
+                        backgroundColor: theme.colors.guageheaderColor,
                         textColor: "#1E1E1E",
                         fontSize: "14px",
                         fontWeight: "600",

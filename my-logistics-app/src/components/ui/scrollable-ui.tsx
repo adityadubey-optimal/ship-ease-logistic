@@ -16,6 +16,33 @@ import { cn } from "@/lib/utils"
 import { useTheme } from "@/context/ThemeContext"
 import { useIsMobile } from "@/hooks/useMobile"
 
+
+interface DotIndicatorProps {
+    isFilled: boolean
+    size?: number
+    filledColor?: string
+    emptyColor?: string
+}
+
+export function DotIndicator({
+    isFilled,
+    size = 12,
+    filledColor = "green",
+    emptyColor = "gray",
+}: DotIndicatorProps) {
+    return (
+        <span
+            style={{
+                display: "inline-block",
+                width: `${size}px`,
+                height: `${size}px`,
+                borderRadius: "50%",
+                backgroundColor: isFilled ? filledColor : emptyColor,
+            }}
+        />
+    )
+}
+
 interface DocumentsType {
     commInvoice?: boolean
     marksNumbers?: boolean
@@ -209,7 +236,7 @@ function renderActionCell<T>(
                             onClick={() => handleSelect("Download")}
                             className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
                         >
-                            DownloadPO
+                            Download PO
                         </DropdownMenuItem>
                         <DropdownMenuSeparator className="my-1 border-gray-400" />
                     </DropdownMenuContent>
@@ -938,7 +965,7 @@ export function ScrollableDataTable<T extends { documents?: DocumentsType }>({
                                                 textAlign: "center",
                                             }}
                                         >
-                                            {row.documents?.commInvoice ? "●" : "○"}
+                                            <DotIndicator isFilled={!!row.documents?.commInvoice} size={12} filledColor="green" emptyColor="gray" />
                                         </td>
                                         <td
                                             style={{
@@ -948,7 +975,7 @@ export function ScrollableDataTable<T extends { documents?: DocumentsType }>({
                                                 textAlign: "center",
                                             }}
                                         >
-                                            {row.documents?.marksNumbers ? "●" : "○"}
+                                            <DotIndicator isFilled={!!row.documents?.marksNumbers} size={12} filledColor="green" emptyColor="gray" />
                                         </td>
                                         <td
                                             style={{
@@ -958,7 +985,7 @@ export function ScrollableDataTable<T extends { documents?: DocumentsType }>({
                                                 textAlign: "center",
                                             }}
                                         >
-                                            {row.documents?.bookingConfirm ? "●" : "○"}
+                                            <DotIndicator isFilled={!!row.documents?.bookingConfirm} size={12} filledColor="green" emptyColor="gray" />
                                         </td>
                                     </>
                                 )}
@@ -994,7 +1021,7 @@ export function ScrollableDataTable<T extends { documents?: DocumentsType }>({
                                                 width: "80px",
                                             }}
                                         >
-                                            {row.documents?.marksNumbers ? "●" : "○"}
+                                            <DotIndicator isFilled={!!row.documents?.marksNumbers} size={12} filledColor="green" emptyColor="gray" />
                                         </td>
                                         <td
                                             style={{
@@ -1005,8 +1032,8 @@ export function ScrollableDataTable<T extends { documents?: DocumentsType }>({
                                                 width: "80px",
                                             }}
                                         >
-                                            {row.documents?.bookingConfirm ? "●" : "○"}
-                                        </td>
+                                            <DotIndicator isFilled={!!row.documents?.bookingConfirm} size={12} filledColor="green" emptyColor="gray" />
+                                            =                                        </td>
                                     </>
                                 )}
 

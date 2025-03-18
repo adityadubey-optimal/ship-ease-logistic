@@ -7,7 +7,7 @@ import useResponsiveSize from "@/hooks/useResponsiveSize";
 import { useNavigate } from "react-router-dom";
 // import shipIcon from "../assets/ship-icon.png" // Make sure this path is correct
 
-export default function StatusDashboard({ ImportPoButton = false, showAddPoButton = true, showShipByDate = true }: { ImportPoButton?: boolean, showAddPoButton?: boolean, showShipByDate?: boolean }) {
+export default function StatusDashboard({ ImportPoButton = false, showAddPoButton = true, showShipByDate = true, loggedInAstext = "Buyer" }: { ImportPoButton?: boolean, showAddPoButton?: boolean, showShipByDate?: boolean, loggedInAstext?: string }) {
     const { theme } = useTheme()
     const navigate = useNavigate()
     // const SHIP_BY_DATE_CARD_WIDTH = "350px";
@@ -43,7 +43,10 @@ export default function StatusDashboard({ ImportPoButton = false, showAddPoButto
                         fontWeight: theme.fonts.web.buyerHomePage.statusCard.pageHeaderLight.weight,
                     }}
                 >
-                    You are signed in as <span style={{ color: theme.colors.textPrimary, fontWeight: theme.fonts.web.buyerHomePage.statusCard.pageHeaderFont.weight, fontSize: theme.fonts.web.buyerHomePage.statusCard.pageHeaderFont.size }}>Buyer</span>
+                    You are signed in as <span style={{ color: theme.colors.textPrimary, fontWeight: theme.fonts.web.buyerHomePage.statusCard.pageHeaderFont.weight, fontSize: theme.fonts.web.buyerHomePage.statusCard.pageHeaderFont.size }}>
+                        {loggedInAstext}
+
+                    </span>
                 </p>
             </div>
 

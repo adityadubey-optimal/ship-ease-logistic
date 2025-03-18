@@ -35,7 +35,7 @@ export default function PoBookingCard() {
                                         fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.pobokingDescription.weight,
                                     }}
                                 >
-                                    PO Booked by Ship-by-Date
+                                    PO's Booked by Ship-by-Date
                                 </span>
                             </div>
                         </div>

@@ -24,6 +24,7 @@ import { addDays } from 'date-fns';
 import useResponsiveSize from '@/hooks/useResponsiveSize'
 import NotificationTable from "./NotificationTable"
 import PurchaseOrderTableExample from './ChangeRequestPendingApproval'
+import NotificationIcon from '@/assets/NotificationIcon2.svg'
 
 
 export default function Home() {
@@ -46,10 +47,10 @@ export default function Home() {
 
 
     return (
-        <DashboardLayout headerName={'Vendors Ship-By-Date Overview'}>
+        <DashboardLayout headerName={'Active Purchase Orders'}>
             {/* Today's Status Section Placeholder */}
             <section className="mb-2">
-                <StatusDashboard />
+                <StatusDashboard showAddPoButton={false} loggedInAstext='Orient Craft' />
             </section>
 
             <section className="mb-12">
@@ -67,7 +68,30 @@ export default function Home() {
             {/* Tasks Section Placeholder */}
             <section className="mb-2">
 
-                <StatusCardContainer />
+                <StatusCardContainer cards={[
+                    {
+                        value: 0,
+                        status: "success" as const,
+                        title: "Good To-go",
+                        subtitle: "Shipments",
+                        width: "300px",
+                    },
+                    {
+                        value: 20,
+                        status: "warning" as const,
+                        title: "Pending",
+                        subtitle: "Shipments",
+                        width: "300px",
+                    },
+                    {
+                        value: 0,
+                        status: "error" as const,
+                        title: "Urgent",
+                        subtitle: "Shipments",
+                        additionalInfo: "20 PO's at risk Need Action",
+                        widthError: "520px",
+                    },
+                ]} />
             </section>
 
             <section className="mb-2">
@@ -75,6 +99,8 @@ export default function Home() {
                     <DocumentHeader
                         Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
                         title="Active Purchase Order for Ship-By-Date: "
+                        date='4 Mar 25'
+                        dateColor='black'
                         subtitle="Apprive POs Ship-By-Date, Mode and Quantity"
                         showSeeMore={false}
                         onSeeMoreClick={() => console.log('See More clicked')}
@@ -155,8 +181,8 @@ export default function Home() {
                 <div className="w-full max-w-7xl mx-auto p-4" style={{ borderRadius: '30px', position: 'relative', background: theme.colors.dataTableBackground }}>
                     <DocumentHeader
                         Icon={<img
-                            // src={Building} 
-                            // alt="Ship illustration"
+                            src={NotificationIcon}
+                            alt="Ship illustration"
                             className="w-20 h-20 object-contain" />}
                         title="Updates"
                         // subtitle="Ship mode as approved"

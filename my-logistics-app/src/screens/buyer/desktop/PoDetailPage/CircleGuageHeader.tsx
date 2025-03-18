@@ -43,7 +43,7 @@ export default function ShipDateHeader({
                     style={{
                         color: textColor,
                         fontSize: isMobile ? theme.fonts.mobile.body.size : `${titleSize}px`,
-                        fontWeight: theme.fonts.web.body.weight,
+                        fontWeight: theme.fonts.web.heading.weight,
                         fontFamily: theme.fonts.family,
                     }}
                 >
@@ -53,7 +53,7 @@ export default function ShipDateHeader({
                     style={{
                         color: textColor,
                         fontSize: isMobile ? theme.fonts.mobile.heading.size : `${dateSize}px`,
-                        fontWeight: theme.fonts.web.heading.weight,
+                        fontWeight: theme.fonts.web.body.weight,
                         fontFamily: theme.fonts.family,
                     }}
                 >
@@ -67,7 +67,7 @@ export default function ShipDateHeader({
                     style={{
                         color: textColor,
                         fontSize: isMobile ? theme.fonts.mobile.body.size : `${titleSize}px`,
-                        fontWeight: theme.fonts.web.body.weight,
+                        fontWeight: theme.fonts.web.heading.weight,
                         fontFamily: theme.fonts.family,
                     }}
                 >
@@ -77,7 +77,7 @@ export default function ShipDateHeader({
                     style={{
                         color: textColor,
                         fontSize: isMobile ? theme.fonts.mobile.heading.size : `${dateSize}px`,
-                        fontWeight: theme.fonts.web.heading.weight,
+                        fontWeight: theme.fonts.web.body.weight,
                         fontFamily: theme.fonts.family,
                     }}
                 >
@@ -96,7 +96,7 @@ export default function ShipDateHeader({
                     style={{
                         color: "white",
                         fontSize: isMobile ? theme.fonts.mobile.body.size : `${titleSize}px`,
-                        fontWeight: theme.fonts.web.body.weight,
+                        fontWeight: theme.fonts.web.heading.weight,
                         fontFamily: theme.fonts.family,
                     }}
                 >
@@ -106,7 +106,7 @@ export default function ShipDateHeader({
                     style={{
                         color: "white",
                         fontSize: isMobile ? theme.fonts.mobile.heading.size : `${dateSize}px`,
-                        fontWeight: theme.fonts.web.heading.weight,
+                        fontWeight: theme.fonts.web.body.weight,
                         fontFamily: theme.fonts.family,
                         textAlign: "right",
                     }}

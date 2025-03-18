@@ -27,14 +27,15 @@ import checkbox from "@/assets/ic_twotone-pending-actions.svg"
 
 import NotificationTable from "../vendorHome/NotificationTable"
 import PurchaseOrderTableExample from '../vendorHome/ChangeRequestPendingApproval'
-
+import Building from '@/assets/NotificationIcon2.svg'
+import Bill from '@/assets/bill.svg'
 
 export default function Home() {
     const { theme } = useTheme()
     const navigate = useNavigate()
 
     return (
-        <DashboardLayout>
+        <DashboardLayout subtitle="Active Purchase Orders">
             {/* Today's Status Section Placeholder */}
             <section className="mb-1 p-4" style={{ paddingBottom: '0px' }}>
                 <StatusDashboard />
@@ -64,7 +65,7 @@ export default function Home() {
                 <div className="w-full max-w-7xl mx-auto"  >
                     <div className=" p-4">
                         <DocumentHeader
-                            Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                            Icon={<img src={Bill} alt="Ship illustration" className="w-15 h-15 object-contain" />}
                             title="Active Purchase Order for Ship-By-Date: "
                             subtitle="Apprive POs Ship-By-Date, Mode and Quantity"
                             showSeeMore={false}
@@ -155,8 +156,8 @@ export default function Home() {
                         <DocumentHeader
 
                             Icon={<img
-                                // src={Building} 
-                                // alt="Ship illustration"
+                                src={Building}
+                                alt="Ship illustration"
                                 className="w-20 h-20 object-contain" />}
                             title="Updates"
                             // subtitle="Ship mode as approved"
@@ -164,7 +165,7 @@ export default function Home() {
                             onSeeMoreClick={() => console.log('See More clicked')}
                         />
                     </div>
-                    <div style={{ paddingTop: "1.5rem", marginTop: '1rem' }}>
+                    <div style={{ paddingTop: "0.5rem", marginTop: '0rem' }}>
                         <NotificationTable
                             data={[
                                 { date: "13.02.2025", notification: "PO Updated to AIR", user: "Buyer" },

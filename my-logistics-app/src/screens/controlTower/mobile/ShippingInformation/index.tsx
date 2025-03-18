@@ -26,6 +26,8 @@ import ShippingDatesDisplayMode from "./ShipModes"
 import ShippingDatesDisplay from "./ShipDates"
 import NotificationTable from "./NotificationTable"
 import ShipDate from "@/assets/ship_dates.svg"
+import Building from '@/assets/NotificationIcon2.svg'
+
 
 
 
@@ -95,8 +97,8 @@ export default function Home() {
             <section className="mb-1 p-4" style={{ borderRadius: '30px', position: 'relative', background: theme.colors.dataTableBackground }} >
                 <DocumentHeader
                     Icon={<img
-                        // src={Building} 
-                        // alt="Ship illustration"
+                        src={Building}
+                        alt="Ship illustration"
                         className="w-20 h-20 object-contain" />}
                     title="Updates"
                     // subtitle="Ship mode as approved"

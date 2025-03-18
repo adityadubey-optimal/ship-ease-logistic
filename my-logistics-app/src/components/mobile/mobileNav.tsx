@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { Home, ListTodo, Settings, HelpCircle, CirclePlus } from "lucide-react"
+import { Home, ListTodo, Settings, HelpCircle, CirclePlus, ClipboardCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/context/ThemeContext"
 import { useNavigate } from "react-router-dom"
@@ -15,6 +15,307 @@ interface NavItem {
 
 interface BottomNavProps {
     activeItem?: string
+}
+
+function getNavItems(content: Partial<NavItem[]>, { activeItem = "home" }: Partial<BottomNavProps> = {}) {
+    const navigate = useNavigate()
+    switch (true) {
+        case location.pathname.startsWith("/auth"):
+            // content = <div>Auth Routes Component</div>
+            return [
+                {
+                    icon: Home,
+                    label: "Auth Home",
+                    isActive: activeItem === "authHome",
+                    onClick: () => {
+                        console.log("Navigating to Auth Home")
+                        navigate("/auth/home")
+                    },
+                },
+            ]
+            break
+        case location.pathname.startsWith("/buyer"):
+            return [{
+                icon: Home,
+                label: "Home",
+                isActive: activeItem === "home",
+                onClick: () => {
+                    console.log("testing Home")
+                    navigate("/buyer/home")
+                },
+            },
+            {
+                icon: ListTodo,
+                label: "Tasks",
+                isActive: activeItem === "tasks",
+                onClick: () => {
+                    console.log("testing Tasks")
+                    navigate("/buyer/urgentTask")
+                },
+            },
+            {
+                icon: ListTodo,
+                label: "invisible",
+                isActive: activeItem === "tasks",
+                onClick: () => {
+                    console.log("testing invisible")
+                },
+            },
+            {
+                icon: Settings,
+                label: "Settings",
+                isActive: activeItem === "settings",
+                onClick: () => {
+                    console.log("testing Settings")
+                    navigate("buyer/settings")
+                },
+            },
+            {
+                icon: HelpCircle,
+                label: "Help",
+                isActive: activeItem === "help",
+                onClick: () => {
+                    console.log("testing Help")
+                    navigate("buyer/help")
+                },
+            },]
+            break
+        case location.pathname.startsWith("/shipper"):
+            return [{
+                icon: Home,
+                label: "Home",
+                isActive: activeItem === "home",
+                onClick: () => {
+                    console.log("testing Home")
+                    navigate("/shipper/home")
+                },
+            },
+            {
+                icon: ClipboardCheck,
+                label: "Book",
+                isActive: activeItem === "tasks",
+                onClick: () => {
+                    console.log("testing Tasks")
+                    navigate("/shipper/urgentTask")
+                },
+            },
+            {
+                icon: ListTodo,
+                label: "invisible",
+                isActive: activeItem === "tasks",
+                onClick: () => {
+                    console.log("shipper invisible")
+                },
+            },
+            {
+                icon: Settings,
+                label: "Settings",
+                isActive: activeItem === "settings",
+                onClick: () => {
+                    console.log("testing Settings")
+                    navigate("shipper/settings")
+                },
+            },
+            {
+                icon: HelpCircle,
+                label: "Help",
+                isActive: activeItem === "help",
+                onClick: () => {
+                    console.log("testing Help")
+                    navigate("shipper/help")
+                },
+            },]
+            break
+        // content = <div>Shipper Routes Component</div>
+
+        case location.pathname.startsWith("/control-tower"):
+            return [
+                {
+                    icon: Home,
+                    label: "Tower Dashboard",
+                    isActive: activeItem === "dashboard",
+                    onClick: () => {
+                        console.log("Navigating to Control Tower Dashboard")
+                        navigate("/control-tower/dashboard")
+                    },
+                },
+            ]
+            // content = <div>Control Tower Routes Component</div>
+            break
+        case location.pathname.startsWith("/consignee"):
+            return [
+                {
+                    icon: Home,
+                    label: "Consignee Home",
+                    isActive: activeItem === "home",
+                    onClick: () => {
+                        console.log("Navigating to Consignee Home")
+                        navigate("/consignee/home")
+                    },
+                },
+            ]
+            // content = <div>Consignee Routes Component</div>
+            break
+        case location.pathname.startsWith("/cfs-receiver"):
+            return [
+                {
+                    icon: Home,
+                    label: "CFS Receiver",
+                    isActive: activeItem === "home",
+                    onClick: () => {
+                        console.log("Navigating to CFS Receiver Home")
+                        navigate("/cfs-receiver/home")
+                    },
+                },
+            ]
+            // content = <div>CFS Receiver Routes Component</div>
+            break
+        default:
+            return [
+                {
+                    icon: Home,
+                    label: "Default Home",
+                    isActive: activeItem === "home",
+                    onClick: () => {
+                        console.log("Navigating to Default Home")
+                        navigate("/auth/home")
+                    },
+                },
+            ]
+            // content = <div>Default Auth Routes Component</div>
+            break
+    }
+}
+
+function getSpecialButton() {
+    const { theme } = useTheme()
+
+    const navigate = useNavigate()
+    console.log(' location.pathname', location.pathname)
+    switch (true) {
+        case location.pathname.startsWith("/buyer"):
+            return <Button
+                className="text-white p-0 rounded-lg flex flex-col items-center justify-center"
+                style={{
+                    backgroundColor: theme.colors.primary,
+                    width: "80px",
+                    height: "100%",
+                    borderRadius: theme.borderRadius.borderRadius,
+                    position: "absolute",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                }}
+                onClick={() => {
+                    navigate("/buyer/poReconcilation")
+                }}
+            >
+                <CirclePlus className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
+                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Add PO</span>
+            </Button>
+
+        case location.pathname.startsWith("/shipper"):
+            return <Button
+                className="text-white p-0 rounded-lg flex flex-col items-center justify-center"
+                style={{
+                    backgroundColor: theme.colors.primary,
+                    width: "80px",
+                    height: "100%",
+                    borderRadius: theme.borderRadius.borderRadius,
+                    position: "absolute",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                }}
+                onClick={() => {
+                    navigate("/shipper/poReconcilation")
+                }}
+            >
+                <CirclePlus className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
+                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Book</span>
+            </Button>
+            break;
+        case location.pathname.startsWith("/control-tower"):
+            return <Button
+                className="text-white p-0 rounded-lg flex flex-col items-center justify-center"
+                style={{
+                    backgroundColor: theme.colors.primary,
+                    width: "80px",
+                    height: "100%",
+                    borderRadius: theme.borderRadius.borderRadius,
+                    position: "absolute",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                }}
+                onClick={() => {
+                    navigate("/buyer/poReconcilation")
+                }}
+            >
+                <CirclePlus className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
+                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Add PO</span>
+            </Button>
+            break;
+        case location.pathname.startsWith("/consignee"):
+            return <Button
+                className="text-white p-0 rounded-lg flex flex-col items-center justify-center"
+                style={{
+                    backgroundColor: theme.colors.primary,
+                    width: "80px",
+                    height: "100%",
+                    borderRadius: theme.borderRadius.borderRadius,
+                    position: "absolute",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                }}
+                onClick={() => {
+                    navigate("/buyer/poReconcilation")
+                }}
+            >
+                <CirclePlus className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
+                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Add PO</span>
+            </Button>
+            break;
+        case location.pathname.startsWith("/cfs-receiver"):
+            return <Button
+                className="text-white p-0 rounded-lg flex flex-col items-center justify-center"
+                style={{
+                    backgroundColor: theme.colors.primary,
+                    width: "80px",
+                    height: "100%",
+                    borderRadius: theme.borderRadius.borderRadius,
+                    position: "absolute",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                }}
+                onClick={() => {
+                    navigate("/buyer/poReconcilation")
+                }}
+            >
+                <CirclePlus className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
+                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Add PO</span>
+            </Button>
+            break;
+        default:
+            return <Button
+                className="text-white p-0 rounded-lg flex flex-col items-center justify-center"
+                style={{
+                    backgroundColor: theme.colors.primary,
+                    width: "80px",
+                    height: "100%",
+                    borderRadius: theme.borderRadius.borderRadius,
+                    position: "absolute",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                }}
+                onClick={() => {
+                    navigate("/buyer/poReconcilation")
+                }}
+            >
+                <CirclePlus className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
+                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Add PO</span>
+            </Button>
+            break;
+    }
+
+
 }
 
 export default function BottomNav({ activeItem = "home" }: BottomNavProps) {
@@ -68,72 +369,8 @@ export default function BottomNav({ activeItem = "home" }: BottomNavProps) {
         },
     ]
     let content: Partial<NavItem[]> = []
-    switch (true) {
-        case location.pathname.startsWith("/auth"):
-            // content = <div>Auth Routes Component</div>
-            break
-        case location.pathname.startsWith("/buyer"):
-            content = [{
-                icon: Home,
-                label: "Home",
-                isActive: activeItem === "home",
-                onClick: () => {
-                    console.log("testing Home")
-                    navigate("/buyer/home")
-                },
-            },
-            {
-                icon: ListTodo,
-                label: "Tasks",
-                isActive: activeItem === "tasks",
-                onClick: () => {
-                    console.log("testing Tasks")
-                    navigate("/buyer/urgentTask")
-                },
-            },
-            {
-                icon: ListTodo,
-                label: "invisible",
-                isActive: activeItem === "tasks",
-                onClick: () => {
-                    console.log("testing invisible")
-                },
-            },
-            {
-                icon: Settings,
-                label: "Settings",
-                isActive: activeItem === "settings",
-                onClick: () => {
-                    console.log("testing Settings")
-                    navigate("buyer/settings")
-                },
-            },
-            {
-                icon: HelpCircle,
-                label: "Help",
-                isActive: activeItem === "help",
-                onClick: () => {
-                    console.log("testing Help")
-                    navigate("buyer/help")
-                },
-            },]
-            break
-        case location.pathname.startsWith("/shipper"):
-            // content = <div>Shipper Routes Component</div>
-            break
-        case location.pathname.startsWith("/control-tower"):
-            // content = <div>Control Tower Routes Component</div>
-            break
-        case location.pathname.startsWith("/consignee"):
-            // content = <div>Consignee Routes Component</div>
-            break
-        case location.pathname.startsWith("/cfs-receiver"):
-            // content = <div>CFS Receiver Routes Component</div>
-            break
-        default:
-            // content = <div>Default Auth Routes Component</div>
-            break
-    }
+    content = getNavItems(content, {}) || []
+
 
 
     return (
@@ -146,24 +383,8 @@ export default function BottomNav({ activeItem = "home" }: BottomNavProps) {
                 className="h-full w-full flex items-center justify-between"
                 style={{ position: "relative" }}
             >
-                <Button
-                    className="text-white p-0 rounded-lg flex flex-col items-center justify-center"
-                    style={{
-                        backgroundColor: theme.colors.primary,
-                        width: "80px",
-                        height: "100%",
-                        borderRadius: theme.borderRadius.borderRadius,
-                        position: "absolute",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                    }}
-                    onClick={() => {
-                        navigate("/buyer/poReconcilation")
-                    }}
-                >
-                    <CirclePlus className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
-                    <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Add PO</span>
-                </Button>
+                {getSpecialButton()}
+
                 {navItems.map((item) => (
                     <NavButton key={item.label} {...item} />
                 ))}

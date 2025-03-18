@@ -25,7 +25,7 @@ export default function Home() {
         <DashboardLayout headerName={'Bookings Good To-Go'} >
             {/* Today's Status Section Placeholder */}
             < section className="mb-2" >
-                <StatusDashboard />
+                <StatusDashboard showAddPoButton={false} loggedInAstext="Orient Craft" />
             </section>
 
             {/* Metrics Section Placeholder */}
@@ -44,7 +44,30 @@ export default function Home() {
             {/* Tasks Section Placeholder */}
             <section className="mb-2" >
 
-                <StatusCardContainer />
+                <StatusCardContainer cards={[
+                    {
+                        value: 0,
+                        status: "success" as const,
+                        title: "Good To-go",
+                        subtitle: "Shipments",
+                        width: "300px",
+                    },
+                    {
+                        value: 20,
+                        status: "warning" as const,
+                        title: "Pending",
+                        subtitle: "Shipments",
+                        width: "300px",
+                    },
+                    {
+                        value: 0,
+                        status: "error" as const,
+                        title: "Urgent",
+                        subtitle: "Shipments",
+                        additionalInfo: "20 PO's at risk Need Action",
+                        widthError: "520px",
+                    },
+                ]} />
             </section>
 
             <section className="mb-2">
@@ -52,6 +75,7 @@ export default function Home() {
                     <DocumentHeader
                         Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
                         title="POs booked for cargo ready date:"
+
                         date="26 Feb 25"
                         subtitle="Select Purchase Order to Print or Amend SSCC Labels"
                         showSeeMore={false}

@@ -9,7 +9,7 @@ import inProgress from '@/assets/In Progress.svg'
 import StatusDashboard from "@/components/mobile/statusContainerMobile"
 import { Calendar } from "@/components/ui/calendar"
 import { useTheme } from "@/context/ThemeContext"
-
+import { format } from "date-fns"
 interface OrderHeaderProps {
     poNumber: string
     buyer?: string
@@ -151,7 +151,8 @@ export default function OrderHeader({
 
                         <>
                             <p className="text-lg text-green-800 font-bold mb-1" style={{ fontSize: `${useResponsiveSize(0.75, 1.05)}rem`, fontWeight: 600 }}>
-                                {singleDate?.toLocaleDateString()}
+
+                                {singleDate ? format(singleDate, "dd MMM yy") : "None"}
                             </p>
                             <p className="text-sm" style={{ fontSize: `${useResponsiveSize(0.75, 1.15)}rem`, fontWeight: 600 }}>Your Selected Cargo Ready Date</p>
                         </>

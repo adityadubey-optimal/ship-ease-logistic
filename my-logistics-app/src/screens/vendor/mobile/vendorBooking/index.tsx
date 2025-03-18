@@ -29,7 +29,7 @@ export default function Home() {
     const navigate = useNavigate()
 
     return (
-        <DashboardLayout>
+        <DashboardLayout subtitle="Cargo Ready Date Booking">
             {/* Today's Status Section Placeholder */}
             <section className="mb-1 p-4" style={{ paddingBottom: '0px' }}>
                 <StatusDashboard />
@@ -133,8 +133,8 @@ export default function Home() {
                             subtitle="Send reminders to the stakeholders for pending actions"
                             showSeeMore={false}
                             onSeeMoreClick={() => console.log('See More clicked')}
-                            headerTextStyle={{ color: theme.colors.yellowHeaderText }}
-                            colorTheme={theme.colors.yellowHeaderText}
+                        // headerTextStyle={{ color: theme.colors.yellowHeaderText }}
+                        // colorTheme={theme.colors.yellowHeaderText}
                         />
                     </div>
                     <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
@@ -159,8 +159,8 @@ export default function Home() {
                             subtitle="Select Purchase Order to Print or Amend SSCC Labels"
                             showSeeMore={false}
                             onSeeMoreClick={() => console.log('See More clicked')}
-                            headerTextStyle={{ color: theme.colors.yellowHeaderText }}
-                            colorTheme={theme.colors.yellowHeaderText}
+                        // headerTextStyle={{ color: theme.colors.yellowHeaderText }}
+                        // colorTheme={theme.colors.yellowHeaderText}
                         />
                     </div>
                     <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
@@ -185,8 +185,8 @@ export default function Home() {
                             subtitle="Select Purchase Order to Print or Amend SSCC Labels"
                             showSeeMore={false}
                             onSeeMoreClick={() => console.log('See More clicked')}
-                            headerTextStyle={{ color: theme.colors.yellowHeaderText }}
-                            colorTheme={theme.colors.yellowHeaderText}
+                        // headerTextStyle={{ color: theme.colors.yellowHeaderText }}
+                        // colorTheme={theme.colors.yellowHeaderText}
                         />
                     </div>
                     <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>

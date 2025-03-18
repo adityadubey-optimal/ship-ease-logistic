@@ -10,7 +10,7 @@ import StatusDashboard from "@/components/mobile/statusContainerMobile"
 import { Calendar } from "@/components/ui/calendar"
 import { useTheme } from "@/context/ThemeContext"
 import AcceptRejectButton from "./AcceptRejectButton"
-
+import { format } from "date-fns"
 interface OrderHeaderProps {
     poNumber: string
     buyer?: string
@@ -116,7 +116,30 @@ export default function OrderHeader({
 
                 }}
             >
-                <StatusDashboard />
+                <StatusDashboard cards={[
+                    {
+                        value: 12,
+                        status: "success",
+                        title: "Booked",
+                        subtitle: "CFS Shipment",
+                        width: "170px",
+                    },
+                    {
+                        value: 14,
+                        status: "warning",
+                        title: "Pending",
+                        subtitle: "CFS Shipment",
+                        width: "170px",
+                    },
+                    {
+                        value: 4,
+                        status: "error",
+                        title: "Urgent",
+                        subtitle: "CFS Shipment",
+                        additionalInfo: "20 PO's at risk Need Action",
+                        widthError: "362px",
+                    },
+                ]} />
             </div >
             {/* Left Section */}
             <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
@@ -152,7 +175,8 @@ export default function OrderHeader({
 
                         <>
                             <p className="text-lg text-green-800 font-bold mb-1" style={{ fontSize: `${useResponsiveSize(0.75, 1.05)}rem`, fontWeight: 600 }}>
-                                {singleDate?.toLocaleDateString()}
+
+                                {singleDate ? format(singleDate, "dd MMM yy") : "None"}
                             </p>
                             <p className="text-sm" style={{ fontSize: `${useResponsiveSize(0.75, 1.15)}rem`, fontWeight: 600 }}>Your Selected Cargo Ready Date</p>
                         </>

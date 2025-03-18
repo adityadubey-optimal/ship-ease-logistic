@@ -29,7 +29,7 @@ export default function StepFlow({
     const steps: StepItem[] = [
         {
             icon: ClipboardCheck,
-            title: "Accept PO for Ship-by-date",
+            title: "Accept PO for Ship-by-Date",
             subTitle: "Accept/decline POs",
             styleType: "outline",
             route: "/shipper/home",
