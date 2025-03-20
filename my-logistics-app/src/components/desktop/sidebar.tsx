@@ -1,6 +1,6 @@
 
 import { useLocation, Link, useNavigate } from 'react-router-dom'
-import { Home, LayoutList, File, ClipboardList, Settings, Menu, HelpCircle } from 'lucide-react'
+import { Home, LayoutList, File, ClipboardList, CircleCheck, Settings, Menu, Globe, HelpCircle, Files, TextSearch, Clipboard } from 'lucide-react'
 import { useTheme } from '@/context/ThemeContext'
 import { useState, useEffect } from 'react'
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet'
@@ -106,39 +106,128 @@ function getNavItems(
                     onClick: () => navigate("/shipper/home"),
                 },
                 {
-                    icon: Home,
+                    icon: Files,
                     label: "Accept-Ship-By-Date",
                     href: "/shipper/cargo_ready_date",
                     isActive: activeItem === "cargo_ready_date",
                     onClick: () => navigate("/shipper/cargo_ready_date"),
                 },
                 {
-                    icon: Home,
-                    label: "Shipper Home",
+                    icon: TextSearch,
+                    label: "Book Cargo Ready Date",
                     href: "/shipper/booking_good_to_go",
                     isActive: activeItem === "booking_good_to_go",
                     onClick: () => navigate("/shipper/booking_good_to_go"),
                 },
+                {
+                    icon: Clipboard,
+                    label: "Good To-Go Bookings",
+                    href: "/shipper/booking_good_to_go",
+                    isActive: activeItem === "booking_good_to_go",
+                    onClick: () => navigate("/shipper/booking_good_to_go"),
+                },
+                {
+                    icon: ClipboardList,
+                    label: "Reports",
+                    href: "/buyer/reports",
+                    isActive: activeItem === "reports",
+                    onClick: () => navigate("/buyer/reports"),
+                },
+                {
+                    icon: Settings,
+                    label: "Settings",
+                    href: "/buyer/settings",
+                    isActive: activeItem === "settings",
+                    onClick: () => navigate("/buyer/settings"),
+                },
+
             ]
         case pathname.startsWith("/control-tower"):
+
             return [
                 {
                     icon: Home,
-                    label: "Tower Dashboard",
-                    href: "/control-tower/dashboard",
-                    isActive: activeItem === "dashboard",
-                    onClick: () => navigate("/control-tower/dashboard"),
+                    label: "Home",
+                    href: "/control-tower/home",
+                    isActive: activeItem === "home",
+                    onClick: () => navigate("/control-tower/home"),
                 },
+                {
+                    icon: Globe,
+                    label: "Country By Port of loading Status",
+                    href: "/control-tower/countryByPort",
+                    isActive: activeItem === "cargo_ready_date",
+                    onClick: () => navigate("/control-tower/countryByPort"),
+                },
+                {
+                    icon: TextSearch,
+                    label: "good-To-Go Shipments",
+                    href: "/control-tower/bookingGoodToGo",
+                    isActive: activeItem === "booking_good_to_go",
+                    onClick: () => navigate("/control-tower/bookingGoodToGo"),
+                },
+                {
+                    icon: Clipboard,
+                    label: "Document Status",
+                    href: "/control-tower/documentList",
+                    isActive: activeItem === "booking_good_to_go",
+                    onClick: () => navigate("/control-tower/documentList"),
+                },
+                {
+                    icon: ClipboardList,
+                    label: "Reports",
+                    href: "/control-tower/reports",
+                    isActive: activeItem === "reports",
+                    onClick: () => navigate("/control-tower/reports"),
+                },
+                {
+                    icon: Settings,
+                    label: "Settings",
+                    href: "/control-tower/settings",
+                    isActive: activeItem === "settings",
+                    onClick: () => navigate("/control-tower/settings"),
+                },
+
             ]
         case pathname.startsWith("/consignee"):
             return [
                 {
                     icon: Home,
-                    label: "Consignee Home",
-                    href: "/consignee/home",
+                    label: "Home",
+                    href: "/consignee/countryByPort",
                     isActive: activeItem === "home",
-                    onClick: () => navigate("/consignee/home"),
+                    onClick: () => navigate("/consignee/countryByPort"),
                 },
+                {
+                    icon: CircleCheck,
+                    label: "Good-to-go Shipments",
+                    href: "/consignee/bookingGoodToGo",
+                    isActive: activeItem === "bookingGoodToGo",
+                    onClick: () => navigate("/consignee/bookingGoodToGo"),
+                },
+                {
+                    icon: Clipboard,
+                    label: "Document Status",
+                    href: "/consignee/documentList",
+                    isActive: activeItem === "documentList",
+                    onClick: () => navigate("/consignee/documentList"),
+                },
+
+                {
+                    icon: ClipboardList,
+                    label: "Reports",
+                    href: "/buyer/reports",
+                    isActive: activeItem === "reports",
+                    onClick: () => navigate("/buyer/reports"),
+                },
+                {
+                    icon: Settings,
+                    label: "Settings",
+                    href: "/buyer/settings",
+                    isActive: activeItem === "settings",
+                    onClick: () => navigate("/buyer/settings"),
+                },
+
             ]
         case pathname.startsWith("/cfs-receiver"):
             return [

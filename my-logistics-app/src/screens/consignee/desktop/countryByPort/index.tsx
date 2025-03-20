@@ -34,11 +34,11 @@ export default function Home() {
         cartonMeasurement: 20,
     }
     return (
-        <DashboardLayout headerName={'Country by Port of Loading Status'}>
+        <DashboardLayout headerName={'Country By Port of Loading Status'}>
 
             {/* Today's Status Section Placeholder */}
             <section className="mb-2">
-                <StatusDashboard showAddPoButton={false} showShipByDate={false} loggedInAstext="Control Tower" />
+                <StatusDashboard showAddPoButton={false} showShipByDate={false} loggedInAstext={'Consignee'} />
             </section>
             <section className="mb-2">
                 <VendorHeader
@@ -60,7 +60,7 @@ export default function Home() {
                         title: theme.fonts.web.venderDetialsPage.label.weight,
                         titleValeu: theme.fonts.web.venderDetialsPage.value.weight,
                     }}
-                    showVendroBrandDetail={false}
+                    showVendroBrandDetail={true}
                 />
             </section>
 
@@ -144,31 +144,7 @@ export default function Home() {
                 </div>
 
             </section>
-            <section>
-                <span style={{ fontSize: "1.7rem", fontWeight: '700' }}>Status by Cargo Ready Dates</span>
-            </section>
-            <section>
-                <OrderHeader
-                    poNumber="2846395275"
-                    buyer="Sample Buyer"
-                    brand="Sample Brand"
-                    productName="Men's Long Sleeve Shirt 100% Cotton"
-                    color="Navy"
 
-                    colors={["Navy", "Black", "White", "Red"]}
-                    orderDetails={orderDetails}
-                    onAction={() => console.log("Action clicked")}
-                    ActionButtonText={`Action Required, Approve Ship-By-Date`}
-                    styles={{
-                        backgroundColor: theme.colors.secondary,
-                        textColor: "#1E1E1E",
-                        fontSize: "16px",
-                        fontWeight: "400",
-                        actionButtonColor: "#FFE5E5",
-                        actionButtonTextColor: "#1E1E1E",
-                    }}
-                />
-            </section>
             <section className="mb-2">
                 <div className="w-full max-w-7xl mx-auto"  >
                     <div className="p-4">

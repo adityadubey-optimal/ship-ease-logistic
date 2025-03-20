@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { Home, ListTodo, Settings, HelpCircle, CirclePlus, ClipboardCheck } from "lucide-react"
+import { Home, ListTodo, Settings, HelpCircle, CirclePlus, ClipboardCheck, ListChecks } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/context/ThemeContext"
 import { useNavigate } from "react-router-dom"
@@ -129,31 +129,97 @@ function getNavItems(content: Partial<NavItem[]>, { activeItem = "home" }: Parti
         // content = <div>Shipper Routes Component</div>
 
         case location.pathname.startsWith("/control-tower"):
-            return [
-                {
-                    icon: Home,
-                    label: "Tower Dashboard",
-                    isActive: activeItem === "dashboard",
-                    onClick: () => {
-                        console.log("Navigating to Control Tower Dashboard")
-                        navigate("/control-tower/dashboard")
-                    },
+            return [{
+                icon: Home,
+                label: "Home",
+                isActive: activeItem === "home",
+                onClick: () => {
+                    console.log("testing Home")
+                    navigate("/control-tower/home")
                 },
-            ]
+            },
+            {
+                icon: ClipboardCheck,
+                label: "Good to-go Bookings",
+                isActive: activeItem === "tasks",
+                onClick: () => {
+                    console.log("testing Tasks")
+                    navigate("/control-tower/bookingGoodToGo")
+                },
+            },
+            {
+                icon: ListTodo,
+                label: "invisible",
+                isActive: activeItem === "tasks",
+                onClick: () => {
+                    console.log("shipper invisible")
+                },
+            },
+            {
+                icon: Settings,
+                label: "Settings",
+                isActive: activeItem === "settings",
+                onClick: () => {
+                    console.log("testing Settings")
+                    navigate("/control-tower/settings")
+                },
+            },
+            {
+                icon: HelpCircle,
+                label: "Help",
+                isActive: activeItem === "help",
+                onClick: () => {
+                    console.log("testing Help")
+                    navigate("/control-tower/help")
+                },
+            },]
             // content = <div>Control Tower Routes Component</div>
             break
         case location.pathname.startsWith("/consignee"):
-            return [
-                {
-                    icon: Home,
-                    label: "Consignee Home",
-                    isActive: activeItem === "home",
-                    onClick: () => {
-                        console.log("Navigating to Consignee Home")
-                        navigate("/consignee/home")
-                    },
+            return [{
+                icon: Home,
+                label: "Home",
+                isActive: activeItem === "home",
+                onClick: () => {
+                    console.log("testing Home")
+                    navigate("/consignee/countryByPort")
                 },
-            ]
+            },
+            {
+                icon: ClipboardCheck,
+                label: "Good to-go Bookings",
+                isActive: activeItem === "tasks",
+                onClick: () => {
+                    console.log("testing Tasks")
+                    navigate("/consignee/bookingGoodToGo")
+                },
+            },
+            {
+                icon: ListTodo,
+                label: "invisible",
+                isActive: activeItem === "tasks",
+                onClick: () => {
+                    console.log("shipper invisible")
+                },
+            },
+            {
+                icon: Settings,
+                label: "Settings",
+                isActive: activeItem === "settings",
+                onClick: () => {
+                    console.log("testing Settings")
+                    navigate("/consignee/settings")
+                },
+            },
+            {
+                icon: HelpCircle,
+                label: "Help",
+                isActive: activeItem === "help",
+                onClick: () => {
+                    console.log("testing Help")
+                    navigate("/consignee/help")
+                },
+            },]
             // content = <div>Consignee Routes Component</div>
             break
         case location.pathname.startsWith("/cfs-receiver"):
@@ -249,8 +315,8 @@ function getSpecialButton() {
                     navigate("/buyer/poReconcilation")
                 }}
             >
-                <CirclePlus className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
-                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Add PO</span>
+                <ListChecks className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
+                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Status</span>
             </Button>
             break;
         case location.pathname.startsWith("/consignee"):
@@ -269,8 +335,8 @@ function getSpecialButton() {
                     navigate("/buyer/poReconcilation")
                 }}
             >
-                <CirclePlus className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
-                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Add PO</span>
+                <ListChecks className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
+                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Status</span>
             </Button>
             break;
         case location.pathname.startsWith("/cfs-receiver"):
@@ -289,8 +355,8 @@ function getSpecialButton() {
                     navigate("/buyer/poReconcilation")
                 }}
             >
-                <CirclePlus className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
-                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Add PO</span>
+                <ListChecks className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
+                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Status</span>
             </Button>
             break;
         default:
@@ -381,11 +447,11 @@ export default function BottomNav({ activeItem = "home" }: BottomNavProps) {
 
             <nav
                 className="h-full w-full flex items-center justify-between"
-                style={{ position: "relative" }}
+                style={{ position: "relative", justifyContent: 'space-around' }}
             >
                 {getSpecialButton()}
 
-                {navItems.map((item) => (
+                {content.map((item: any) => (
                     <NavButton key={item.label} {...item} />
                 ))}
             </nav>
@@ -395,7 +461,7 @@ export default function BottomNav({ activeItem = "home" }: BottomNavProps) {
 
 function NavButton({ icon: Icon, label, isActive = false, onClick }: NavItem) {
     return (
-        <div style={label === "invisible" ? { visibility: "hidden" } : {}}>
+        <div style={label === "invisible" ? { visibility: "hidden" } : { width: '65px', display: 'flex', alignItems: 'center' }}>
             <Button
                 variant="icon"
                 size="mobile"
@@ -407,7 +473,7 @@ function NavButton({ icon: Icon, label, isActive = false, onClick }: NavItem) {
                 }}
             >
                 <Icon className="h-5 w-5" />
-                <span className="text-xs font-normal">{label}</span>
+                <span className="text-xs font-normal" style={{ fontSize: '10px', lineHeight: '10px' }}>{label}</span>
             </Button>
         </div>
     )

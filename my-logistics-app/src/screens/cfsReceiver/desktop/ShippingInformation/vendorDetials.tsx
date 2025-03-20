@@ -51,18 +51,16 @@ const VendorInfo = styled.div`
   flex-shrink: 0;
 `
 
-const Title = styled.span<{ $fontSize?: string; $fontWeight?: string, }>`
+const Title = styled.span<{ $fontSize?: string; $fontWeight?: string }>`
   color: #666;
   font-size: ${(props) => props.$fontSize || "1rem"};
   font-weight: ${(props) => props.$fontWeight || "400"};
-  color : '#616161'
 `
 
 const Brand = styled.span<{ $fontSize?: string; $fontWeight?: string }>`
   color: #333;
   font-size: ${(props) => props.$fontSize || "1.25rem"};
   font-weight: ${(props) => props.$fontWeight || "600"};
-    color : '#616161'
 `
 
 const ShippingDetails = styled.div`
@@ -80,12 +78,12 @@ const ShippingDetails = styled.div`
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0.55rem 1.05rem;
+  padding: 0.75rem 1.5rem;
   border: 1px solid #2563eb;
   border-radius: 0.75rem;
-  min-width: 110px;
+  min-width: 150px;
   flex-grow: 1;
-    text-align : center;
+
   @media (max-width: 768px) {
     min-width: 100%;
   }
@@ -93,17 +91,15 @@ const InfoBox = styled.div`
 
 const Label = styled.span<{ $fontSize?: string; $fontWeight?: string }>`
   color: #666;
-  font-size: 0.875rem;
-  font-weight: 550;
-  margin-bottom: 0.1rem;
-  color : #616161;
+  font-size: ${(props) => props.$fontSize || "0.875rem"};
+  font-weight: ${(props) => props.$fontWeight || "400"};
+  margin-bottom: 0.25rem;
 `
 
 const Value = styled.span<{ $fontSize?: string; $fontWeight?: string }>`
   color: #333;
-  font-size: 1.75rem;
-  font-weight: 650;
-  color : #616161;
+  font-size: ${(props) => props.$fontSize || "1rem"};
+  font-weight: ${(props) => props.$fontWeight || "600"};
 `
 
 // VendorHeader component
@@ -127,8 +123,8 @@ export default function VendorHeader({
         titleValeu: '500'
     },
     showVendroBrandDetail = true,
-}: VendorHeaderProps) {
 
+}: VendorHeaderProps) {
     const { theme } = useTheme()
     const navigate = useNavigate()
     // const SHIP_BY_DATE_CARD_WIDTH = "350px";
@@ -153,36 +149,28 @@ export default function VendorHeader({
                     </Brand>
                 </>) : (<div
                     style={{
-                        backgroundColor: theme.colors.cardBackground,
+                        // backgroundColor: theme.colors.cardBackground,
+                        border: '1px solid #2563eb',
                         borderRadius: "8px",
                         padding: "1rem",
+                        paddingBottom: '0rem',
+                        paddingTop: '0rem',
                         minWidth: SHIP_BY_DATE_CARD_WIDTH,
                         maxWidth: SHIP_BY_DATE_CARD_WIDTH,
-                        height: `calc(${CARD_HEIGHT} - 10px)`,
+
+                        // height: `calc(${CARD_HEIGHT} - 10px)`,
                     }}
                 >
                     <div className="flex justify-between items-center h-full">
-                        <div>
-                            <p
-                                style={{
-                                    color: theme.colors.textPrimary,
-                                    fontSize: theme.fonts.web.buyerHomePage.statusCard.shipHeader.size,
-                                    fontWeight: theme.fonts.web.buyerHomePage.statusCard.shipHeader.weight,
-                                    marginBottom: "8px",
-                                }}
-                            >
-                                For Ship-by-Date:
-                            </p>
-                            <p
-                                style={{
-                                    color: theme.colors.textPrimary,
-                                    fontSize: theme.fonts.web.buyerHomePage.statusCard.dateFont.size,
-                                    fontWeight: theme.fonts.web.buyerHomePage.statusCard.dateFont.weight,
-                                }}
-                            >
-                                4 Mar 25
-                            </p>
-                        </div>
+                        <InfoBox style={{ border: 'none' }}>
+                            <Label $fontSize={fontSize.label} $fontWeight={fontWeight.label}>
+                                Country of Origin:
+                            </Label>
+                            <Value $fontSize={fontSize.value} $fontWeight={fontWeight.value}>
+                                China
+                            </Value>
+
+                        </InfoBox>
                         <Edit2
                             style={{
                                 color: theme.colors.textPrimary,
