@@ -83,7 +83,7 @@ export default function PurchaseOrderTableExample() {
             shipByDate: "4 Mar 2025",
             changeRequest: "Quantity Pending Approval",
             status: "Approved",
-            action: "Reminder Sent",
+            action: "Send Reminder",
         },
         {
             id: 2,

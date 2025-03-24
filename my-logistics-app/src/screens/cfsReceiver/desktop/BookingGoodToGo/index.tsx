@@ -44,9 +44,9 @@ export default function Home() {
 
             {/* Today's Status Section Placeholder */}
             <section className="mb-2">
-                <StatusDashboard showAddPoButton={false} showShipByDate={false} loggedInAstext="Consignee" />
+                <StatusDashboard showAddPoButton={false} showShipByDate={false} loggedInAstext="CFS Receiver" />
             </section>
-            <section className="mb-2">
+            <section className="mb-2 w-full max-w-7xl mx-auto">
                 <VendorHeader
                     vendor="Vendor Name"
                     brand="Rubi"
@@ -66,7 +66,7 @@ export default function Home() {
                         title: theme.fonts.web.venderDetialsPage.label.weight,
                         titleValeu: theme.fonts.web.venderDetialsPage.value.weight,
                     }}
-                    showVendroBrandDetail={true}
+                    showVendroBrandDetail={false}
                 />
             </section>
 
@@ -79,8 +79,17 @@ export default function Home() {
 
 
             </section>
+            <section className="mb-2 w-full max-w-7xl mx-auto p-4" style={{ fontSize: "1.7rem", fontWeight: '700' }}>     <DocumentHeader
+                Icon={<img />}
+                title="PO Overview"
+                subtitle="Delivery To CFS Site"
+                showSeeMore={false}
+                onSeeMoreClick={() => console.log('See More clicked')}
 
-            <section>
+            /></section>
+
+
+            <section className="w-full max-w-7xl mx-auto p-4">
                 <OrderHeader
                     poNumber="2846395275"
                     buyer="Sample Buyer"
@@ -186,7 +195,7 @@ export default function Home() {
 
 
 
-        </DashboardLayout>
+        </DashboardLayout >
     )
 }
 

@@ -20,7 +20,7 @@ import Hazard from "@/assets/fluent_approvals-app-24-filled.svg"
 import checkbox from "@/assets/ic_twotone-pending-actions.svg"
 import DocumentHeader from "@/components/mobile/sectionHeaderMobile"
 import Building from "@assets/boxes_with_labels.svg"
-import VendorHeader from '../../../../components/mobile/VendorDetails'
+import VendorHeader from '../../../../components/mobile/vendorDetailsNew'
 import ExampleScrollableTable from '@/components/desktop/DataChartForShipper'
 
 
@@ -64,15 +64,12 @@ export default function Home() {
 
             {/* Metrics Section Placeholder */}
             <section className="mb-1 p-4" style={{ paddingBottom: '0.5rem' }}>
-                <VendorHeader
-                    vendor="Vendor Name"
+                <VendorHeader vendor="Vendor Name"
                     brand="Rubi"
                     shipByDate="4 Mar 25"
                     cargoReadyDate="26 Feb 25"
                     portOfLoading="CN-SHA"
-                    destination="AU-MEL"
-                    customPadding
-                />
+                    destination="AU-MEL" />
 
             </section>
 
@@ -92,7 +89,7 @@ export default function Home() {
                     <div className="p-4">
                         <DocumentHeader
                             Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
-                            title="PO Change Requests Pending Documents"
+                            title="Documents Incomplete for Delivery:"
                             date="24 Feb 2025"
                             subtitle="View the documents and document status"
                             showSeeMore={false}
@@ -118,7 +115,7 @@ export default function Home() {
                     <div className="p-4">
                         <DocumentHeader
                             Icon={<img src={Document} alt="Ship illustration" className="w-10 h-10 object-contain" />}
-                            title="PO booked for cargo ready date:"
+                            title="Documents Incomplete for Delivery:"
                             date="26 Feb 2025"
                             subtitle="View the documents and document status"
                             showSeeMore={false}

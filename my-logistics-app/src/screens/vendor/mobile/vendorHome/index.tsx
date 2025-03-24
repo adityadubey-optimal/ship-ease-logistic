@@ -66,7 +66,8 @@ export default function Home() {
                     <div className=" p-4">
                         <DocumentHeader
                             Icon={<img src={Bill} alt="Ship illustration" className="w-15 h-15 object-contain" />}
-                            title="Active Purchase Order for Ship-By-Date: "
+                            title="Active Purchase Order for Ship-By-Date: 4 Mar 25 (20 new POs)"
+
                             subtitle="Apprive POs Ship-By-Date, Mode and Quantity"
                             showSeeMore={false}
                             onSeeMoreClick={() => console.log('See More clicked')}

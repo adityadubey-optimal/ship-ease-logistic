@@ -27,6 +27,7 @@ import ShippingDatesDisplay from "./ShipDates"
 import NotificationTable from "./NotificationTable"
 import ShipDate from "@/assets/ship_dates.svg"
 import Building from '@/assets/NotificationIcon2.svg'
+import VendorHeader from "@/components/mobile/vendorDetailsNew"
 
 
 
@@ -42,11 +43,23 @@ export default function Home() {
                 <StatusDashboard showAddPoButton={false} />
             </section>
 
+            <section className="mb-1 p-4" style={{ paddingBottom: '1rem' }}>
+                <VendorHeader vendor="Vendor Name"
+                    brand="Rubi"
+                    shipByDate="4 Mar 25"
+                    cargoReadyDate="26 Feb 25"
+                    portOfLoading="CN-SHA"
+                    destination="AU-MEL" />
+
+            </section>
+
             {/* Metrics Section Placeholder */}
             <section className="mb-1 p-4" style={{ paddingBottom: '1rem' }}>
                 <PoBookingCard />
 
             </section>
+
+
 
             {/* Tasks Section Placeholder */}
             <section className="mb-2">

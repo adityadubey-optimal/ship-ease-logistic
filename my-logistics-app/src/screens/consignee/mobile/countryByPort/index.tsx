@@ -150,7 +150,7 @@ export default function Home() {
                     </div>
                     <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
                         <ExampleScrollableTable showDocumentsSubcolumns={true} showDocuments={false}
-
+                            actionFlag="send_reminder_with_shipping_information"
                         />
 
 
@@ -175,7 +175,7 @@ export default function Home() {
                     </div>
                     <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
                         <ExampleScrollableTable showDocuments={true} showDocumentsSubcolumns={true}
-
+                            actionFlag="send_reminder_with_shipping_information"
                         />
 
 
@@ -200,7 +200,7 @@ export default function Home() {
                     </div>
                     <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
                         <ExampleScrollableTable showDocuments={false} showDocumentsSubcolumns={true}
-
+                            actionFlag="send_reminder_with_shipping_information"
                         />
 
 

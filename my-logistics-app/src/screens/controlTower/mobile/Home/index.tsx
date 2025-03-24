@@ -20,11 +20,60 @@ import Hazard from "@/assets/fluent_approvals-app-24-filled.svg"
 import checkbox from "@/assets/ic_twotone-pending-actions.svg"
 import DocumentHeader from "@/components/mobile/sectionHeaderMobile"
 import Building from "@assets/boxes_with_labels.svg"
+import styled from "styled-components"
+
 
 
 export default function Home() {
     const { theme } = useTheme()
     const navigate = useNavigate()
+
+    const ShippingDetails = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex-grow: 1;
+justify-content : space-around;
+
+ 
+`
+
+    const InfoBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 0.3rem;
+  border: 1px solid #2563eb;
+  border-radius: 0.75rem;
+text-align : center;
+
+
+
+`
+
+    const Label = styled.span<{ $fontSize?: string; $fontWeight?: string }>`
+  color: #666;
+  font-size: ${(props) => props.$fontSize || "0.875rem"};
+  font-weight: ${(props) => props.$fontWeight || "400"};
+  margin-bottom: 0.25rem;
+`
+
+    const Value = styled.span<{ $fontSize?: string; $fontWeight?: string }>`
+  color: #333;
+  font-size: ${(props) => props.$fontSize || "1rem"};
+  font-weight: ${(props) => props.$fontWeight || "600"};
+`
+    const fontSize = {
+        label: "0.575rem",
+        value: "0.8rem",
+        title: "0.8rem",
+        titleValeu: '0.8rem'
+    }
+    const fontWeight = {
+        label: "400",
+        value: "600",
+        title: "400",
+        titleValeu: '500'
+    }
 
     interface Vendor {
         id?: string
@@ -62,23 +111,19 @@ export default function Home() {
         },
     ]
     return (
-        <DashboardLayout>
+        <DashboardLayout subtitle="Control Tower Overview">
             {/* Today's Status Section Placeholder */}
             <section className="mb-1 p-4" style={{ paddingBottom: '0px' }}>
                 <StatusDashboard showAddPoButton={false} />
             </section>
 
             {/* Metrics Section Placeholder */}
-            <section className="mb-1 p-4" style={{ paddingBottom: '2rem' }}>
+            <section className="mb-1 p-4" style={{ paddingBottom: '4rem' }}>
                 <WorldMap vendors={vendors} height="400px" />
 
             </section>
 
-            {/* Tasks Section Placeholder */}
-            <section className="mb-2">
 
-                <StatusCardContainer />
-            </section>
 
             <section className="mb-2">
                 <div className="w-full max-w-7xl mx-auto "  >
@@ -129,22 +174,63 @@ export default function Home() {
             </section>
 
             <section className="mb-2">
-                <div className="w-full max-w-7xl mx-auto p-4"  >
+                <div className="w-full max-w-7xl mx-auto"  >
                     <div style={{ marginBottom: '0.75rem' }}>
                         <DocumentHeader
-                            Icon={<img src={Building} alt="Ship illustration" className="w-10 h-10 object-contain" />}
+                            Icon={<img />}
                             title="Cargo Ready Overview 24 Mar 25"
                             subtitle="Cargo Ready Booking Overview for Ship-by-Date 24 Mar 25"
                             showSeeMore={false}
                             onSeeMoreClick={() => console.log('See More clicked')}
-                        // headerTextStyle={{ color: theme.colors.yellowHeaderText }}
-                        // colorTheme={theme.colors.yellowHeaderText}
+
                         />
                     </div>
                     <div style={{ borderRadius: '25px' }}>
 
-                        <StatusDashboard showAddPoButton={false} />
-                        <StatusCardContainer />
+                        <StatusCardContainer cards={[
+                            {
+                                value: 16,
+                                status: "success" as const,
+                                title: "Total vendors",
+                                subtitle: "",
+                                width: "180px",
+                            },
+                            {
+                                value: 4,
+                                status: "warning" as const,
+                                title: "Pending",
+                                subtitle: "",
+                                width: "180px",
+                            },
+                            {
+                                value: 0,
+                                status: "error" as const,
+                                title: "Total Urgent",
+                                subtitle: "",
+                                additionalInfo: "Congratulations, No Urgent tasks for today",
+                                widthError: "320px",
+                            }
+                        ]} />
+                        <div style={{ marginBottom: '0.75rem' }}>
+
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', padding: '1rem' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', fontSize: '1.05rem', fontWeight: '600', lineHeight: '1.25rem' }}>
+                                <span>Cargo Ready Bookings</span>
+                                <span>vs Capacity</span>
+                            </div>
+                            <ShippingDetails>
+                                <InfoBox style={{ padding: '0.7rem 0.5rem', textAlign: 'center' }}>
+                                    <Label $fontSize={fontSize.label} $fontWeight={fontWeight.label}>
+                                        Country Of Origin
+                                    </Label>
+                                    <Value $fontSize={fontSize.value} $fontWeight={fontWeight.value}>
+                                        China
+                                    </Value>
+                                </InfoBox>
+                            </ShippingDetails>
+                        </div>
+
                         <DataChartMobile />
 
                     </div>

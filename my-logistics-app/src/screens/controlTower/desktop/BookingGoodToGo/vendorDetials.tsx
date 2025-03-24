@@ -28,7 +28,6 @@ interface VendorHeaderProps {
     }
     showVendroBrandDetail?: boolean
 }
-
 // Styled components
 const Container = styled.div`
   display: flex;
@@ -51,16 +50,18 @@ const VendorInfo = styled.div`
   flex-shrink: 0;
 `
 
-const Title = styled.span<{ $fontSize?: string; $fontWeight?: string }>`
+const Title = styled.span<{ $fontSize?: string; $fontWeight?: string, }>`
   color: #666;
   font-size: ${(props) => props.$fontSize || "1rem"};
   font-weight: ${(props) => props.$fontWeight || "400"};
+  color : '#616161'
 `
 
 const Brand = styled.span<{ $fontSize?: string; $fontWeight?: string }>`
   color: #333;
   font-size: ${(props) => props.$fontSize || "1.25rem"};
   font-weight: ${(props) => props.$fontWeight || "600"};
+    color : '#616161'
 `
 
 const ShippingDetails = styled.div`
@@ -78,12 +79,12 @@ const ShippingDetails = styled.div`
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0.75rem 1.5rem;
+  padding: 0.55rem 1.05rem;
   border: 1px solid #2563eb;
   border-radius: 0.75rem;
-  min-width: 150px;
+  min-width: 110px;
   flex-grow: 1;
-
+    text-align : center;
   @media (max-width: 768px) {
     min-width: 100%;
   }
@@ -91,15 +92,17 @@ const InfoBox = styled.div`
 
 const Label = styled.span<{ $fontSize?: string; $fontWeight?: string }>`
   color: #666;
-  font-size: ${(props) => props.$fontSize || "0.875rem"};
-  font-weight: ${(props) => props.$fontWeight || "400"};
-  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 550;
+  margin-bottom: 0.1rem;
+  color : #616161;
 `
 
 const Value = styled.span<{ $fontSize?: string; $fontWeight?: string }>`
   color: #333;
-  font-size: ${(props) => props.$fontSize || "1rem"};
-  font-weight: ${(props) => props.$fontWeight || "600"};
+  font-size: 1.75rem;
+  font-weight: 650;
+  color : #616161;
 `
 
 // VendorHeader component
@@ -162,7 +165,7 @@ export default function VendorHeader({
                     }}
                 >
                     <div className="flex justify-between items-center h-full">
-                        <InfoBox style={{ border: 'none' }}>
+                        <InfoBox style={{ border: 'none', textAlign: 'start' }}>
                             <Label $fontSize={fontSize.label} $fontWeight={fontWeight.label}>
                                 Country of Origin:
                             </Label>

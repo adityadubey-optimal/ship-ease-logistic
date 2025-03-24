@@ -14,12 +14,12 @@ interface OrderHeaderProps {
     color: string
     colors?: string[]
     orderDetails: {
-        totalPoQuantity: number
-        totalPackedQuantity: number
-        netWeight: number
-        grossWeight: number
-        cartonQuantity: number
-        cartonMeasurement: number
+        totalPoQuantity: any
+        totalPackedQuantity: any
+        netWeight: any
+        grossWeight: any
+        cartonQuantity: any
+        cartonMeasurement: any
     }
     onAction?: () => void
     styles?: {

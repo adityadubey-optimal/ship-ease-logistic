@@ -162,7 +162,7 @@ function getNavItems(
                 },
                 {
                     icon: TextSearch,
-                    label: "good-To-Go Shipments",
+                    label: "Good-To-Go Shipments",
                     href: "/control-tower/bookingGoodToGo",
                     isActive: activeItem === "booking_good_to_go",
                     onClick: () => navigate("/control-tower/bookingGoodToGo"),
@@ -238,6 +238,35 @@ function getNavItems(
                     href: "/cfs-receiver/home",
                     isActive: activeItem === "home",
                     onClick: () => navigate("/cfs-receiver/home"),
+                },
+                {
+                    icon: CircleCheck,
+                    label: "Good-to-go Shipments",
+                    href: "/cfs-receiver/bookingGoodToGo",
+                    isActive: activeItem === "bookingGoodToGo",
+                    onClick: () => navigate("/consignee/bookingGoodToGo"),
+                },
+                {
+                    icon: Clipboard,
+                    label: "Document Status",
+                    href: "/cfs-receiver/shippingInformation",
+                    isActive: activeItem === "documentList",
+                    onClick: () => navigate("/consignee/documentList"),
+                },
+
+                {
+                    icon: ClipboardList,
+                    label: "Reports",
+                    href: "/cfs-receiver/reports",
+                    isActive: activeItem === "reports",
+                    onClick: () => navigate("/buyer/reports"),
+                },
+                {
+                    icon: Settings,
+                    label: "Settings",
+                    href: "/cfs-receiver/settings",
+                    isActive: activeItem === "settings",
+                    onClick: () => navigate("/buyer/settings"),
                 },
             ]
         default:

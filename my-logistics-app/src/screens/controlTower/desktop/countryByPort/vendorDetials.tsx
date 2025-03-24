@@ -28,7 +28,6 @@ interface VendorHeaderProps {
     }
     showVendroBrandDetail?: boolean
 }
-
 // Styled components
 const Container = styled.div`
   display: flex;
@@ -127,8 +126,8 @@ export default function VendorHeader({
         titleValeu: '500'
     },
     showVendroBrandDetail = true,
-}: VendorHeaderProps) {
 
+}: VendorHeaderProps) {
     const { theme } = useTheme()
     const navigate = useNavigate()
     // const SHIP_BY_DATE_CARD_WIDTH = "350px";
@@ -153,36 +152,28 @@ export default function VendorHeader({
                     </Brand>
                 </>) : (<div
                     style={{
-                        backgroundColor: theme.colors.cardBackground,
+                        // backgroundColor: theme.colors.cardBackground,
+                        border: '1px solid #2563eb',
                         borderRadius: "8px",
                         padding: "1rem",
+                        paddingBottom: '0rem',
+                        paddingTop: '0rem',
                         minWidth: SHIP_BY_DATE_CARD_WIDTH,
                         maxWidth: SHIP_BY_DATE_CARD_WIDTH,
-                        height: `calc(${CARD_HEIGHT} - 10px)`,
+
+                        // height: `calc(${CARD_HEIGHT} - 10px)`,
                     }}
                 >
                     <div className="flex justify-between items-center h-full">
-                        <div>
-                            <p
-                                style={{
-                                    color: theme.colors.textPrimary,
-                                    fontSize: theme.fonts.web.buyerHomePage.statusCard.shipHeader.size,
-                                    fontWeight: theme.fonts.web.buyerHomePage.statusCard.shipHeader.weight,
-                                    marginBottom: "8px",
-                                }}
-                            >
-                                For Ship-by-Date:
-                            </p>
-                            <p
-                                style={{
-                                    color: theme.colors.textPrimary,
-                                    fontSize: theme.fonts.web.buyerHomePage.statusCard.dateFont.size,
-                                    fontWeight: theme.fonts.web.buyerHomePage.statusCard.dateFont.weight,
-                                }}
-                            >
-                                4 Mar 25
-                            </p>
-                        </div>
+                        <InfoBox style={{ border: 'none', textAlign: 'start' }}>
+                            <Label $fontSize={fontSize.label} $fontWeight={fontWeight.label}>
+                                Country of Origin:
+                            </Label>
+                            <Value $fontSize={fontSize.value} $fontWeight={fontWeight.value}>
+                                China
+                            </Value>
+
+                        </InfoBox>
                         <Edit2
                             style={{
                                 color: theme.colors.textPrimary,

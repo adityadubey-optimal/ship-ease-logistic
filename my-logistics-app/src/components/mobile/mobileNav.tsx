@@ -292,7 +292,6 @@ function getSpecialButton() {
     const { theme } = useTheme()
 
     const navigate = useNavigate()
-    console.log(' location.pathname', location.pathname)
     switch (true) {
         case location.pathname.startsWith("/buyer"):
             return <Button
@@ -423,52 +422,7 @@ export default function BottomNav({ activeItem = "home" }: BottomNavProps) {
     const navigate = useNavigate()
     const { theme } = useTheme()
 
-    const navItems: NavItem[] = [
-        {
-            icon: Home,
-            label: "Home",
-            isActive: activeItem === "home",
-            onClick: () => {
-                console.log("testing Home")
-                navigate("/buyer/home")
-            },
-        },
-        {
-            icon: ListTodo,
-            label: "Tasks",
-            isActive: activeItem === "tasks",
-            onClick: () => {
-                console.log("testing Tasks")
-                navigate("/buyer/urgentTask")
-            },
-        },
-        {
-            icon: ListTodo,
-            label: "invisible",
-            isActive: activeItem === "tasks",
-            onClick: () => {
-                console.log("testing invisible")
-            },
-        },
-        {
-            icon: Settings,
-            label: "Settings",
-            isActive: activeItem === "settings",
-            onClick: () => {
-                console.log("testing Settings")
-                navigate("buyer/settings")
-            },
-        },
-        {
-            icon: HelpCircle,
-            label: "Help",
-            isActive: activeItem === "help",
-            onClick: () => {
-                console.log("testing Help")
-                navigate("buyer/help")
-            },
-        },
-    ]
+
     let content: Partial<NavItem[]> = []
     content = getNavItems(content, {}) || []
 

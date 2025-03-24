@@ -71,7 +71,7 @@ export default function Home() {
                 <StatusDashboard showAddPoButton={false} />
             </section>
 
-            <section className="mb-2">
+            <section className="mb-12 w-full max-w-7xl mx-auto p-4">
 
                 <WorldMap vendors={vendors} />
             </section>
@@ -88,7 +88,7 @@ export default function Home() {
                         colorTheme={theme.colors.redHeaderText}
                     />
                     <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
-                        <DataChart height="400px" actionFlag={"ship_by_date_booking"} showDownloadButton />
+                        <DataChart height="400px" actionFlag={"send_reminder_with_shipping_information"} showDownloadButton />
 
                     </div>
 
@@ -110,7 +110,7 @@ export default function Home() {
                         colorTheme={theme.colors.yellowHeaderText}
                     />
                     <div style={{ background: theme.colors.secondary, borderRadius: '25px' }}>
-                        <DataChart height="400px" actionFlag={"ship_by_date_booking"} showDownloadButton />
+                        <DataChart height="400px" actionFlag={"send_reminder_with_shipping_information"} showDownloadButton />
 
                     </div>
 

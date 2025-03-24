@@ -36,7 +36,7 @@ export default function Home() {
             <section className="mb-2">
                 <StatusDashboard showAddPoButton={false} showShipByDate={false} loggedInAstext="Consignee" />
             </section>
-            <section className="mb-2">
+            <section className="mb-2 w-full max-w-7xl mx-auto p-4">
                 <VendorHeader
                     vendor="Vendor Name"
                     brand="Rubi"
@@ -56,7 +56,7 @@ export default function Home() {
                         title: theme.fonts.web.venderDetialsPage.label.weight,
                         titleValeu: theme.fonts.web.venderDetialsPage.value.weight,
                     }}
-                    showVendroBrandDetail={true}
+                    showVendroBrandDetail={false}
                 />
             </section>
 

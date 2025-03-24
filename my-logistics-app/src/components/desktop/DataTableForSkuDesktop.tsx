@@ -8,9 +8,9 @@ export const DataTableForPo = ({ showDetailedPackingList = false }: { showDetail
     const { theme } = useTheme()
 
     const orderDetails = {
-        totalPoQuantity: 1545,
-        totalPackedQuantity: 1545,
-        netWeight: 1545,
+        totalPoQuantity: '1,545',
+        totalPackedQuantity: '1,545',
+        netWeight: '1,545',
         grossWeight: 1545,
         cartonQuantity: 20,
         cartonMeasurement: 20,

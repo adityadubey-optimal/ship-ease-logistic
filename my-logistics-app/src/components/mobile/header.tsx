@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import { useState } from 'react'
 import {
     Menu,
     Search,
@@ -13,8 +14,18 @@ import {
     Bell,
     Filter,
     ChevronDown,
-    LogOut
+    LogOut,
+    ClipboardCheck,
+    Home,
+    HelpCircle,
 } from "lucide-react"
+import {
+    DropdownMenu,
+    DropdownMenuTrigger,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -30,15 +41,91 @@ import { useIsMobile } from "@/hooks/useMobile"
 import Digital from '@/assets/Digital.png';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useNavigate } from "react-router-dom"
+import CottonOn from "@/assets/cotton-on-logo-freelogovectors.net_ 1.svg"
 
 interface HeaderProps {
     title?: string
     subtitle?: string
 }
 
+
+export function useMenuLinks() {
+
+    const navigate = useNavigate()
+
+    switch (true) {
+        case location.pathname.startsWith("/buyer"):
+            return (
+                <div className="flex flex-col">
+                    <MenuLink icon={FileText} label="View all urgent tasks" onClick={() => navigate("/buyer/urgentTask")} />
+                    <MenuLink icon={FolderDot} label="Documentation Vault" onClick={() => navigate("/buyer/documentList")} />
+                    <MenuLink icon={User} label="Profile" onClick={() => navigate("/buyer/profile")} />
+                    <MenuLink icon={Settings} label="Settings" onClick={() => navigate("/buyer/settings")} />
+                    <MenuLink icon={FileBarChart} label="Reports" onClick={() => navigate("/buyer/reports")} />
+                </div>
+            )
+
+        case location.pathname.startsWith("/shipper"):
+            return (
+                <div className="flex flex-col">
+                    <MenuLink icon={Home} label="Home" onClick={() => navigate("/shipper/home")} />
+                    <MenuLink icon={ClipboardCheck} label="Booking Management" onClick={() => navigate("/shipper/booking_good_to_go")} />
+                    <MenuLink icon={User} label="Profile" onClick={() => navigate("/shipper/profile")} />
+                    <MenuLink icon={Settings} label="Settings" onClick={() => navigate("/shipper/settings")} />
+                    <MenuLink icon={HelpCircle} label="Help Center" onClick={() => navigate("/shipper/help")} />
+                </div>
+            )
+
+        case location.pathname.startsWith("/control-tower"):
+            return (
+                <div className="flex flex-col">
+                    <MenuLink icon={Home} label="Dashboard" onClick={() => navigate("/control-tower/home")} />
+                    <MenuLink icon={ClipboardCheck} label="Good-to-Go Bookings" onClick={() => navigate("/control-tower/bookingGoodToGo")} />
+                    <MenuLink icon={FileBarChart} label="Reports" onClick={() => navigate("/control-tower/reports")} />
+                    <MenuLink icon={User} label="Profile" onClick={() => navigate("/control-tower/profile")} />
+                    <MenuLink icon={Settings} label="Settings" onClick={() => navigate("/control-tower/settings")} />
+                </div>
+            )
+
+        case location.pathname.startsWith("/consignee"):
+            return (
+                <div className="flex flex-col">
+                    <MenuLink icon={Home} label="Home" onClick={() => navigate("/consignee/countryByPort")} />
+                    <MenuLink icon={FileText} label="Document Status" onClick={() => navigate("/consignee/documentList")} />
+                    <MenuLink icon={ClipboardCheck} label="Booking Management" onClick={() => navigate("/consignee/bookingGoodToGo")} />
+                    <MenuLink icon={User} label="Profile" onClick={() => navigate("/consignee/profile")} />
+                    <MenuLink icon={Settings} label="Settings" onClick={() => navigate("/consignee/settings")} />
+                </div>
+            )
+
+        case location.pathname.startsWith("/cfs-receiver"):
+            return (
+                <div className="flex flex-col">
+                    <MenuLink icon={Home} label="Home" onClick={() => navigate("/cfs-receiver/home")} />
+                    <MenuLink icon={ClipboardCheck} label="Booking Good-to-Go" onClick={() => navigate("/cfs-receiver/bookingGoodToGo")} />
+                    <MenuLink icon={FolderDot} label="Shipping Information" onClick={() => navigate("/cfs-receiver/shippingInformation")} />
+                    <MenuLink icon={User} label="Profile" onClick={() => navigate("/cfs-receiver/profile")} />
+                    <MenuLink icon={Settings} label="Settings" onClick={() => navigate("/cfs-receiver/settings")} />
+                </div>
+            )
+
+        default:
+            return (
+                <div className="flex flex-col">
+                    <MenuLink icon={Home} label="Auth Home" onClick={() => navigate("/auth/home")} />
+                    <MenuLink icon={User} label="Profile" onClick={() => navigate("/auth/profile")} />
+                    <MenuLink icon={Settings} label="Settings" onClick={() => navigate("/auth/settings")} />
+                </div>
+            )
+    }
+}
+
+
+
 export default function Header({ title = "Buyer", subtitle = "Vendor Ship-By-Date Overview" }: HeaderProps) {
     const { theme } = useTheme()
     const navigate = useNavigate()
+    const [selectedImage, setSelectedImage] = useState<string>(CottonOn)
 
     // Define font and icon size variables (responsive)
     const titleFontSize = '1.25rem'     // Title font size for "COTTON:ON"
@@ -53,7 +140,9 @@ export default function Header({ title = "Buyer", subtitle = "Vendor Ship-By-Dat
     const searchInputPadding = "1rem"                           // Left padding for search input
 
     const actionIconSize = useResponsiveSize(20, 20) + "px"       // Size for bell and filter icons
-
+    const handleSelect = (image: string) => {
+        setSelectedImage(image)
+    }
     return (
         <header className="bg-white border-b">
             {/* Title Section */}
@@ -96,11 +185,12 @@ export default function Header({ title = "Buyer", subtitle = "Vendor Ship-By-Dat
 
                                 {/* Menu Items */}
                                 <div className="flex flex-col">
-                                    <MenuLink icon={FileText} label="View all urgent tasks" />
+                                    {/* <MenuLink icon={FileText} label="View all urgent tasks" />
                                     <MenuLink icon={FolderDot} label="Documentation Vault" />
                                     <MenuLink icon={User} label="Profile" />
                                     <MenuLink icon={Settings} label="Settings" />
-                                    <MenuLink icon={FileBarChart} label="Reports" />
+                                    <MenuLink icon={FileBarChart} label="Reports" /> */}
+                                    {useMenuLinks()}
                                 </div>
 
                                 <div className="absolute bottom-16 left-0 right-0 p-4 border-t">
@@ -128,7 +218,39 @@ export default function Header({ title = "Buyer", subtitle = "Vendor Ship-By-Dat
                             </SheetContent>
                         </Sheet>
                         <div>
-                            <img src={Digital} style={{ height: '30px', width: '100px' }} />
+                            {location.pathname.startsWith("/control-tower") ? <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+
+                                    <Button variant="icon" size="mobile" className="">
+                                        <img src={selectedImage} alt="Selected" style={{ height: "30px", width: "100px" }} />
+                                        <ChevronDown />
+                                    </Button>
+
+
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end" style={{ width: "180px" }} className="bg-gray-200 text-black border-none">
+                                    <DropdownMenuItem
+                                        onClick={() => handleSelect(Digital)}
+                                        className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                                    >
+                                        <img src={Digital} alt="Digital Optima" style={{ height: "30px", width: "100px" }} />
+                                    </DropdownMenuItem>
+                                    <DropdownMenuSeparator className="my-1 border-gray-400" />
+
+                                    <DropdownMenuItem
+                                        onClick={() => handleSelect(CottonOn)}
+                                        className="hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+                                    >
+                                        <img src={CottonOn} alt="Cotton On" style={{ height: "30px", width: "100px" }} />
+                                    </DropdownMenuItem>
+                                </DropdownMenuContent>
+
+
+                            </DropdownMenu> : <img src={Digital} style={{ height: '30px', width: '100px' }} />}
+                            {/* <img src={Digital} style={{ height: '30px', width: '100px' }} />
+                            <img src={CottonOn} style={{ height: '30px', width: '100px' }} /> */}
+
+
                         </div>
 
                     </div>
@@ -207,15 +329,18 @@ export default function Header({ title = "Buyer", subtitle = "Vendor Ship-By-Dat
 function MenuLink({
     icon: Icon,
     label,
+    onClick,
 }: {
     icon: React.ElementType
     label: string
+    onClick: () => void
 }) {
     return (
         <Button
             variant="icon"
             size="mobile"
             className="w-full h-auto py-3 px-4 justify-start gap-3 text-base font-normal bg-[#E6E6FF] hover:bg-[#D9D9FF] border-b border-[#D9D9FF] rounded-none"
+            onClick={onClick}
         >
             <Icon style={{ width: "20px", height: "20px" }} />
             {label}

@@ -106,7 +106,7 @@ export default function PoBookingCard() {
                                 color: theme.colors.textSecondary,
                                 fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
                                 fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
-                                width: '70px',
+                                width: '80px',
                                 textAlign: 'center',
                             }}
                         >
@@ -117,18 +117,22 @@ export default function PoBookingCard() {
                                 color: theme.colors.textSecondary,
                                 fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
                                 fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
-                                width: '70px',
+                                width: '80px',
                                 textAlign: 'center',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                lineHeight: '8px'
                             }}
                         >
-                            -14 Days
+                            <span className="text-lg">{"😊"}</span>   -14 Days
                         </span>
                         <span
                             style={{
                                 color: theme.colors.textSecondary,
                                 fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
                                 fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
-                                width: '70px',
+                                width: '80px',
                                 textAlign: 'center',
                             }}
                         >

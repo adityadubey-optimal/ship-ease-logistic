@@ -66,7 +66,7 @@ export default function Home() {
                         title: theme.fonts.web.venderDetialsPage.label.weight,
                         titleValeu: theme.fonts.web.venderDetialsPage.value.weight,
                     }}
-                    showVendroBrandDetail={true}
+                    showVendroBrandDetail={false}
                 />
             </section>
 
