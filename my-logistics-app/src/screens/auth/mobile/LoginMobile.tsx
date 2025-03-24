@@ -152,9 +152,9 @@ export default function SigninPageMobile() {
   return (
     <div style={pageStyle}>
       {/* Logo */}
-      <img src={Digital} style={{ height: '50px' }} />
+      <img src={Digital} style={{ height: '50px', width: '200px' }} />
 
-      <h1 style={logoStyle}>COTTON:ON</h1>
+      {/* <h1 style={logoStyle}>COTTON:ON</h1> */}
       <div style={relativeContainerStyle}>
         <div
           style={{

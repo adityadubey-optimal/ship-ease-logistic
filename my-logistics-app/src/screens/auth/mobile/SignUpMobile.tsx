@@ -170,7 +170,8 @@ export default function SignupPageMobile() {
       {/* Header with back button space and logo */}
       <div style={headerStyle}>
         <div style={backButtonSpace}>{/* Space for back button SVG */}</div>
-        <img src={Digital} style={{ height: '50px' }} />
+        <img src={Digital} style={{ height: '50px', width: '200px' }} />
+
 
         {/* <h1 style={logoStyle}>COTTON:ON</h1> */}
       </div>
