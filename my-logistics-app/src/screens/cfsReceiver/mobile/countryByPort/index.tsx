@@ -18,7 +18,7 @@ import Vector from "@/assets/Vector.svg"
 import Hazard from "@/assets/fluent_approvals-app-24-filled.svg"
 import OrderHeader from "./CargoReadyBookingHeader"
 import ExampleScrollableTable from '@/components/desktop/DataChartForShipper'
-
+import { Button } from "@/components/ui/button"
 import PurchaseOrderTableExample from '../../../vendor/mobile/vendorHome/ChangeRequestPendingApproval'
 import AcceptRejectButton from "@/components/ui/AcceptRejectButton"
 

@@ -1,8 +1,9 @@
 
 import { useLocation, Link, useNavigate } from 'react-router-dom'
-import { Home, LayoutList, File, ClipboardList, CircleCheck, Settings, Menu, Globe, HelpCircle, Files, TextSearch, Clipboard } from 'lucide-react'
+import { Home, LayoutList, File, ClipboardList, CircleCheck, Settings, Menu, Globe, HelpCircle, Files, TextSearch, Clipboard, LogOut } from 'lucide-react'
 import { useTheme } from '@/context/ThemeContext'
 import { useState, useEffect } from 'react'
+import { Button } from '@/components/ui/button'
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet'
 import ProfileDialog from '../ui/profilePage'
 
@@ -264,6 +265,35 @@ export default function Sidebar() {
     // We'll show the static sidebar only if the width is 1200px or more.
     const isHamburger = width !== undefined && width < 1200
 
+    const handleLogout = () => {
+
+        console.log("Logging out...")
+        // Default logout behavior - redirect to login page
+        navigate("/auth/login")
+
+    }
+
+    // User profile section with logout button
+    const UserProfileSection = () => (
+        <div className="w-full">
+            <div className="flex items-center space-x-3 mb-3 cursor-pointer" onClick={() => setOpenProfile(true)}>
+                <div className="w-10 h-10 rounded-full bg-gray-300"></div>
+                <div>
+                    <p className="font-medium">John Doe</p>
+                    <p className="text-sm text-gray-500">Buyer</p>
+                </div>
+            </div>
+            <Button
+                onClick={handleLogout}
+                className="w-full flex gap-2  hover:bg-grey text-black"
+                style={{ borderRadius: "6px", justifyContent: 'flex-start' }}
+            >
+                <LogOut size={16} />
+                <span>Logout</span>
+            </Button>
+        </div>
+    )
+
     return (
         <>
             {/* Static Sidebar for screens 1200px and larger */}
@@ -304,13 +334,14 @@ export default function Sidebar() {
                     <div className="absolute bottom-0 w-full p-4 border-t border-[#E5E1FF]" onClick={() => {
                         setOpenProfile(true)
                     }}>
-                        <div className="flex items-center space-x-3">
+                        {/* <div className="flex items-center space-x-3">
                             <div className="w-10 h-10 rounded-full bg-gray-300"></div>
                             <div>
                                 <p className="font-medium">John Doe</p>
                                 <p className="text-sm text-gray-500">Buyer</p>
                             </div>
-                        </div>
+                        </div> */}
+                        <UserProfileSection />
                     </div>
                 </aside>
             )}
@@ -359,13 +390,15 @@ export default function Sidebar() {
                             <div className="absolute bottom-0 w-full p-4 border-t border-[#E5E1FF]" onClick={() => {
                                 setOpenProfile(true)
                             }}>
-                                <div className="flex items-center space-x-3">
+                                {/* <div className="flex items-center space-x-3">
                                     <div className="w-10 h-10 rounded-full bg-gray-300"></div>
                                     <div>
                                         <p className="font-medium">John Doe</p>
                                         <p className="text-sm text-gray-500">Buyer</p>
                                     </div>
-                                </div>
+                                </div> */}
+
+                                <UserProfileSection />
                             </div>
                         </SheetContent>
                     </Sheet>

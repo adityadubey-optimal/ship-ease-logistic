@@ -9,6 +9,8 @@ import GenericInput from "@/components/ui/InputField"
 import { useTheme } from "../../../context/ThemeContext"
 import { useNavigate } from "react-router-dom"
 import { useIsMobile } from "@/hooks/useMobile"
+import Digital from '@/assets/Digital.png';
+
 
 export default function SignupPageMobile() {
   const navigate = useNavigate()
@@ -168,7 +170,9 @@ export default function SignupPageMobile() {
       {/* Header with back button space and logo */}
       <div style={headerStyle}>
         <div style={backButtonSpace}>{/* Space for back button SVG */}</div>
-        <h1 style={logoStyle}>COTTON:ON</h1>
+        <img src={Digital} style={{ height: '50px' }} />
+
+        {/* <h1 style={logoStyle}>COTTON:ON</h1> */}
       </div>
 
       <h2 style={headingStyle}>Fill your details to sign-up</h2>

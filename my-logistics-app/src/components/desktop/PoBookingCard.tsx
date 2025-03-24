@@ -11,7 +11,7 @@ export default function PoBookingCard() {
     return (
         <div className="w-full max-w-7xl mx-auto p-4">
             <Card className="p-6 shadow-md relative">
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-2">
                     {/* Header Section */}
                     <div className="flex items-center justify-between">
                         <div className="flex  gap-3" style={{
@@ -86,9 +86,14 @@ export default function PoBookingCard() {
                                 color: theme.colors.textSecondary,
                                 fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
                                 fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                lineHeight: '8px'
                             }}
                         >
-                            -14 Days    <span className="text-lg">{"😊"}</span>
+
+                            <span className="text-lg">{"😊"}</span>   -14 Days
                         </span>
                         <span
                             style={{

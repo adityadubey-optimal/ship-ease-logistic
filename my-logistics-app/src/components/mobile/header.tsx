@@ -13,6 +13,7 @@ import {
     Bell,
     Filter,
     ChevronDown,
+    LogOut
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -26,6 +27,9 @@ import {
 import { useTheme } from "@/context/ThemeContext"
 import useResponsiveSize from "@/hooks/useResponsiveSize"
 import { useIsMobile } from "@/hooks/useMobile"
+import Digital from '@/assets/Digital.png';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { useNavigate } from "react-router-dom"
 
 interface HeaderProps {
     title?: string
@@ -34,6 +38,7 @@ interface HeaderProps {
 
 export default function Header({ title = "Buyer", subtitle = "Vendor Ship-By-Date Overview" }: HeaderProps) {
     const { theme } = useTheme()
+    const navigate = useNavigate()
 
     // Define font and icon size variables (responsive)
     const titleFontSize = '1.25rem'     // Title font size for "COTTON:ON"
@@ -98,23 +103,34 @@ export default function Header({ title = "Buyer", subtitle = "Vendor Ship-By-Dat
                                     <MenuLink icon={FileBarChart} label="Reports" />
                                 </div>
 
-                                {/* Footer Links */}
-                                <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-between text-sm border-t">
-                                    <Button variant="icon" size="mobile" className="h-auto p-0 text-xs">
-                                        User Agreement
-                                    </Button>
-                                    <Button variant="icon" size="mobile" className="h-auto p-0 text-xs">
-                                        Privacy Policy
-                                    </Button>
-                                    <Button variant="icon" size="mobile" className="h-auto p-0 text-xs">
-                                        Terms of Service
+                                <div className="absolute bottom-16 left-0 right-0 p-4 border-t">
+                                    <div className="flex items-center space-x-4 mb-4">
+                                        <Avatar className="h-10 w-10">
+                                            <AvatarImage src={''} alt={''} />
+                                            <AvatarFallback>{'TN'}</AvatarFallback>
+                                        </Avatar>
+                                        <div className="flex-1 min-w-0">
+                                            <p className="text-sm font-medium truncate">testName</p>
+                                            <p className="text-xs text-gray-500 truncate">test@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    <Button
+                                        // variant="destructive"
+                                        className="w-full flex  gap-2"
+                                        onClick={() => { navigate('/auth/login') }}
+                                    >
+                                        <LogOut size={16} />
+                                        <span>Logout</span>
                                     </Button>
                                 </div>
+
+
                             </SheetContent>
                         </Sheet>
-                        <div className="text-xl font-bold" style={{ fontSize: titleFontSize, fontWeight: titleFontWeight, color: "#FF0000" }}>
-                            COTTON:ON
+                        <div>
+                            <img src={Digital} style={{ height: '30px', width: '100px' }} />
                         </div>
+
                     </div>
                     {subtitle && (
                         <h1 className="text-lg font-semibold mt-2" style={{ fontSize: subtitleFontSize, fontWeight: subtitleFontWeight, width: '150px', lineHeight: '15px', textAlign: 'end', marginRight: '1rem' }}>

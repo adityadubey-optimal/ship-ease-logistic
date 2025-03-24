@@ -146,7 +146,7 @@ export const baseFonts = {
             },
             poBookingCard: {
                 poBookingPercentageFont: {
-                    size: getResponsiveSize(1.75, 3.2) + "rem",
+                    size: getResponsiveSize(1.75, 2.75) + "rem",
                     weight: "800"
                 },
                 pobokingDescription: {

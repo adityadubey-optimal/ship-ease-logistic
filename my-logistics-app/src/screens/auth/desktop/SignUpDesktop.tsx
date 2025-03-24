@@ -8,6 +8,7 @@ import GenericInput from "@/components/ui/InputField"
 import { useTheme } from '../../../context/ThemeContext' // Adjust the import path as needed
 import logoImage from '@assets/Group 134@2x.png'
 import { useIsMobile } from "@/hooks/useMobile"
+import Digital from '@/assets/Digital.png';
 
 export default function SignupPage() {
   const navigate = useNavigate()
@@ -158,7 +159,9 @@ export default function SignupPage() {
 
       <div style={contentStyle}>
         <div>
-          <h1 style={{ ...headingStyle, color: "#FF0000", fontSize: "2.5rem" }}>COTTON:ON</h1>
+          <img src={Digital} style={{}} />
+
+          {/* <h1 style={{ ...headingStyle, color: "#FF0000", fontSize: "2.5rem" }}>COTTON:ON</h1> */}
           <div style={relativeContainerStyle}>
 
             <img src={logoImage} style={backgroudImageStyle}></img>

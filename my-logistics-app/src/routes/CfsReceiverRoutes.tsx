@@ -4,7 +4,7 @@ import CFSReceiverCountryByPortDesktop from '../screens/cfsReceiver/desktop/coun
 import CFSReceiverCountryByPortMobile from '../screens/cfsReceiver/mobile/countryByPort'
 import CFSReceiverShippingInfoDesktop from '../screens/cfsReceiver/desktop/ShippingInformation'
 import CFSReceiverShippingInfoMobile from '../screens/cfsReceiver/mobile/ShippingInformation'
-
+import CFSReceiverShippingCameraMobile from '../screens/cfsReceiver/mobile/cameraScreen'
 import CFSReceiverBookingGoodToGoDesktop from '../screens/cfsReceiver/desktop/BookingGoodToGo'
 import CFSReceiverBookingGoodToGoMobile from '../screens/cfsReceiver/mobile/BookingGoodToGo'
 
@@ -18,6 +18,8 @@ export function CfsReceiverRoutes() {
       <Route path="bookingGoodToGo" element={isMobile ? <CFSReceiverBookingGoodToGoMobile /> : < CFSReceiverBookingGoodToGoDesktop />} />
       <Route path="shippingInformation" element={isMobile ? <CFSReceiverShippingInfoMobile /> : < CFSReceiverShippingInfoDesktop />} />
       <Route path="home" element={isMobile ? <CFSReceiverCountryByPortMobile /> : <CFSReceiverCountryByPortDesktop />} />
+      <Route path="scan" element={isMobile ? <CFSReceiverShippingCameraMobile /> : <CFSReceiverShippingCameraMobile />} />
+
     </Routes>
   );
 }

@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Bell, Filter } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useTheme } from "@/context/ThemeContext";
+import Digital from '@/assets/Digital.png';
 
 
 
@@ -14,6 +15,7 @@ export default function Header({ pageName = 'Vendors Ship-By-Date Overview' }) {
 
     // Compute responsive sizes (these values are in rem units)
     const logoFontSize = useResponsiveSize(1.25, 2); // Logo font scales from 1.5rem (min) to 2rem (max)
+    const logoImageSize = useResponsiveSize(1.25, 2);
     const titleFontSize = useResponsiveSize(1, 1.75); // Header title scales from 1.5rem to 1.75rem
     const inputFontSize = useResponsiveSize(0.75, 1.125); // Input font scales from 0.9rem to 1.125rem
     // Adjust input style with the computed responsive font size.
@@ -41,12 +43,15 @@ export default function Header({ pageName = 'Vendors Ship-By-Date Overview' }) {
         >
             {/* Logo */}
             <div className="flex-shrink-0">
-                <span
+                <div>
+                    <img src={Digital} style={{ height: `${useResponsiveSize(2, 3)}rem`, width: `${useResponsiveSize(8, 10)}rem` }} />
+                </div>
+                {/* <span
                     className="text-[#FF0000] font-bold whitespace-nowrap"
                     style={{ fontSize: `${logoFontSize}rem` }}
                 >
                     COTTON:ON
-                </span>
+                </span> */}
             </div>
 
             {/* Search Bar */}

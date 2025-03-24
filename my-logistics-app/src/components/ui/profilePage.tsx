@@ -298,7 +298,7 @@ function ProfileForm({ onClose, onSubmit, defaultValues = {}, styles = {} }: Pro
             </div>
 
             {/* Submit Button */}
-            <Button type="submit" variant="primary" size="desktop" className="w-full">
+            <Button type="submit" variant="primary" size="mobile" className="w-full">
                 Update Profile
             </Button>
         </form>
@@ -343,6 +343,7 @@ export default function ProfileDialog({ triggerText = "Edit Profile", defaultVal
                     padding: "24px",
                     overflow: 'scroll',
                     backgroundColor: "white",
+                    zIndex: 9999999999999
                 }}>
                 <DialogHeader>
                     <DialogTitle>Edit Profile</DialogTitle>

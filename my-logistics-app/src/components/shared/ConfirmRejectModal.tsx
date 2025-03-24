@@ -87,6 +87,7 @@ export function ConfirmModal({
                 className="sm:max-w-lg"
                 style={{
                     fontSize: `${baseFontSize}px`,
+                    zIndex: 99999999999,
                 }}
             >
                 <DialogHeader>

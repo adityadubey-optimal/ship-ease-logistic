@@ -2,13 +2,15 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Eye, EyeOff } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom"
 import GenericInput from "@/components/ui/InputField"
 import { useTheme } from "../../../context/ThemeContext"
 import logoImage from '@assets/Group 134@2x.png'
 import { useAuth } from '@/hooks/useAuth'
+import Digital from '@/assets/Digital.png';
+
 
 export default function SigninPageMobile() {
   const { login, persona } = useAuth()
@@ -30,16 +32,20 @@ export default function SigninPageMobile() {
     e.preventDefault()
     console.log("Form submitted:", formData)
     const { username: email, password } = formData
-    navigate(`/buyer/home`)
-    // if (login(email, password)) {
-    //   // Navigate based on the persona set
-    //   navigate(`/${persona}`)
-    // } else {
-    //   console.log("Invalid credentials")
-    // }
+    // navigate(`/buyer/home`)
+    if (login(email, password)) {
+      // Navigate based on the persona set
+    } else {
+      console.log("Invalid credentials")
+    }
     // navigate('/buyer/home')
 
   }
+  useEffect(() => {
+    if (persona) {
+      navigate(`/${persona}`)
+    }
+  }, [persona, navigate])
 
 
 
@@ -146,6 +152,8 @@ export default function SigninPageMobile() {
   return (
     <div style={pageStyle}>
       {/* Logo */}
+      <img src={Digital} style={{ height: '50px' }} />
+
       <h1 style={logoStyle}>COTTON:ON</h1>
       <div style={relativeContainerStyle}>
         <div

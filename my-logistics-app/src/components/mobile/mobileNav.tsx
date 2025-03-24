@@ -233,6 +233,41 @@ function getNavItems(content: Partial<NavItem[]>, { activeItem = "home" }: Parti
                         navigate("/cfs-receiver/home")
                     },
                 },
+                {
+                    icon: ClipboardCheck,
+                    label: "Good to-go Bookings",
+                    isActive: activeItem === "tasks",
+                    onClick: () => {
+                        console.log("testing Tasks")
+                        navigate("/cfs-receiver/bookingGoodToGo")
+                    },
+                },
+                {
+                    icon: ListTodo,
+                    label: "invisible",
+                    isActive: activeItem === "tasks",
+                    onClick: () => {
+                        console.log("shipper invisible")
+                    },
+                },
+                {
+                    icon: Settings,
+                    label: "Settings",
+                    isActive: activeItem === "settings",
+                    onClick: () => {
+                        console.log("testing Settings")
+                        navigate("/cfs-receiver/settings")
+                    },
+                },
+                {
+                    icon: HelpCircle,
+                    label: "Help",
+                    isActive: activeItem === "help",
+                    onClick: () => {
+                        console.log("testing Help")
+                        navigate("/cfs-receiver/help")
+                    },
+                },
             ]
             // content = <div>CFS Receiver Routes Component</div>
             break
@@ -352,11 +387,11 @@ function getSpecialButton() {
                     transform: "translate(-50%, -50%)",
                 }}
                 onClick={() => {
-                    navigate("/buyer/poReconcilation")
+                    navigate("/cfs-receiver/scan")
                 }}
             >
-                <ListChecks className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
-                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Status</span>
+                <CirclePlus className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
+                <span style={{ fontSize: "0.75rem", fontWeight: "700" }}>Scan</span>
             </Button>
             break;
         default:

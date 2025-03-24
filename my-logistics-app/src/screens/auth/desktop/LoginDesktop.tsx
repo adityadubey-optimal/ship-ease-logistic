@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Eye, EyeOff } from "lucide-react"
 import { Link } from "react-router-dom"
 import GenericInput from "@/components/ui/InputField"
@@ -10,6 +10,8 @@ import { useTheme } from "../../../context/ThemeContext"
 import logoImage from '@assets/Group 134@2x.png'
 import { useNavigate } from "react-router-dom"
 import { useAuth } from '@/hooks/useAuth'
+import Digital from '@/assets/Digital.png';
+
 export default function SigninPage() {
   const { login, persona } = useAuth()
   const navigate = useNavigate()
@@ -30,14 +32,22 @@ export default function SigninPage() {
     console.log("Form submitted:", formData)
     // navigate('/buyer')
     const { username: email, password } = formData
-    navigate(`/buyer/home`)
-    // if (login(email, password)) {
-    //   // Navigate based on the persona set
-    //   navigate(`/${persona}`)
-    // } else {
-    //   console.log("Invalid credentials")
-    // }
+    console.log('login(email, password)', login(email, password))
+    console.log('persona', persona)
+    // navigate(`/buyer/home`)
+    if (login(email, password)) {
+      // Navigate based on the persona set
+      // navigate(`/${persona}`)
+    } else {
+      console.log("Invalid credentials")
+    }
   }
+
+  useEffect(() => {
+    if (persona) {
+      navigate(`/${persona}`)
+    }
+  }, [persona, navigate])
 
   // Styles using theme
   const pageStyle: React.CSSProperties = {
@@ -143,7 +153,8 @@ export default function SigninPage() {
       <div style={contentStyle}>
         {/* Left Column - Logo */}
         <div>
-          <h1 style={{ ...headingStyle, color: "#FF0000", fontSize: "42px" }}>COTTON:ON</h1>
+          <img src={Digital} style={{}} />
+          {/* <h1 style={{ ...headingStyle, color: "#FF0000", fontSize: "42px" }}>COTTON:ON</h1> */}
           <div style={relativeContainerStyle}>
 
             <img src={logoImage} style={backgroudImageStyle}></img>
