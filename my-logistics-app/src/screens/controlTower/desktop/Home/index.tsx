@@ -63,12 +63,12 @@ export default function Home() {
     ]
 
     return (
-        <DashboardLayout headerName={'Vendors Ship-By-Date Overview'}>
+        <DashboardLayout headerName={'Control Tower Overview'}>
 
 
             {/* Today's Status Section Placeholder */}
             <section className="mb-2">
-                <StatusDashboard showAddPoButton={false} />
+                <StatusDashboard showAddPoButton={false} loggedInAstext="Control Tower" />
             </section>
 
             <section className="mb-12 w-full max-w-7xl mx-auto p-4">

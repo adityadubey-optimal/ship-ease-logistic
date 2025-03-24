@@ -24,7 +24,7 @@ export default function Home() {
     const navigate = useNavigate()
 
     return (
-        <DashboardLayout >
+        <DashboardLayout subtitle="Bookings Good-To-Go">
             <section className="mb-1 p-4" style={{ paddingBottom: '0px' }}>
                 <StatusDashboard showAddPoButton={false} />
             </section>

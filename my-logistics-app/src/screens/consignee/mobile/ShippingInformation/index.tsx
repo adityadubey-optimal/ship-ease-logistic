@@ -38,7 +38,7 @@ export default function Home() {
     const navigate = useNavigate()
 
     return (
-        <DashboardLayout subtitle="Shipping information PO#3289462364">
+        <DashboardLayout subtitle="Shipping Information PO#3289462364">
             <section className="mb-1 p-4" style={{ paddingBottom: '0px' }}>
                 <StatusDashboard showAddPoButton={false} />
             </section>

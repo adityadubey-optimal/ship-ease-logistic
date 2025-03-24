@@ -29,12 +29,12 @@ export default function Home() {
 
 
     return (
-        <DashboardLayout headerName={'Vendors Ship-By-Date Overview'}>
+        <DashboardLayout headerName={'Document Status'}>
 
 
             {/* Today's Status Section Placeholder */}
             <section className="mb-2">
-                <StatusDashboard showAddPoButton={false} showShipByDate={false} />
+                <StatusDashboard showAddPoButton={false} showShipByDate={false} loggedInAstext="Control Tower" />
             </section>
             <section className="mb-2 w-full max-w-7xl mx-auto p-4">
                 <VendorHeader

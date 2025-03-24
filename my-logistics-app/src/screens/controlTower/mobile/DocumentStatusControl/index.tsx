@@ -56,7 +56,7 @@ export default function Home() {
         },
     ]
     return (
-        <DashboardLayout>
+        <DashboardLayout subtitle="Documnet Overview">
             {/* Today's Status Section Placeholder */}
             <section className="mb-1 p-4" style={{ paddingBottom: '0px' }}>
                 <StatusDashboard showAddPoButton={false} />

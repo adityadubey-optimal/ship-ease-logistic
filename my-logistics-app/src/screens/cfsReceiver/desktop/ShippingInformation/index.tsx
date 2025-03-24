@@ -39,12 +39,12 @@ export default function Home() {
 
 
     return (
-        <DashboardLayout headerName={'Vendors Ship-By-Date Overview'}>
+        <DashboardLayout headerName={'Shipping Information PO#23432423'}>
 
 
             {/* Today's Status Section Placeholder */}
             <section className="mb-2">
-                <StatusDashboard showAddPoButton={false} showShipByDate={false} />
+                <StatusDashboard showAddPoButton={false} showShipByDate={false} loggedInAstext="CFS Receiver" />
             </section>
             <section className="mb-2">
                 <VendorHeader
