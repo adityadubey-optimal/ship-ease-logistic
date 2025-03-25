@@ -24,25 +24,25 @@ export default function Home() {
     return (
         <DashboardLayout headerName={'Cargo Ready Date Booking'}>
             {/* Today's Status Section Placeholder */}
-            <section className="mb-2">
-                <StatusDashboard showAddPoButton={false} loggedInAstext="Orient Craft" />
+            <section className="mb-0" style={{ paddingBottom: "0px" }}>
+                <StatusDashboard showAddPoButton={false} loggedInAstext="Vendor" />
             </section>
 
             {/* Metrics Section Placeholder */}
-            <section className="mb-12">
-                <div className="w-full max-w-7xl mx-auto p-4"  >
+            <section className="mb-8" style={{ paddingBottom: "0px" }}>
+                <div className="w-full max-w-7xl mx-auto p-4" style={{ paddingBottom: '0px' }}>
                     <VendorOptions defaultSelectedIndex={1} />
                 </div>
             </section>
 
             {/* Metrics Section Placeholder */}
-            <section className="mb-2">
+            {/* <section className="mb-2">
                 <PoBookingCard />
 
-            </section>
+            </section> */}
 
             {/* Tasks Section Placeholder */}
-            <section className="mb-2">
+            {/* <section className="mb-2">
 
                 <StatusCardContainer cards={[
                     {
@@ -68,7 +68,7 @@ export default function Home() {
                         widthError: "520px",
                     },
                 ]} />
-            </section>
+            </section> */}
 
 
 

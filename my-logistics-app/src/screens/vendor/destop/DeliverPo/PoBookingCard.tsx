@@ -9,9 +9,9 @@ export default function PoBookingCard() {
     const progressPercentage = 60
 
     return (
-        <div className="w-full max-w-7xl mx-auto p-4">
+        <div className="w-full max-w-7xl mx-auto p-4" style={{ paddingBottom: '0px' }}>
             <Card className="p-6 shadow-md relative">
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-2">
                     {/* Header Section */}
                     <div className="flex items-center justify-between">
                         <div>
@@ -84,7 +84,7 @@ export default function PoBookingCard() {
                                 color: theme.colors.textSecondary,
                                 fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
                                 fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
-                                width: '70px',
+                                width: '80px',
                                 textAlign: 'center',
                             }}
                         >
@@ -95,7 +95,7 @@ export default function PoBookingCard() {
                                 color: theme.colors.textSecondary,
                                 fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
                                 fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
-                                width: '70px',
+                                width: '80px',
                                 textAlign: 'center',
                             }}
                         >
@@ -106,7 +106,7 @@ export default function PoBookingCard() {
                                 color: theme.colors.textSecondary,
                                 fontSize: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.size,
                                 fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.daysFont.weight,
-                                width: '70px',
+                                width: '80px',
                                 textAlign: 'center',
                             }}
                         >

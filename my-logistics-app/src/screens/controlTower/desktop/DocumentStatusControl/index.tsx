@@ -34,9 +34,9 @@ export default function Home() {
 
             {/* Today's Status Section Placeholder */}
             <section className="mb-2">
-                <StatusDashboard showAddPoButton={false} showShipByDate={false} loggedInAstext="Control Tower" />
+                <StatusDashboard showAddPoButton={false} showShipByDate={true} loggedInAstext="Control Tower" />
             </section>
-            <section className="mb-2 w-full max-w-7xl mx-auto p-4">
+            <section className="mb-0 w-full max-w-7xl mx-auto p-0" style={{ paddingBottom: '0px' }}>
                 <VendorHeader
                     vendor="Vendor Name"
                     brand="Rubi"

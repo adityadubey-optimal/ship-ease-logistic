@@ -96,7 +96,7 @@ function getNavItems(content: Partial<NavItem[]>, { activeItem = "home" }: Parti
                 isActive: activeItem === "tasks",
                 onClick: () => {
                     console.log("testing Tasks")
-                    navigate("/shipper/urgentTask")
+                    navigate("/shipper/cargo_ready_date")
                 },
             },
             {
@@ -326,7 +326,7 @@ function getSpecialButton() {
                     transform: "translate(-50%, -50%)",
                 }}
                 onClick={() => {
-                    navigate("/shipper/poReconcilation")
+                    navigate("/shipper/booking_good_to_go")
                 }}
             >
                 <CirclePlus className="h-5 w-5" style={{ height: "25px", width: "25px" }} />

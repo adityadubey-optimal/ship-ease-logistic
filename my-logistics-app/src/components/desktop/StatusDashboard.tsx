@@ -21,7 +21,7 @@ export default function StatusDashboard({ ImportPoButton = false, showAddPoButto
     const PO_CARD_WIDTH = useResponsiveSize(160, 120);           // PO card width scales from 160px to 180px
     const CARD_HEIGHT = useResponsiveSize(80, 120);            // Card height scales from 180px to 220px
     return (
-        <div className="w-full max-w-7xl mx-auto p-4" style={{ background: 'transparent', justifyContent: 'space-between' }}>
+        <div className="w-full max-w-7xl mx-auto p-4" style={{ background: 'transparent', justifyContent: 'space-between', paddingBottom: '0px' }}>
             {/* Header Section */}
             <div className="flex justify-between items-center mb-6">
                 <h1

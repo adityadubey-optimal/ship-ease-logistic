@@ -99,34 +99,29 @@ function getNavItems(
             ]
         case pathname.startsWith("/shipper"):
             return [
-                {
-                    icon: Home,
-                    label: "Home",
-                    href: "/shipper/home",
-                    isActive: activeItem === "home",
-                    onClick: () => navigate("/shipper/home"),
-                },
+
                 {
                     icon: Files,
                     label: "Accept-Ship-By-Date",
+                    href: "/shipper/home",
+                    isActive: activeItem === "cargo_ready_date",
+                    onClick: () => navigate("/shipper/home"),
+                },
+                {
+                    icon: TextSearch,
+                    label: "Book Cargo Ready Date",
                     href: "/shipper/cargo_ready_date",
                     isActive: activeItem === "cargo_ready_date",
                     onClick: () => navigate("/shipper/cargo_ready_date"),
                 },
                 {
                     icon: TextSearch,
-                    label: "Book Cargo Ready Date",
+                    label: "Good-to-go Bookings",
                     href: "/shipper/booking_good_to_go",
                     isActive: activeItem === "booking_good_to_go",
                     onClick: () => navigate("/shipper/booking_good_to_go"),
                 },
-                {
-                    icon: Clipboard,
-                    label: "Good To-Go Bookings",
-                    href: "/shipper/booking_good_to_go",
-                    isActive: activeItem === "booking_good_to_go",
-                    onClick: () => navigate("/shipper/booking_good_to_go"),
-                },
+
                 {
                     icon: ClipboardList,
                     label: "Reports",

@@ -9,14 +9,14 @@ export default function PoBookingCard() {
     const progressPercentage = 60
 
     return (
-        <div className="w-full max-w-7xl mx-auto p-4">
+        <div className="w-full max-w-7xl mx-auto p-4" style={{ paddingBottom: '0px' }}>
             <Card className="p-6 shadow-md relative">
                 <div className="flex flex-col gap-6">
                     {/* Header Section */}
                     <div className="flex items-center justify-between">
                         <div>
                             <div className="flex  gap-3" style={{
-                                alignItems: 'baseline'
+                                alignItems: 'baseline', lineHeight: '1.5rem'
                             }}>
                                 <span
                                     style={{

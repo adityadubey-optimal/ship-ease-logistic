@@ -39,7 +39,7 @@ export default function Home() {
 
             {/* Today's Status Section Placeholder */}
             <section className="mb-2">
-                <StatusDashboard showAddPoButton={false} showShipByDate={false} loggedInAstext={'CFS Receiver'} />
+                <StatusDashboard showAddPoButton={false} showShipByDate={true} loggedInAstext={'CFS Receiver'} />
             </section>
             <section className="mb-2 w-full max-w-7xl mx-auto">
                 <VendorHeader
@@ -75,7 +75,7 @@ export default function Home() {
 
             </section>
             <section className="mb-2 w-full max-w-7xl mx-auto p-4">
-                <DocumentHeader
+                {/* <DocumentHeader
                     Icon={<img />}
                     title="CFS Overview"
                     subtitle="Delivery to CFS Site"
@@ -83,7 +83,7 @@ export default function Home() {
                     onSeeMoreClick={() => console.log('See More clicked')}
                 // headerTextStyle={{ color: theme.colors.redHeaderText }}
                 // colorTheme={theme.colors.redHeaderText}
-                />
+                /> */}
                 <StatusCardContainer cards={[
                     {
                         value: 12,

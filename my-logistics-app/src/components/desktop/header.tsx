@@ -20,7 +20,7 @@ import CottonOn from "@/assets/cotton-on-logo-freelogovectors.net_ 1.svg"
 
 export default function Header({ pageName = 'Vendors Ship-By-Date Overview' }) {
     const { theme } = useTheme();
-    const [selectedImage, setSelectedImage] = useState<string>(CottonOn)
+    const [selectedImage, setSelectedImage] = useState<string>(Digital)
     // Compute responsive sizes (these values are in rem units)
     const logoFontSize = useResponsiveSize(1.25, 2); // Logo font scales from 1.5rem (min) to 2rem (max)
     const logoImageSize = useResponsiveSize(1.25, 2);

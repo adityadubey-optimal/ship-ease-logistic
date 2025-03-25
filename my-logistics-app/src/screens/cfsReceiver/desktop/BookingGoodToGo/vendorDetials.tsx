@@ -165,7 +165,7 @@ export default function VendorHeader({
                     }}
                 >
                     <div className="flex justify-between items-center h-full">
-                        <InfoBox style={{ border: 'none' }}>
+                        <InfoBox style={{ border: 'none', textAlign: 'start' }}>
                             <Label $fontSize={fontSize.label} $fontWeight={fontWeight.label}>
                                 Country of Origin:
                             </Label>

@@ -49,18 +49,18 @@ export default function Home() {
     return (
         <DashboardLayout headerName={'Active Purchase Orders'}>
             {/* Today's Status Section Placeholder */}
-            <section className="mb-2">
-                <StatusDashboard showAddPoButton={false} loggedInAstext='Orient Craft' />
+            <section className="mb-0" style={{ paddingBottom: "0px" }}>
+                <StatusDashboard showAddPoButton={false} loggedInAstext='Vendor' />
             </section>
 
-            <section className="mb-12">
-                <div className="w-full max-w-7xl mx-auto p-4"  >
+            <section className="mb-8" style={{ paddingBottom: "0px" }}>
+                <div className="w-full max-w-7xl mx-auto p-4" style={{ paddingBottom: '0px' }}>
                     <VendorOptions defaultSelectedIndex={0} />
                 </div>
             </section>
 
             {/* Metrics Section Placeholder */}
-            <section className="mb-2">
+            <section className="mb-0">
                 <PoBookingCard />
 
             </section>

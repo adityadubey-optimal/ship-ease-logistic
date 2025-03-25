@@ -44,7 +44,7 @@ export default function Home() {
 
             {/* Today's Status Section Placeholder */}
             <section className="mb-2">
-                <StatusDashboard showAddPoButton={false} showShipByDate={false} loggedInAstext="CFS Receiver" />
+                <StatusDashboard showAddPoButton={false} showShipByDate={true} loggedInAstext="CFS Receiver" />
             </section>
             <section className="mb-2 w-full max-w-7xl mx-auto">
                 <VendorHeader

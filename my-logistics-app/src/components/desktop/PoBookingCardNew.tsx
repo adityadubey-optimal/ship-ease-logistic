@@ -21,7 +21,7 @@ export default function PoBookingCard() {
     return (
         <div className="w-full max-w-7xl mx-auto p-4">
             <Card className="p-6 shadow-md relative" style={{ paddingTop: '0px', paddingBottom: '0px', borderRadius: '10px' }}>
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-3 p-4">
                     {/* Header Section */}
                     <div className="flex items-center justify-between">
                         <div className="flex  gap-3" style={{
@@ -48,6 +48,23 @@ export default function PoBookingCard() {
                         </div>
 
                         <div
+                            className="flex items-center gap-2 px-4 py-2 rounded-lg"
+                            style={{ backgroundColor: theme.colors.thertiary, visibility: 'hidden' }}
+                        >
+                            <img src={Medal} />
+                            <span
+                                style={{
+                                    width: '50px',
+                                    color: theme.colors.textSecondary,
+                                    fontSize: theme.fonts.web.buyerHomePage.poBookingCard.statusMessage.size,
+                                    fontWeight: theme.fonts.web.buyerHomePage.poBookingCard.statusMessage.weight,
+                                }}
+                            >
+                                Good Going
+                            </span>
+                        </div>
+
+                        {/* <div
                             style={{
                                 backgroundColor: "white",
                                 border: `1px solid ${theme.colors.secondary}`,
@@ -120,7 +137,7 @@ export default function PoBookingCard() {
                                     14
                                 </span>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Progress Bar Section */}

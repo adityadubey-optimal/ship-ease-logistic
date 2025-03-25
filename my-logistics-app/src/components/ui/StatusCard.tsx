@@ -146,12 +146,19 @@ const StatusCard = ({
           {/* Text Content */}
           <div className="flex flex-col">
             <span
-              style={{
+              style={isMobile ? {
                 color: color,
                 fontSize: `${titleTextFontSize}px`,
                 fontWeight: isMobile ? theme.fonts.mobile.body.weight : theme.fonts.web.body.weight,
                 lineHeight: "1.2",
                 marginBottom: "4px",
+              } : {
+                color: color,
+                fontSize: `${titleTextFontSize}px`,
+                fontWeight: isMobile ? theme.fonts.mobile.body.weight : theme.fonts.web.body.weight,
+                lineHeight: "1.2",
+                marginBottom: "4px",
+                width: '75px'
               }}
             >
               {title}
