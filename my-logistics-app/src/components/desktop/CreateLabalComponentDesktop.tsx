@@ -173,6 +173,7 @@ export function CreateLabelModalComponent({ open, setOpen }: DocumentsDialogExam
                         borderRadius: 25,
                         display: 'flex',
                         flexDirection: 'column',
+                        zIndex: 99999999999999999
 
                     }}
                 >

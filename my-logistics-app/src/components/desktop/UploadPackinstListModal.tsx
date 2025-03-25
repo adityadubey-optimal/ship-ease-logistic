@@ -111,7 +111,7 @@ export function UploadPackingListModal({ open, setOpen }: DocumentsDialogExample
                     {/* You can add a top bar or anything you wish */}
 
                     <div className="flex-1 flex flex-col items-center justify-center px-4">
-                        <section className="mb-8">
+                        <section className="mb-8" style={{ width: '80%' }}>
                             <DocumentHeader
                                 Icon={<img src={Box} alt="Ship illustration" className="w-10 h-10 object-contain" style={{ height: '3.5rem', width: '3.5rem   ' }} />}
                                 title="SKU Packing List"
@@ -127,7 +127,7 @@ export function UploadPackingListModal({ open, setOpen }: DocumentsDialogExample
 
 
 
-                        <section className="mb-8">
+                        <section className="mb-8" style={{ width: '80%' }}>
 
                             <DataTableForPo showDetailedPackingList={true} />
                         </section>

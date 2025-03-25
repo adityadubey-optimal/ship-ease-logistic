@@ -177,7 +177,8 @@ export function RequestByAir({ open, setOpen }: DocumentsDialogExampleProps) {
                         backgroundColor: theme.colors.thertiary,
                         borderRadius: 25,
                         display: 'flex',
-                        flexDirection: 'column'
+                        flexDirection: 'column',
+                        zIndex: 999999999999,
                     }}
                 >
                     {/* You can add a top bar or anything you wish */}
