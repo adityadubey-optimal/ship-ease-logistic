@@ -118,7 +118,7 @@ text-align : center;
             </section>
 
             {/* Metrics Section Placeholder */}
-            <section className="mb-1 p-4" style={{ paddingBottom: '4rem' }}>
+            <section className="mb-1 p-4" style={{ paddingBottom: '6rem' }}>
                 <WorldMap vendors={vendors} height="400px" />
 
             </section>

@@ -15,9 +15,9 @@ export function CfsReceiverRoutes() {
   return (
     <Routes>
       <Route index element={<Navigate to="home" replace />} />
-      <Route path="bookingGoodToGo" element={isMobile ? <CFSReceiverBookingGoodToGoMobile /> : < CFSReceiverBookingGoodToGoDesktop />} />
+      <Route path="bookingGoodToGo" element={isMobile ? <CFSReceiverCountryByPortMobile /> : < CFSReceiverBookingGoodToGoDesktop />} />
       <Route path="shippingInformation" element={isMobile ? <CFSReceiverShippingInfoMobile /> : < CFSReceiverShippingInfoDesktop />} />
-      <Route path="home" element={isMobile ? <CFSReceiverCountryByPortMobile /> : <CFSReceiverCountryByPortDesktop />} />
+      <Route path="home" element={isMobile ? <CFSReceiverBookingGoodToGoMobile /> : <CFSReceiverCountryByPortDesktop />} />
       <Route path="scan" element={isMobile ? <CFSReceiverShippingCameraMobile /> : <CFSReceiverShippingCameraMobile />} />
 
     </Routes>

@@ -346,7 +346,7 @@ function getSpecialButton() {
                     transform: "translate(-50%, -50%)",
                 }}
                 onClick={() => {
-                    navigate("/buyer/poReconcilation")
+                    navigate("/control-tower/documentList")
                 }}
             >
                 <ListChecks className="h-5 w-5" style={{ height: "25px", width: "25px" }} />
@@ -366,7 +366,7 @@ function getSpecialButton() {
                     transform: "translate(-50%, -50%)",
                 }}
                 onClick={() => {
-                    navigate("/buyer/poReconcilation")
+                    navigate("/consignee/documentList")
                 }}
             >
                 <ListChecks className="h-5 w-5" style={{ height: "25px", width: "25px" }} />

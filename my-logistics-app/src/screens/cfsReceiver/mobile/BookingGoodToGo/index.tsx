@@ -2,7 +2,7 @@ import DashboardLayout from "@/components/mobile/layout"
 
 import StatusDashboard from '@/components/mobile/statusDashboardMobile'
 import DocumentHeader from "@/components/mobile/sectionHeaderMobile"
-import StatusCardContainer from '@/components/mobile/statusContainerMobile'
+import StatusCardContainer from '@/components/desktop/statusCardContainer'
 import PoBookingCard from '@/components/mobile/PoBookingCardNew'
 import UrgentTask from "@assets/urgentTask.svg";
 import Document from "@assets/document.svg";
